@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollToPlugin,SplitText } from "gsap/all";
 
 import { useSectionObserver } from "./utils/Oberver";
@@ -13,7 +12,7 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin,SplitText);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin,SplitText);
 ScrollToPlugin.config({ autoKill: true });
 
 function App() {
@@ -34,20 +33,10 @@ function App() {
     else if (inContact) setCurrentPage("#contact");
   }, [inHome, inAbout, inSkills, inContact]);
 
-  useEffect(() => {
-    ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1,
-      effects: true,
-      smoothTouch: 0.1,
-    });
-  }, []);
-
   return (
-    <div id="smooth-wrapper">
+    <div id="">
       <Navbar currentPage={currentPage} />
-      <div id="smooth-content">
+      <div id="">
         <main>
           <Home sectionRef={homeRef} />
           <AboutSection sectionRef={aboutRef} />

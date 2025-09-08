@@ -1,14 +1,16 @@
-import Carousel from "../utils/Carousel";
+import Carousel from "../utils/Carousel/Carousel";
 
 const Skills = ({ sectionRef }: { sectionRef: (node?: Element | null) => void }) => {
   return (
     <div
       ref={sectionRef}
       id="skills"
-      className="w-full min-h-screen flex-center flex-col bg-primary p-10"
+      className="w-screen min-h-screen mt-10 flex-center  flex-col sm:p-10"
     >
       <h2 className="text-5xl font-bold text-text-primary mb-12">My Skills</h2>
-      <Carousel />
+      <div className="bg-[url('/images/skill-bg.avif')] bg-fixed w-full h-full flex justify-center items-center p-10 rounded-4xl">
+      <Carousel animationType="fade" animationDuration={0.6}/>
+      </div>
     </div>
   );
 };

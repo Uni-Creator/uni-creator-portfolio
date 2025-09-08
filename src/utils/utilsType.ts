@@ -24,6 +24,8 @@ type TimelineProps = {
   items: TimelineItem[];
 };
 
+export type AnimationType = "fade" | "slide-up" | "zoom";
+
 
 
 export type { MenuIconProps, MenuListProps,TimelineItem,TimelineProps };
