@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-text-primary: #00204c;
+  --color-active-text: #9b00e7;
+  --color-primary: #ffffff;
+  --color-bg-card: rgba(0,32,76,0.2);
+  --color-border-accent:rgba(0,32,76,0.4);
+  --color-dot:#00204c;
+  --color-line:#00204c;
+  --color-text-secondory:rgba(255,255,255,0.85);
+  --color-text-muted: rgba(255,255,255,1)
+}
+
+:root {
+  /* Fluid font-size using clamp() */
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-family: 'Montserrat', cursive;
+  font-optical-sizing: auto;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: #00204c;
+  background-color: #eaf2ff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@utility col-center {
+  @apply flex flex-col justify-center items-center  translate-y-1/4;
+}
+
+@utility fixed-nav {
+  @apply fixed top-0 left-0;
+}
+
+
+
+
+@layer components {
+  main {
+    @apply w-full;
+  }
+
+  nav {
+    @apply  z-20 w-full md:mt-10 mt-5 md:px-10 px-2 flex top-5 justify-between items-center;
+
+    #logo {
+      @apply shadow-md shadow-purple-500/30 flex justify-between text-center items-center space-x-2 bg-white rounded-full max-w-fit px-2 md:px-4 p-1 md:p-2;
+    }
+
+      #menuIcon{
+    @apply md:hidden absolute right-2 z-100;
+
+    button{
+      .outerDiv{
+        @apply relative flex items-center justify-center rounded-2xl w-[13vw] h-[12.5vw] max-w-[60px] max-h-[50px] transform transition-all ring-0 ring-slate-700 hover:ring-8   duration-200;
+      };
+
+      .innerDiv{
+        @apply flex flex-col justify-between w-[5vw] max-w-[50px] max-h-[50px] h-[5vw] transform transition-all duration-300;
+
+        .lineUpper{
+          @apply  h-[1vw] max-h-[4px] w-1/2 rounded transform transition-all duration-300;
+        }
+
+        .lineBottom{
+          @apply  h-[0.8vw] max-h-[3px] w-1/2 rounded self-end transform transition-all duration-300;
+        }
+      }
+    }
+  }
+
+  .nav-menu {
+    @apply hidden absolute top-20 right-5 bg-white text-text-primary  shadow-md p-5 z-40 rounded-2xl;
+  }
+
+  #menuList.nav-list-mobile {
+    @apply block fixed-nav -top-10 h-[120vh] w-full text-white bg-text-primary rounded-none overflow-auto;
+  }
+  }
+
+  #home {
+    @apply w-full;
+
+    #hero {
+      @apply w-full h-[100dvh] flex flex-col justify-center;
+
+      #headings {
+        @apply self-end mb-10 text-center wrap-normal;
+        font-size: clamp(2rem, 6vw, 4rem); /* Dynamic font size with max */
+
+        h1 {
+          @apply font-bold leading-20;
+          font-size: clamp(2.5rem, 5vw, 5rem); /* Dynamic h1 size */
+
+          span {
+            @apply bg-active-text rounded-full px-3 text-white [text-shadow:_3px_5px_10px_rgba(0,0,0,0.56)];
+          }
+
+          p {
+            @apply rounded-full px-2 text-white;
+            font-size: clamp(1.2rem, 3vw, 2rem); /* Dynamic p size */
+          }
+        }
+        h2 {
+          @apply font-bold;
+          font-size: clamp(2rem, 5vw, 3.5rem); /* Dynamic h2 size */
+        }
+        p {
+          font-size: clamp(1rem, 2vw, 1.5rem); /* Dynamic paragraph size */
+          @apply mt-10;
+        }
+      }
+    }
+    .feature{
+      @apply  w-full 
+    }
+  }
+
+}
