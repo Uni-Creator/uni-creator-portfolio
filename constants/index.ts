@@ -7,32 +7,36 @@ import type {
 } from "./constantTtypes";
 
 const navLists: NavListsType = [
-  { id: "home", title: "Home" },
-  { id: "about", title: "About" },
-  { id: "skills", title: "Skills" },
-  { id: "projects", title: "Projects" },
-  { id: "resume", title: "Resume" },
-  { id: "contact", title: "Contact" },
+  { id: "home",href:"#home" ,title: "Home" },
+  { id: "about",href:"#about", title: "About" },
+  { id: "skills",href:"#skills" ,title: "Skills" },
+  { id: "projects",href:"#projects" ,title: "Projects" },
+  {
+    id: "resume",
+    href: "https://5d1b98fc-9f35-4fc6-afed-01861f8eace7.filesusr.com/ugd/3048a2_fd50f532cc814bbb932c69ebf4eea7d0.pdf",
+    title: "Resume",
+  },
+  { id: "contact",href:"#contact" ,title: "Contact" },
 ];
 
 const projectsList: ProjectListType = [
   {
     id: "lung-cancer",
-    href: "lung-cancer-classification",
+    href: "#lung-cancer-classification",
     title: "Lung Cancer Classification",
     subtitle: "CNN",
     img: "/images/hero-lung-cancer.avif",
   },
   {
     id: "asl-recog",
-    href: "rt-asl-recoginition",
+    href: "#rt-asl-recoginition",
     title: "RT-ASL Recoginition",
     subtitle: "Deep Learning",
     img: "/images/hero-rt-als.avif",
   },
   {
     id: "nanogpt",
-    href: "nanogPT",
+    href: "#nanogPT",
     title: "NanoGPT",
     subtitle: "LLM/ NLP",
     img: "/images/hero-nano.avif",
@@ -77,7 +81,7 @@ const educationData: TimelineItem[] = [
     period: "2020 – 2021",
     title: "High School",
     subtitle: "R.K. Modern Sr. Sec. School (CBSE)",
-    details: ["Qualification: 10th Grade (Science)", "Percentage: 90%"],
+    details: ["Qualification: 10th Grade", "Percentage: 90%"],
   },
 ];
 
@@ -139,12 +143,18 @@ const mySkillsLists: SkillsListType = [
         topic: "Problem Solving",
         work: "Applying logical reasoning to tackle complex issues.",
       },
-      { topic: "Critical Thinking", work: " Evaluating problems to develop innovative solutions." },
+      {
+        topic: "Critical Thinking",
+        work: " Evaluating problems to develop innovative solutions.",
+      },
       {
         topic: "Team Coordination",
         work: " Collaborating effectively on technical projects.",
       },
-      { topic: "Project Management", work: "Organizing and executing project timelines efficiently."},
+      {
+        topic: "Project Management",
+        work: "Organizing and executing project timelines efficiently.",
+      },
       {
         topic: "Research Skills",
         work: "Investigating new technologies and methodologies.",

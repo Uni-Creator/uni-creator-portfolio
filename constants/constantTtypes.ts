@@ -23,6 +23,7 @@ type SkillsListType = SkillsType[];
 type NavList = {
     id: string;
     title: string;
+    href:string
 };
 
 type NavListsType = NavList[];

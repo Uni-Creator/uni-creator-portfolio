@@ -25,17 +25,17 @@ export const MenuList = ({
     }
   }, [scrollTo]);
 
-  const handleLinkClick = (e: MouseEvent, listId: string) => {
+  const handleLinkClick = (e: MouseEvent, href: string) => {
     e.preventDefault();
     if (isMobile) {
-      if (listId === "projects") {
+      if (href === "#projects") {
         setIsProjectsOpen(!isProjectsOpen);
       } else {
-        setScrollTo({ scrollto: `#${listId}` });
+        setScrollTo({ scrollto: href });
         setIsOpen(false);
       }
     } else {
-      setScrollTo({ scrollto: `#${listId}` });
+      setScrollTo({ scrollto: href });
     }
   };
   return (
@@ -54,8 +54,7 @@ export const MenuList = ({
         {navLists.map((list) => (
           <li
             key={list.id}
-            className={`${
-              currentPage === `#${list.id}`
+            className={`${currentPage === list.href}
                 ? "border-b-3 border-active-text"
                 : ""
             } relative  max-w-fit`}
@@ -65,9 +64,12 @@ export const MenuList = ({
             onMouseLeave={() => !isMobile && setIsProjectsOpen(false)}
           >
             <a
-              href={`#${list.id}`}
+              href={list.href}
+              target="_blank"
               className={`hover:text-active-text text-xl md:text-xl`}
-              onClick={(e) => handleLinkClick(e, list.id)}
+              onClick={(e) =>
+                list.id !== "resume" && handleLinkClick(e, list.href)
+              }
             >
               {list.title}
             </a>
@@ -80,7 +82,7 @@ export const MenuList = ({
                     onClick={(e) => handleLinkClick(e, project.href)}
                   >
                     <a
-                      href={"#" + project.href}
+                      href={project.href}
                       className="hover:text-active-text whitespace-nowrap"
                     >
                       {project.title}
