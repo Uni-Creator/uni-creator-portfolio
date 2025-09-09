@@ -1,22 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 @theme {
   --color-text-primary: #00204c;
   --color-active-text: #9b00e7;
   --color-primary: #ffffff;
-  --color-bg-card: rgba(0,32,76,0.2);
-  --color-border-accent:rgba(0,32,76,0.4);
-  --color-dot:#00204c;
-  --color-line:#00204c;
-  --color-text-secondory:rgba(255,255,255,0.85);
-  --color-text-muted: rgba(255,255,255,1)
+  --color-bg-card: rgba(0, 32, 76, 0.2);
+  --color-border-accent: rgba(0, 32, 76, 0.4);
+  --color-dot: #00204c;
+  --color-line: #00204c;
+  --color-text-secondory: rgba(255, 255, 255, 0.85);
+  --color-text-muted: rgba(255, 255, 255, 1);
 }
 
 :root {
   /* Fluid font-size using clamp() */
   font-size: clamp(14px, 1.5vw, 16px);
-  font-family: 'Montserrat', cursive;
+  font-family: "Montserrat", cursive;
   font-optical-sizing: auto;
   line-height: 1.5;
   font-weight: 400;
@@ -35,7 +35,7 @@
 }
 
 @utility col-center {
-  @apply flex flex-col justify-center items-center  translate-y-1/4;
+  @apply flex flex-col justify-center items-center translate-y-1/4;
 }
 
 @utility fixed-nav {
@@ -48,41 +48,41 @@
   }
 
   nav {
-    @apply  z-20 w-full md:mt-10 mt-5 md:px-10 px-2 flex top-5 justify-between items-center;
+    @apply z-20 w-full md:mt-10 mt-5 md:px-10 px-2 flex top-5 justify-between items-center;
 
     #logo {
       @apply shadow-md shadow-purple-500/30 flex justify-between text-center items-center space-x-2 bg-white rounded-full max-w-fit px-2 md:px-4 p-1 md:p-2;
     }
 
-      #menuIcon{
-    @apply md:hidden absolute right-2 z-100;
+    #menuIcon {
+      @apply md:hidden absolute right-2 z-100;
 
-    button{
-      .outerDiv{
-        @apply relative flex items-center justify-center rounded-2xl w-[13vw] h-[12.5vw] max-w-[60px] max-h-[50px] transform transition-all ring-0 ring-slate-700 hover:ring-8   duration-200;
-      };
-
-      .innerDiv{
-        @apply flex flex-col justify-between w-[5vw] max-w-[50px] max-h-[50px] h-[5vw] transform transition-all duration-300;
-
-        .lineUpper{
-          @apply  h-[1vw] max-h-[4px] w-1/2 rounded transform transition-all duration-300;
+      button {
+        .outerDiv {
+          @apply relative flex items-center justify-center rounded-2xl w-[13vw] h-[12.5vw] max-w-[60px] max-h-[50px] transform transition-all ring-0 ring-slate-700 hover:ring-8 duration-200;
         }
 
-        .lineBottom{
-          @apply  h-[0.8vw] max-h-[3px] w-1/2 rounded self-end transform transition-all duration-300;
+        .innerDiv {
+          @apply flex flex-col justify-between w-[5vw] max-w-[50px] max-h-[50px] h-[5vw] transform transition-all duration-300;
+
+          .lineUpper {
+            @apply h-[1vw] max-h-[4px] w-1/2 rounded transform transition-all duration-300;
+          }
+
+          .lineBottom {
+            @apply h-[0.8vw] max-h-[3px] w-1/2 rounded self-end transform transition-all duration-300;
+          }
         }
       }
     }
-  }
 
-  .nav-menu {
-    @apply hidden absolute top-20 right-5 bg-white text-text-primary  shadow-md p-5 z-40 rounded-2xl;
-  }
+    .nav-menu {
+      @apply hidden absolute top-20 right-5 bg-white text-text-primary shadow-md p-5 z-40 rounded-2xl;
+    }
 
-  #menuList.nav-list-mobile {
-    @apply block fixed-nav -top-10 h-[120vh] w-full text-white bg-text-primary rounded-none overflow-auto;
-  }
+    #menuList.nav-list-mobile {
+      @apply block fixed-nav -top-10 h-[120vh] w-full text-white bg-text-primary rounded-none overflow-auto;
+    }
   }
 
   #home {
@@ -91,8 +91,16 @@
     #hero {
       @apply w-full h-[100dvh] flex flex-col justify-center;
 
+      #hero-image-container {
+        @apply h-1/2 w-full flex items-center justify-between p-10;
+
+        img {
+          @apply w-[12vw] h-[12vw] min-w-[60px] min-h-[60px];
+        }
+      }
+
       #headings {
-        @apply self-end mb-10 text-center wrap-normal;
+        @apply self-end mb-10 wrap-normal [text-shadow:_-3px_-3px_8px_rgba(131,131,131,0.76)] w-full text-center mt-10;
         font-size: clamp(2rem, 6vw, 4rem); /* Dynamic font size with max */
 
         h1 {
@@ -118,9 +126,62 @@
         }
       }
     }
-    .feature{
-      @apply  w-full 
+
+    .feature {
+      @apply w-full;
+
+      #f-bg {
+        @apply bg-[url('/images/hero-bg.avif')] bg-center bg-cover w-[130%] h-[110vh] transform -translate-x-20;
+      }
+
+      .project-card {
+        @apply sm:min-w-[400px] sm:min-h-[100px] min-w-full bg-white flex justify-start rounded-4xl p-5 text-center;
+      }
     }
   }
 
+  #about {
+    @apply relative min-h-screen w-full flex flex-col items-center justify-between px-5 sm:px-10 md:px-20 py-16 overflow-hidden;
+
+    img {
+      @apply absolute inset-0 w-full h-full object-cover object-center -z-20;
+    }
+  }
+
+  #skills {
+    @apply w-screen min-h-screen mt-10 flex-center flex-col sm:p-10;
+
+    .carousel-container {
+      @apply bg-[url('/images/skill-bg.avif')] bg-fixed w-full min-h-[80%] sm:max-h-[50%] flex justify-center items-center p-10 rounded-4xl;
+
+      .carousel {
+        @apply bg-[#282626] backdrop-blur-sm border border-gray-700 text-white rounded-2xl p-8 md:p-12 shadow-lg;
+
+        .slide-container {
+          @apply w-full transition-opacity duration-500;
+
+          .slide {
+            @apply flex flex-col md:flex-row gap-8 justify-center items-center;
+
+            .title {
+              @apply text-[clamp(1.5rem,4vw,2rem)] sm:w-1/3 font-bold text-center;
+            }
+            ul {
+              @apply  w-full md:w-1/2 list-inside marker:text-white/30 space-y-4 break-words text-[clamp(1rem,2vw,1rem)];
+
+              li {
+                p {
+                  @apply border-b-1 inline border-white/20 font-bold;
+                }
+              }
+            }
+          }
+        }
+
+        .navigationButton {
+          @apply absolute top-1/2 transform -translate-y-1/2 text-white/20 cursor-pointer hover:text-white/50 text-6xl font-bold;
+        }
+      }
+    }
+  }
 }

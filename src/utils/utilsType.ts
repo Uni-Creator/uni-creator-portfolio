@@ -9,7 +9,7 @@ type MenuListProps = {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isProjectsOpen: boolean;
   setIsProjectsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  currentPage:string
+  currentPage: string;
 };
 
 type TimelineItem = {
@@ -31,7 +31,6 @@ interface CarouselProps {
   animationDuration?: number;
 }
 
-
 interface Feature {
   topic: string;
   work: string;
@@ -44,4 +43,20 @@ interface SlideProps {
   slideRef: (el: HTMLDivElement | null) => void;
 }
 
-export type { MenuIconProps, MenuListProps,TimelineItem,TimelineProps,CarouselProps,AnimationType,SlideProps,Feature };
+interface NavigationProps {
+  current: number;
+  goToSlide: (index: number) => void;
+  pauseWithDebounce: () => void;
+}
+
+export type {
+  MenuIconProps,
+  MenuListProps,
+  TimelineItem,
+  TimelineProps,
+  CarouselProps,
+  AnimationType,
+  SlideProps,
+  Feature,
+  NavigationProps,
+};

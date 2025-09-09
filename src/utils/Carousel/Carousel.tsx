@@ -56,7 +56,7 @@ const Carousel = ({ animationType = "slide-up", animationDuration = 0.6 }: Carou
 
   return (
     <div
-  className="relative w-full sm:w-[80%] bg-[#282626] backdrop-blur-sm border border-gray-700 text-white rounded-2xl p-8 md:p-12 shadow-lg"
+  className="relative w-full sm:w-[80%] carousel"
   onMouseEnter={() => setPaused(true)}
   onMouseLeave={pauseWithDebounce}
 >
