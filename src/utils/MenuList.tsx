@@ -15,7 +15,6 @@ export const MenuList = ({
   const [scrollTo, setScrollTo] = useState<{ scrollto: string }>({
     scrollto: "",
   });
-
   useGSAP(() => {
     if (scrollTo.scrollto) {
       gsap.to(window, {
@@ -54,7 +53,7 @@ export const MenuList = ({
         {navLists.map((list) => (
           <li
             key={list.id}
-            className={`${currentPage === list.href}
+            className={`${currentPage === list.href
                 ? "border-b-3 border-active-text"
                 : ""
             } relative  max-w-fit`}
