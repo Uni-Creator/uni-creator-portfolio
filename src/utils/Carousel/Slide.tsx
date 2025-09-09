@@ -3,7 +3,7 @@ import type { SlideProps } from "../utilsType";
 
 
 
-const Slide: FC<SlideProps> = ({ title, features, active, slideRef }) => {
+const Slide: FC<SlideProps> = ({ title, skills, active, slideRef }) => {
   return (
     <div
       ref={slideRef}
@@ -19,10 +19,10 @@ const Slide: FC<SlideProps> = ({ title, features, active, slideRef }) => {
         <div className="hidden md:block w-[1px] bg-gray-600 h-60"></div>
 
         <ul>
-          {features.map((feature, idx) => (
+          {skills.map(({topic,work}, idx) => (
             <li key={idx} className="break-words">
-              <p>{feature.topic}: </p>
-              <span className="text-white/70 break-words">{feature.work}</span>
+              <p>{topic}: </p>
+              <span className="text-white/70 break-words">{work}</span>
             </li>
           ))}
         </ul>

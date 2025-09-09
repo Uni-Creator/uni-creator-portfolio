@@ -13,12 +13,12 @@ type FeaturesType = {
   work:string
 }
 
-type FeaturesProjectsType = {
+type SkillsType = {
   title:string;
   features:FeaturesType[];
 }
 
-type FeaturesProjectsListType = FeaturesProjectsType[];
+type SkillsListType = SkillsType[];
 
 type NavList = {
     id: string;
@@ -36,4 +36,4 @@ type AboutProps = {
 };
 
 
-export type { NavListsType, ProjectListType,AboutProps,FeaturesProjectsListType};
+export type { NavListsType, ProjectListType,AboutProps,SkillsListType,FeaturesType};

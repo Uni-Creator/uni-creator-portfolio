@@ -1,5 +1,10 @@
 import type { TimelineItem } from "../src/utils/utilsType";
-import type { AboutProps, FeaturesProjectsListType, NavListsType, ProjectListType } from "./constantTtypes";
+import type {
+  AboutProps,
+  SkillsListType,
+  NavListsType,
+  ProjectListType,
+} from "./constantTtypes";
 
 const navLists: NavListsType = [
   { id: "home", title: "Home" },
@@ -34,7 +39,6 @@ const projectsList: ProjectListType = [
   },
 ];
 
-
 export const aboutData: AboutProps = {
   heading: "About Me",
   description:
@@ -53,7 +57,6 @@ export const aboutData: AboutProps = {
   tagline: "Let’s connect and innovate together!",
 };
 
-
 const educationData: TimelineItem[] = [
   {
     period: "2023 – Current",
@@ -70,46 +73,84 @@ const educationData: TimelineItem[] = [
     subtitle: "Uttrakhand Public School (CBSE)",
     details: ["Qualification: 12th Grade (Science)", "Percentage: 94%"],
   },
+  {
+    period: "2020 – 2021",
+    title: "High School",
+    subtitle: "R.K. Modern Sr. Sec. School (CBSE)",
+    details: ["Qualification: 10th Grade (Science)", "Percentage: 90%"],
+  },
 ];
 
-
-
-
-
-const featuresProjects:FeaturesProjectsListType = [
+const mySkillsLists: SkillsListType = [
   {
     title: "Machine Learning & AI",
     features: [
-      {topic:"Machine Learning (ML)", work:"Designing and implementing predictive models."},
-      {topic:"Deep Learning",work: "Working with neural networks for complex data processing."},
-      {topic:"Convolutional Neural Networks (CNN)", work:"Specializing in image recognition tasks."},
-      {topic:"Natural Language Processing (NLP)", work:"Developing AI systems for text and speech processing."},
-      {topic:"Generative AI", work:"Creating models for AI-driven content generation."}
-    ]
+      {
+        topic: "Machine Learning (ML)",
+        work: "Designing and implementing predictive models.",
+      },
+      {
+        topic: "Deep Learning",
+        work: "Working with neural networks for complex data processing.",
+      },
+      {
+        topic: "Convolutional Neural Networks (CNN)",
+        work: "Specializing in image recognition tasks.",
+      },
+      {
+        topic: "Natural Language Processing (NLP)",
+        work: "Developing AI systems for text and speech processing.",
+      },
+      {
+        topic: "Generative AI",
+        work: "Creating models for AI-driven content generation.",
+      },
+    ],
   },
   {
-    title: "Web Development",
+    title: "Programming & Development",
     features: [
-      {topic:"Frontend Development", work:"React, Vue, HTML, CSS, TailwindCSS."},
-      {topic:"Backend Development", work:"Node.js, Express, Django."},
-      {topic:"Database Management", work:"SQL, MongoDB, Firebase."},
-      {topic:"API Integration", work:"RESTful APIs and GraphQL."},
-      {topic:"Responsive Design", work:"Mobile-first development and cross-browser support."}
-    ]
+      {
+        topic: "Python",
+        work: "Writing efficient and scalable programs for AI and automation.",
+      },
+      {
+        topic: "C++",
+        work: " High-performance programming for software and hardware applications.",
+      },
+      {
+        topic: "SQL",
+        work: "Querying, managing, and optimizing relational databases.",
+      },
+      {
+        topic: "MATLAB",
+        work: "Mathematical computing, simulations, and algorithm prototyping.",
+      },
+      {
+        topic: "Web Scraping",
+        work: "Extracting structured data from web pages.",
+      },
+    ],
   },
   {
-    title: "Data Science",
+    title: "Technical & Soft Skills",
     features: [
-      {topic:"Data Analysis",work: "Using Pandas, NumPy, and Excel for insights."},
-      {topic:"Data Visualization", work:"Matplotlib, Seaborn, and Plotly."},
-      {topic:"Statistical Modeling", work:"Hypothesis testing, regression analysis."},
-      {topic:"Big Data Processing", work:"Spark and Hadoop."},
-      {topic:"Reporting", work:"Generating dashboards and automated reports."}
-    ]
-  }
+      {
+        topic: "Problem Solving",
+        work: "Applying logical reasoning to tackle complex issues.",
+      },
+      { topic: "Critical Thinking", work: " Evaluating problems to develop innovative solutions." },
+      {
+        topic: "Team Coordination",
+        work: " Collaborating effectively on technical projects.",
+      },
+      { topic: "Project Management", work: "Organizing and executing project timelines efficiently."},
+      {
+        topic: "Research Skills",
+        work: "Investigating new technologies and methodologies.",
+      },
+    ],
+  },
 ];
 
-
-
-
-export { navLists, projectsList,educationData,featuresProjects };
+export { navLists, projectsList, educationData, mySkillsLists };

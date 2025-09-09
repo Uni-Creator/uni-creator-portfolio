@@ -1,6 +1,5 @@
 import gsap from "gsap";
-import type { AnimationType } from "../src/utils/utilsType";
-
+import type {AnimationType} from "../animations/animationTypes"
 
 export const animateSlide = (
   oldSlide: HTMLDivElement | null,

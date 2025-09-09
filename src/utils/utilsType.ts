@@ -1,3 +1,6 @@
+import type { AnimationType } from "../../animations/animationTypes";
+import type { FeaturesType } from "../../constants/constantTtypes";
+
 type MenuIconProps = {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,21 +27,15 @@ type TimelineProps = {
   items: TimelineItem[];
 };
 
-type AnimationType = "fade" | "slide-up" | "zoom";
 
 interface CarouselProps {
   animationType?: AnimationType; // choose fade, slide-up, zoom
   animationDuration?: number;
 }
 
-interface Feature {
-  topic: string;
-  work: string;
-}
-
 interface SlideProps {
   title: string;
-  features: Feature[];
+  skills: FeaturesType[];
   active: boolean;
   slideRef: (el: HTMLDivElement | null) => void;
 }
@@ -55,8 +52,6 @@ export type {
   TimelineItem,
   TimelineProps,
   CarouselProps,
-  AnimationType,
   SlideProps,
-  Feature,
   NavigationProps,
 };

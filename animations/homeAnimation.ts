@@ -54,4 +54,18 @@ export const homeAnimations = (scope: HTMLElement | null) => {
       scrub: true,
     },
   });
+
+  const cards = document.querySelectorAll("#highlight-projects .project-card")
+
+  gsap.from(cards, {
+    opacity: 0,
+    y: "100px",
+    scrollTrigger: {
+      trigger: "#highlight-projects",
+      start: "top 80%",
+      end: "bottom center",
+    },
+    stagger: 0.5,
+  });
+
 };

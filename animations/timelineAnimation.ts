@@ -36,7 +36,7 @@ export const timelineAnimation = (
         scrollTrigger: {
           trigger: container,
           start: "top center",
-          end: "bottom bottom",
+          end: "bottom center",
           scrub: true,
         },
       }
@@ -54,8 +54,8 @@ export const timelineAnimation = (
         ease: "power2.out",
         scrollTrigger: {
           trigger: el,
-          start: "top 90%",
-          end: "top 60%",
+          start: "top 60%",
+          end: "bottom 60%",
           scrub: true,
         },
       }

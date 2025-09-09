@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { featuresProjects } from "../../../constants";
+import { mySkillsLists } from "../../../constants";
 import { useGSAP } from "@gsap/react";
 import { animateSlide } from "../../../animations/slideAnimation";
 
@@ -19,6 +19,8 @@ const Carousel = ({ animationType = "slide-up", animationDuration = 0.6 }: Carou
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const prev = useRef<number>(0);
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const listLenght = mySkillsLists.length
 
   // Auto slide
   useEffect(() => {
@@ -44,7 +46,7 @@ const Carousel = ({ animationType = "slide-up", animationDuration = 0.6 }: Carou
 
   const goToSlide = (index: number) => {
     if (animating) return;
-    const newIndex = (index + featuresProjects.length) % featuresProjects.length;
+    const newIndex = (index + listLenght) % listLenght;
     setCurrent(newIndex);
   };
 
@@ -62,11 +64,11 @@ const Carousel = ({ animationType = "slide-up", animationDuration = 0.6 }: Carou
 >
   {/* Slides */}
   <div className="relative">
-    {featuresProjects.map((project, index) => (
+    {mySkillsLists.map(({title,features}, index) => (
       <Slide
         key={index}
-        title={project.title}
-        features={project.features}
+        title={title}
+        skills={features}
         active={index === current}
         slideRef={(el) => (slideRefs.current[index] = el)}
       />
@@ -75,7 +77,7 @@ const Carousel = ({ animationType = "slide-up", animationDuration = 0.6 }: Carou
 
   {/* Indicators + Navigation */}
   <Indicators
-    count={featuresProjects.length}
+    count={listLenght}
     current={current}
     goToSlide={goToSlide}
     pauseWithDebounce={pauseWithDebounce}
