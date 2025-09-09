@@ -34,7 +34,7 @@ function App() {
   }, [inHome, inAbout, inSkills, inContact]);
 
   return (
-    <div id="">
+    <div id="" className="overflow-x-hidden">
       <Navbar currentPage={currentPage} />
       <div id="">
         <main>

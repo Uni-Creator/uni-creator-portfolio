@@ -24,8 +24,24 @@ type TimelineProps = {
   items: TimelineItem[];
 };
 
-export type AnimationType = "fade" | "slide-up" | "zoom";
+type AnimationType = "fade" | "slide-up" | "zoom";
+
+interface CarouselProps {
+  animationType?: AnimationType; // choose fade, slide-up, zoom
+  animationDuration?: number;
+}
 
 
+interface Feature {
+  topic: string;
+  work: string;
+}
 
-export type { MenuIconProps, MenuListProps,TimelineItem,TimelineProps };
+interface SlideProps {
+  title: string;
+  features: Feature[];
+  active: boolean;
+  slideRef: (el: HTMLDivElement | null) => void;
+}
+
+export type { MenuIconProps, MenuListProps,TimelineItem,TimelineProps,CarouselProps,AnimationType,SlideProps,Feature };
