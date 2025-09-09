@@ -16,7 +16,7 @@ const AboutSection = ({ sectionRef }: { sectionRef: (node?: Element | null) => v
         alt="About me background"
         className="absolute inset-0 w-full h-full object-cover object-center -z-20"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/70 -z-10" />
 
       {/* About content */}
      <AboutMe {...aboutData}/>
