@@ -29,14 +29,14 @@ const Home = ({
         <div id="headings">
           <h1>
             By{" "}
-            <span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-text-primary from-50% to-cyan-500">
               Uni-Creator
-              <span className="text-text-primary p-0 bg-transparent">,</span>
             </span>
+            , For the
           </h1>
-          <h2 className="text-white">
-            <span className="text-text-primary">For the</span> Future of Tech.
-          </h2>
+          <span className="text-white heading-bg">
+            Future of Tech.
+          </span>
           <p>Engineering the Future of AI and Technology.</p>
         </div>
       </div>

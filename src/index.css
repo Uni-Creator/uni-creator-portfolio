@@ -42,6 +42,10 @@
   @apply fixed top-0 left-0;
 }
 
+@utility heading-bg{
+  @apply bg-gradient-to-r  from-active-text from-30% to-bg-card rounded-full px-3 text-white [text-shadow:_3px_5px_10px_rgba(0,0,0,0.56)];
+}
+
 @layer components {
   main {
     @apply w-full;
@@ -59,11 +63,11 @@
 
       button {
         .outerDiv {
-          @apply relative flex items-center justify-center rounded-2xl w-[13vw] h-[12.5vw] max-w-[60px] max-h-[50px] transform transition-all ring-0 ring-slate-700 hover:ring-8 duration-200;
+          @apply relative flex items-center justify-center rounded-2xl w-[13vw] h-[12.5vw] max-w-[100px] max-h-[100px] transform transition-all ring-0 ring-slate-700 hover:ring-8 duration-200;
         }
 
         .innerDiv {
-          @apply flex flex-col justify-between w-[5vw] max-w-[50px] max-h-[50px] h-[5vw] transform transition-all duration-300;
+          @apply flex flex-col justify-between w-[5vw] max-w-[100px] max-h-[100px] h-[5vw] transform transition-all duration-300;
 
           .lineUpper {
             @apply h-[1vw] max-h-[4px] w-1/2 rounded transform transition-all duration-300;
@@ -95,34 +99,31 @@
         @apply h-1/2 w-full flex items-center justify-between p-10;
 
         img {
-          @apply w-[12vw] h-[12vw] min-w-[60px] min-h-[60px];
+          @apply w-[12vw] h-[12vw] min-w-[100px] min-h-[100px];
         }
       }
 
       #headings {
-        @apply self-end mb-10 wrap-normal [text-shadow:_-3px_-3px_8px_rgba(131,131,131,0.76)] w-full text-center mt-10;
-        font-size: clamp(2rem, 6vw, 4rem); /* Dynamic font size with max */
-
+        @apply self-end mb-10 wrap-normal [text-shadow:_-3px_-3px_8px_rgba(131,131,131,0.76)] leading-10 sm:leading-20 w-full text-center px-10 mt-10;
+        font-size: clamp(3rem, 6vw, 4rem); 
         h1 {
-          @apply font-bold leading-20;
-          font-size: clamp(2.5rem, 5vw, 5rem); /* Dynamic h1 size */
-
-          span {
-            @apply bg-active-text rounded-full px-3 text-white [text-shadow:_3px_5px_10px_rgba(0,0,0,0.56)];
-          }
-
-          p {
-            @apply rounded-full px-2 text-white;
-            font-size: clamp(1.2rem, 3vw, 2rem); /* Dynamic p size */
-          }
-        }
-        h2 {
           @apply font-bold;
-          font-size: clamp(2rem, 5vw, 3.5rem); /* Dynamic h2 size */
+          font-size: clamp(2.5rem, 5vw, 5rem);  
+
+           span {
+          @apply font-bold;
+          font-size: clamp(2.5rem, 5vw, 5rem); 
+        }
+
+        }
+        span {
+          @apply font-bold ;
+          font-size: clamp(2.5rem, 4.5vw, 4rem); 
         }
         p {
-          font-size: clamp(1rem, 2vw, 1.5rem); /* Dynamic paragraph size */
-          @apply mt-10;
+
+          @apply mt-10 text-black/50; 
+          font-size: clamp(1.3rem, 2vw, 1.5rem);
         }
       }
     }
@@ -152,7 +153,7 @@
     @apply w-screen min-h-screen mt-10 flex-center flex-col sm:p-10;
 
     .carousel-container {
-      @apply bg-[url('/images/skill-bg.avif')] bg-fixed w-full min-h-[80%] sm:max-h-[50%] flex justify-center items-center p-10 rounded-4xl;
+      @apply bg-[url('/images/skill-bg.avif')] bg-fixed w-full min-h-full sm:max-h-[50%] flex justify-center items-center p-10 rounded-4xl;
 
       .carousel {
         @apply bg-[#282626] backdrop-blur-sm border border-gray-700 text-white rounded-2xl p-8 md:p-12 shadow-lg;
@@ -161,13 +162,13 @@
           @apply w-full transition-opacity duration-500;
 
           .slide {
-            @apply flex flex-col md:flex-row gap-8 justify-center items-center sm:min-h-[50vh];
+            @apply flex flex-col md:flex-row gap-8 justify-center items-center min-h-[60vh] sm:min-h-[50vh];
 
             .title {
               @apply text-[clamp(1.5rem,4vw,1rem)] sm:w-1/3 font-bold text-center;
             }
             ul {
-              @apply  w-full md:w-1/2 list-inside marker:text-white/30 space-y-4 break-words text-[clamp(1rem,2vw,1rem)];
+              @apply  w-full md:w-1/2 list-inside marker:text-white/30 space-y-4 break-words text-[clamp(1.2rem,2vw,1rem)];
 
               li {
                 p {

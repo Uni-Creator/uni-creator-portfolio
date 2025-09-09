@@ -47,9 +47,9 @@ const Navbar = ({ currentPage }: { currentPage: string }) => {
         <img
           src="/images/3D_Shape_1.avif"
           alt="logo"
-          className="w-[4vw] h-[4vw] min-w-[26px] min-h-[26px]"
+          className="w-[4vw] h-[4vw] min-w-[50px] min-h-[50px]"
         />
-        <h3 className="font-bold text-xl md:text-2xl">Uni-Creator</h3>
+        <h3 className="font-bold text-2xl">Uni-Creator</h3>
       </div>
 
       <MenuIcon isOpen={isOpen} setIsOpen={setIsOpen} />
