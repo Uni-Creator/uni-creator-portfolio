@@ -1,6 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
+import ShownProjects from "../utils/ShownProjects";
 
 const Projects = ({
   sectionRef,
@@ -8,11 +9,11 @@ const Projects = ({
   sectionRef: (node?: Element | null) => void;
 }) => {
   useGSAP(() => {
+    const headingText = new SplitText("#project-heading", { type: "chars" });
+    const subHeadingText = new SplitText("#project-sub-heading", {
+      type: "words",
+    });
 
-    const headingText = new SplitText("#project-heading",{type:"chars"})
-    const subHeadingText = new SplitText("#project-sub-heading",{type:"words"})
-  
-    console.log(headingText)
     const spinningToTimeline = gsap.timeline({
       ease: "bounce.in",
       duration: 0.6,
@@ -63,40 +64,44 @@ const Projects = ({
   }, []);
 
   return (
-    <div
+    <section
       ref={sectionRef}
       id="projects"
-      className="w-full p-10  mt-10"
+      className="w-full flex-center flex-col py-12 px-6 bg-gradient-to-r from-blue-50 to-indigo-50"
     >
-      <div className="w-full flex-center flex sm:flex-nowrap gap-10 flex-wrap-reverse">
+      <div className="w-full flex-center flex sm:flex-nowrap gap-10 flex-wrap-reverse mb-10">
         <div className="flex-center w-full sm:w-fit ">
           <div className=" flex-center w-full flex-col space-y-5">
-            <h1 id="project-heading" className="text-6xl w-full text-center  text-[clamp(3rem,4vw,1rem)] leading-15 break-words">
+            <h1
+              id="project-heading"
+              className="text-6xl w-full text-center  text-[clamp(3rem,4vw,1rem)] leading-15 break-words"
+            >
               <span className="heading-bg">Explore</span>{" "}
               <p className="sm:inline">My Projects</p>
             </h1>
-            <p id="project-sub-heading" className="text-xl text-text-primary/70">
+            <p
+              id="project-sub-heading"
+              className="text-xl text-text-primary/70"
+            >
               Discover My Work: Where AI Meets Innovation.
             </p>
           </div>
-        </div>
-        <div className="flex-center sm:w-[12vw] sm:h-[12vw] w-[100px]">
-          <img
-            id="spinning-top"
-            src="/images/projectSec-1.avif"
-            alt="not-found"
-            className="object-cover opacity-20"
-          />
-        </div>
-      </div>
-     <div id="project-container" className="">
-       <div id="show-project" className="min-h-screen w-full flex-center">
-        <div className="min-w-9/10 min-h-9/10 flex-center">46565
+
+          <div className="flex-center sm:w-[12vw] sm:h-[12vw] w-[100px]">
+            <img
+              id="spinning-top"
+              src="/images/projectSec-1.avif"
+              alt="not-found"
+              className="object-cover opacity-20"
+            />
+          </div>
         </div>
       </div>
-     </div>
-    </div>
+
+     <ShownProjects/>
+    </section>
   );
 };
+
 
 export default Projects;

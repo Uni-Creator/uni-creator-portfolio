@@ -4,7 +4,14 @@ type ProjectType = {
     title: string;
     subtitle:string;
     img:string;
-    backgroundImg?:string
+    backgroundImg?:string,
+    projectDetails ?:{
+      problem:string,
+      solution:string,
+      techUsed:string,
+      impact:string,
+      githubLink:string
+    }
 };
 
 type ProjectListType = ProjectType[];
