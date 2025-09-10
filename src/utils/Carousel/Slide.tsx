@@ -11,14 +11,15 @@ const Slide: FC<SlideProps> = ({ title, skills, active, slideRef }) => {
         active ? "opacity-100 relative block" : "opacity-0 hidden"
       }`}
     >
-      <div className="slide">
+      <div className="slide ">
         <h2 className="title">
           {title}
         </h2>
 
-        <div className="hidden md:block w-[1px] bg-gray-600 h-60"></div>
+        <div className="hidden md:block w-[1px] bg-white h-full"></div>
 
-        <ul>
+       <div className="content">
+         <ul>
           {skills.map(({topic,work}, idx) => (
             <li key={idx} className="break-words">
               <p>{topic}: </p>
@@ -26,6 +27,7 @@ const Slide: FC<SlideProps> = ({ title, skills, active, slideRef }) => {
             </li>
           ))}
         </ul>
+       </div>
       </div>
     </div>
   );

@@ -3,7 +3,8 @@ type ProjectType = {
     href: string;
     title: string;
     subtitle:string;
-    img:string
+    img:string;
+    backgroundImg?:string
 };
 
 type ProjectListType = ProjectType[];

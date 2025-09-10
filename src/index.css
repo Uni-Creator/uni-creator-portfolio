@@ -30,6 +30,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Chrome, Safari, Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html{
+   scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge Legacy */
+
+}
 
 
 @utility flex-center {
@@ -146,41 +156,83 @@
       @apply absolute inset-0 w-full h-full object-cover object-center -z-20;
     }
   }
+#skills {
+  @apply w-screen min-h-screen mt-12 flex-center flex-col px-4 sm:px-10;
 
-  #skills {
-    @apply w-screen min-h-screen mt-10 flex-center flex-col sm:p-10;
+  .carousel-container {
+    @apply relative w-full max-w-6xl h-[70vh] 
+           flex items-center justify-center 
+           rounded-3xl overflow-hidden 
+           bg-[url('/images/skill-bg.avif')] bg-cover bg-center bg-fixed;
 
-    .carousel-container {
-      @apply bg-[url('/images/skill-bg.avif')] bg-fixed w-full min-h-full sm:max-h-[50%] flex justify-center items-center p-10 rounded-4xl;
+    /* Overlay for readability */
+    &::before {
+      content: "";
+      @apply absolute inset-0 bg-gradient-to-b from-black/80 to-white/5 backdrop-blur-xs;
+    }
 
-      .carousel {
-        @apply bg-[#282626] backdrop-blur-sm border border-gray-700 text-white rounded-2xl p-8 md:p-12 shadow-lg;
+    .carousel {
+      @apply  z-10 w-full h-full flex flex-col justify-center items-center rounded-2xl ;
 
-        .slide-container {
-          @apply w-full transition-opacity duration-500;
+      .slide-container {
+        @apply flex-1 w-full h-full transition-opacity duration-500 flex justify-center items-center;
 
-          .slide {
-            @apply flex flex-col md:flex-row gap-8 justify-center items-center min-h-[60vh] sm:min-h-[50vh];
+        .slide {
+          @apply flex flex-col md:flex-row items-stretch gap-6 w-full h-full p-6 sm:p-10;
 
-            .title {
-              @apply text-[clamp(1.5rem,4vw,1rem)] sm:w-1/3 font-bold text-center;
-            }
+          /* Title Block */
+          .title {
+            @apply md:w-1/3 w-full flex items-center justify-center text-center md:text-left font-extrabold;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            line-height: 1.2;
+            color: #ffffff;
+          }
+
+          /* Content Block */
+          .content {
+            @apply flex-1 bg-white/7 rounded-xl p-4 overflow-hidden;
+
             ul {
-              @apply w-full md:w-1/2 list-inside marker:text-white/30 space-y-4 break-words text-[clamp(1.2rem,2vw,1rem)];
+              @apply h-full list-none list-inside space-y-5 pr-2 
+                     text-white/90 overflow-y-auto text-[clamp(1.2rem,1vw,1rem)];
 
               li {
+                @apply font-medium ;
                 p {
-                  @apply border-b-1 inline border-white/20 font-bold;
+                  @apply border-b inline  text-white font-bold border-white/20;
                 }
+              }
+
+              /* Custom scrollbar */
+              &::-webkit-scrollbar {
+                width: 6px;
+              }
+              &::-webkit-scrollbar-thumb {
+                @apply bg-white/30 rounded-full;
+              }
+              &::-webkit-scrollbar-track {
+                @apply bg-transparent;
               }
             }
           }
         }
+      }
 
-        .navigationButton {
-          @apply absolute top-1/2 transform -translate-y-1/2 text-white/20 cursor-pointer hover:text-white/50 text-6xl font-bold;
-        }
+      /* Navigation */
+      .navigationButton {
+        @apply absolute top-1/2 transform -translate-y-1/2 
+               text-white/10 hover:text-white 
+               cursor-pointer text-8xl sm:text-6xl font-bold transition duration-300 ;
+      }
+      .prev {
+        @apply -left-0;
+      }
+      .next {
+        @apply right-0;
       }
     }
   }
+}
+
+
 }

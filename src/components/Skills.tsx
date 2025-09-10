@@ -5,7 +5,7 @@ const Skills = ({ sectionRef }: { sectionRef: (node?: Element | null) => void })
     <div
       ref={sectionRef}
       id="skills"    >
-      <h2 className="text-4xl sm:text-6xl  font-bold text-text-primary mb-12">My Skills</h2>
+      <h2 className="text-6xl  font-bold text-text-primary mb-12">My Skills</h2>
       <div className="carousel-container">
       <Carousel animationType="zoom" animationDuration={0.6}/>
       </div>

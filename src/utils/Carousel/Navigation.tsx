@@ -10,7 +10,7 @@ const Navigation: FC<NavigationProps> = ({ current, goToSlide, pauseWithDebounce
           goToSlide(current - 1);
           pauseWithDebounce();
         }}
-        className="left-5 navigationButton"
+        className="prev navigationButton"
       >
         &#8249;
       </button>
@@ -20,7 +20,7 @@ const Navigation: FC<NavigationProps> = ({ current, goToSlide, pauseWithDebounce
           goToSlide(current + 1);
           pauseWithDebounce();
         }}
-        className="right-5 navigationButton"
+        className="next navigationButton"
       >
         &#8250;
       </button>

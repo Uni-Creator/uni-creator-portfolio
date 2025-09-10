@@ -66,7 +66,7 @@ const Projects = ({
     <div
       ref={sectionRef}
       id="projects"
-      className="w-full p-10  mt-10 flex justify-center items-start"
+      className="w-full p-10  mt-10"
     >
       <div className="w-full flex-center flex sm:flex-nowrap gap-10 flex-wrap-reverse">
         <div className="flex-center w-full sm:w-fit ">
@@ -89,7 +89,12 @@ const Projects = ({
           />
         </div>
       </div>
-      <div className="min-h-screen"></div>
+     <div id="project-container" className="">
+       <div id="show-project" className="min-h-screen w-full flex-center">
+        <div className="min-w-9/10 min-h-9/10 flex-center">46565
+        </div>
+      </div>
+     </div>
     </div>
   );
 };

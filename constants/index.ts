@@ -26,6 +26,7 @@ const projectsList: ProjectListType = [
     title: "Lung Cancer Classification",
     subtitle: "CNN",
     img: "/images/hero-lung-cancer.avif",
+    backgroundImg:"https://static.wixstatic.com/media/11062b_347949d9b58c411b8da6c6fd304a02b4~mv2_d_4102_5700_s_4_2.jpg/v1/fill/w_1225,h_876,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_347949d9b58c411b8da6c6fd304a02b4~mv2_d_4102_5700_s_4_2.jpg"
   },
   {
     id: "asl-recog",
@@ -33,6 +34,7 @@ const projectsList: ProjectListType = [
     title: "RT-ASL Recoginition",
     subtitle: "Deep Learning",
     img: "/images/hero-rt-als.avif",
+    backgroundImg:"https://static.wixstatic.com/media/11062b_97f7c08edb324dde87851b51aea42cb7~mv2.jpeg/v1/fill/w_1225,h_850,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_97f7c08edb324dde87851b51aea42cb7~mv2.jpeg"
   },
   {
     id: "nanogpt",
@@ -40,23 +42,24 @@ const projectsList: ProjectListType = [
     title: "NanoGPT",
     subtitle: "LLM/ NLP",
     img: "/images/hero-nano.avif",
+    backgroundImg:"https://static.wixstatic.com/media/11062b_68684546683843bc9dd026c63768d725~mv2.jpg/v1/fill/w_1225,h_850,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_68684546683843bc9dd026c63768d725~mv2.jpg"
   },
 ];
 
 export const aboutData: AboutProps = {
   heading: "About Me",
   description:
-    "I’m Abhay Singh , an AI/ML Engineer with a strong foundation in mathematics and cybersecurity. Passionate about deep learning, computer vision, and NLP, I’ve worked on projects ranging from real-time sign language recognition to AI-powered SaaS applications.",
+    "Hi! I’m Abhay Singh 👩‍💻, an AI/ML Engineer with a strong foundation in mathematics and cybersecurity. Passionate about deep learning, computer vision, and NLP, I’ve worked on projects ranging from real-time sign language recognition to AI-powered SaaS applications.",
   highlights: [
-    { text: "Abhay Singh", highlight: true },
-    { text: "AI/ML Engineer", highlight: true },
-    { text: "mathematics", highlight: true },
-    { text: "cybersecurity", highlight: true },
-    { text: "deep learning", highlight: true },
-    { text: "computer vision", highlight: true },
-    { text: "NLP", highlight: true },
-    { text: "real-time sign language recognition", highlight: true },
-    { text: "SaaS", highlight: true },
+    { text: "Abhay Singh"},
+    { text: "AI/ML Engineer"},
+    { text: "mathematics"},
+    { text: "cybersecurity"},
+    { text: "deep learning"},
+    { text: "computer vision"},
+    { text: "NLP"},
+    { text: "real-time sign language recognition"},
+    { text: "SaaS"},
   ],
   tagline: "Let’s connect and innovate together!",
 };
