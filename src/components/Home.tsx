@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import HighlightProjects from "../utils/HighlightProjects";
+import HighlightProjects from "./HighlightProjects";
 import { projectsList } from "../../constants";
 import { homeAnimations } from "../../animations/homeAnimation";
 
@@ -29,7 +29,7 @@ const Home = ({
         <div id="headings">
           <h1>
             By{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-text-primary from-50% to-cyan-500">
+            <span className="bg-clip-text text-transparent font-light bg-gradient-to-r from-text-primary from-50% to-cyan-500">
               Uni-Creator
             </span>
             , For the
@@ -47,3 +47,10 @@ const Home = ({
 };
 
 export default Home;
+
+
+// let typeSplit = new SplitType('[animate]', {
+//   types: 'lines, words, chars',
+//   tagName: 'span'
+// })
+

@@ -45,7 +45,7 @@
 }
 
 @utility heading-bg {
-  @apply bg-gradient-to-r  from-active-text from-30% to-bg-card rounded-full px-3 text-white [text-shadow:_3px_5px_10px_rgba(0,0,0,0.56)];
+  @apply bg-gradient-to-r font-light from-active-text from-30% to-bg-card rounded-full px-3 text-white [text-shadow:_3px_5px_10px_rgba(0,0,0,0.56)];
 }
 
 @layer components {
@@ -107,19 +107,17 @@
 
       #headings {
         @apply self-end mb-10 wrap-normal [text-shadow:_-3px_-3px_8px_rgba(131,131,131,0.76)] leading-10 sm:leading-20 w-full text-center px-10 mt-10;
-        font-size: clamp(3rem, 6vw, 4rem);
+        font-size: clamp(1rem, 5vw, 4rem);
         h1 {
           @apply font-bold;
-          font-size: clamp(2.5rem, 5vw, 5rem);
+          font-size: clamp(2rem, 5vw, 5rem);
 
           span {
             @apply font-bold;
-            font-size: clamp(2.5rem, 5vw, 5rem);
           }
         }
         span {
           @apply font-bold;
-          font-size: clamp(2.5rem, 4.5vw, 4rem);
         }
         p {
           @apply mt-10 text-black/50;
