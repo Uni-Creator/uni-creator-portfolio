@@ -1,7 +1,7 @@
 import { projectsList } from "../../constants";
 
 import DetailItem from "./DetailItem"
-import { GithubIcon } from "./GithubIcon";
+import { GithubIcon } from "../assets/icons/GithubIcon";
 
 const ShownProjects = () => {
   return (

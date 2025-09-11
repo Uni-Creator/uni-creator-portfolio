@@ -1,5 +1,5 @@
 import { useGSAP } from "@gsap/react";
-import { navLists, projectsList } from "../../constants/index";
+import { navLists, projectsList } from "../../constants";
 import type { MenuListProps } from "./utilsType";
 import { useState, type MouseEvent } from "react";
 import gsap from "gsap";

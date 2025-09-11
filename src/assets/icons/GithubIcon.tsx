@@ -1,8 +1,9 @@
-export const GithubIcon = () => {
+export const GithubIcon = ({size=20}:{size?:number}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5"
+      // className={`h-${size} w-${size}`}
+      width={`${size}px`} height={`${size}px`}
       fill="currentColor"
       viewBox="0 0 24 24"
     >

@@ -52,4 +52,13 @@ type AboutProps = {
 };
 
 
-export type { NavListsType, ProjectListType,AboutProps,SkillsListType,Skill };
+interface ContactTtypes {
+  id: string;
+  location: string;
+  phone: string;
+  email: string;
+  resumeUrl: string;
+  socialLinks: {};
+}
+
+export type { NavListsType, ProjectListType,AboutProps,SkillsListType,Skill,ContactTtypes };

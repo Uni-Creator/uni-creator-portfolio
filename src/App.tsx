@@ -11,6 +11,7 @@ import AboutSection from "./components/AboutSection";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
+import Footer from "./components/Footer";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin,SplitText);
 ScrollToPlugin.config({ autoKill: true });
@@ -45,6 +46,7 @@ function App() {
           <Contact sectionRef={contactRef} />
         </main>
       </div>
+      <Footer/>
     </div>
   );
 }
