@@ -9,7 +9,7 @@ interface IndicatorsProps {
 
 const Indicators: FC<IndicatorsProps> = ({ count, current, goToSlide, pauseWithDebounce }) => {
   return (
-    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+    <div className="absolute indicators bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
       {Array.from({ length: count }).map((_, index) => (
         <button
           key={index}

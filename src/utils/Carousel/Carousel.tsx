@@ -7,8 +7,10 @@ import Slide from "./Slide";
 import Indicators from "./Indicators";
 import Navigation from "./Navigation";
 import type { CarouselProps } from "../utilsType";
+import { debounce, throttle } from "../timing";
 
 const DEBOUNCE_DELAY = 2000;
+const THROTTLE_DELAY = 800; // prevent double animations
 
 const Carousel = ({
   animationType = "slide-up",
@@ -19,20 +21,31 @@ const Carousel = ({
   const [animating, setAnimating] = useState<boolean>(false);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const prev = useRef<number>(0);
-  const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const listLength = mySkillsList.length;
 
   // Auto slide
   useEffect(() => {
     if (paused) return;
-    const interval = setInterval(() => {
-      goToSlide(current + 1);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [current, paused]);
 
-  // Animate in/out
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % listLength);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [paused, listLength]);
+
+  // Animate first slide
+  useGSAP(() => {
+    const firstSlide = slideRefs.current[0];
+    if (firstSlide) {
+      animateSlide(null, firstSlide, animationType, animationDuration, () =>
+        setAnimating(false)
+      );
+    }
+  }, []);
+
+  // Animate on slide change
   useGSAP(() => {
     const oldSlide = slideRefs.current[prev.current];
     const newSlide = slideRefs.current[current];
@@ -45,27 +58,31 @@ const Carousel = ({
     prev.current = current;
   }, [current]);
 
-  const goToSlide = (index: number) => {
+  // Throttled navigation
+  const goToSlide = throttle((index: number) => {
     if (animating) return;
     const newIndex = (index + listLength) % listLength;
     setCurrent(newIndex);
-  };
+  }, THROTTLE_DELAY);
+
+  // Debounced pause/resume
+  const resume = () => setPaused(false);
+  const debouncedResume = debounce(resume, DEBOUNCE_DELAY);
 
   const pauseWithDebounce = () => {
     setPaused(true);
-    if (debounceTimer.current) clearTimeout(debounceTimer.current);
-    debounceTimer.current = setTimeout(() => setPaused(false), DEBOUNCE_DELAY);
+    debouncedResume();
   };
 
   return (
     <div
-      className="relative w-full sm:w-[80%] carousel"
+      className="relative w-full sm:w-[80%] sm:p-10 carousel overflow-hidden"
       onMouseOver={() => setPaused(true)}
       onMouseLeave={pauseWithDebounce}
       onTouchStart={() => setPaused(true)}
     >
       {/* Slides */}
-      <div className="relative">
+      <div className="relative w-full h-full">
         {mySkillsList.map(({ id, title, summary, features }, index) => (
           <Slide
             key={id}

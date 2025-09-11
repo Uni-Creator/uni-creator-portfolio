@@ -8,23 +8,21 @@ const levelColors: Record<string, string> = {
   expert: "bg-green-500/30 text-green-300",
 };
 
-const Slide: FC<SlideProps> = ({
-  title,
-  summary,
-  features,
-  active,
-  slideRef,
-}) => {
+const Slide: FC<SlideProps> = ({ title, summary, features, active, slideRef }) => {
   return (
     <div
       ref={slideRef}
-      className={`slide-container ${
-        active ? "opacity-100 relative block" : "opacity-0 hidden"
+      className={`slide-container absolute bottom-0 left-0 w-full h-full ${
+        active ? "z-10" : "z-0"
       }`}
+      style={{
+        visibility: active ? "visible" : "hidden", // GSAP will override during animation
+        pointerEvents: active ? "auto" : "none",
+      }}
     >
       <div className="slide">
         {/* Title Block */}
-        <div className="title">
+        <div className="title text-center flex flex-col w-full md:w-1/3">
           <h2>{title}</h2>
           {summary && <p>{summary}</p>}
         </div>
@@ -32,18 +30,16 @@ const Slide: FC<SlideProps> = ({
         {/* Divider */}
         <div className="divider"></div>
 
-        {/* Features / Skills */}
+        {/* Features */}
         <div className="content">
           <ul>
             {features.map(({ id, title, description, level }) => (
-              <li key={id} className="group">
+              <li key={id}>
                 <div className="flex items-center justify-between mb-2">
-                  <h3 title={title} className="cursor-default">
-                    {title}
-                  </h3>
+                  <h3 className="text-ellipsis">{title}</h3>
                   {level && (
                     <span
-                      className={`text-xs font-medium px-2 py-1 rounded-full whitespace-nowrap ${
+                      className={`level self-start ${
                         levelColors[level] || "bg-gray-500/30 text-gray-300"
                       }`}
                     >
@@ -51,7 +47,6 @@ const Slide: FC<SlideProps> = ({
                     </span>
                   )}
                 </div>
-
                 {description && <p>{description}</p>}
               </li>
             ))}
@@ -61,5 +56,4 @@ const Slide: FC<SlideProps> = ({
     </div>
   );
 };
-
 export default Slide;

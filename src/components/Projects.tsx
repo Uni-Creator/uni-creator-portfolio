@@ -69,8 +69,8 @@ const Projects = ({
       id="projects"
       className="w-full flex-center flex-col py-12 px-6 "
     >
-      <div className="w-full flex-center flex sm:flex-nowrap gap-10 flex-wrap-reverse mb-10">
-        <div className="flex-center w-full sm:w-fit ">
+      <div className="w-full flex-center flex sm:flex-nowrap gap-10  mb-10">
+        <div className="flex-center max-sm:flex-wrap-reverse gap-5 w-full sm:w-fit ">
           <div className=" flex-center w-full flex-col space-y-5">
             <h1
               id="project-heading"

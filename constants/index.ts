@@ -9,7 +9,7 @@ import type {
 
 
 const animateType:AnimationType = "slide-right";
-const animateDuration: number = 0.4;
+const animateDuration: number = 0.8;
 
 const navLists: NavListsType = [
   { id: "home",href:"#home" ,title: "Home" },
@@ -128,7 +128,7 @@ const mySkillsList: SkillsListType = [
         id: "ml",
         title: "Machine Learning (ML)",
         description: "Designing and implementing predictive and adaptive models.",
-        level: "advanced",
+        level: "beginner",
       },
       {
         id: "dl",
