@@ -67,7 +67,7 @@ const Projects = ({
     <section
       ref={sectionRef}
       id="projects"
-      className="w-full flex-center flex-col py-12 px-6 bg-gradient-to-r from-blue-50 to-indigo-50"
+      className="w-full flex-center flex-col py-12 px-6 "
     >
       <div className="w-full flex-center flex sm:flex-nowrap gap-10 flex-wrap-reverse mb-10">
         <div className="flex-center w-full sm:w-fit ">
