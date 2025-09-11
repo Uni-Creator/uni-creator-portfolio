@@ -1,11 +1,11 @@
 import { projectsList } from "../../constants";
 
 import DetailItem from "./DetailItem"
-import { GithubIcon } from "./githubIcon";
+import { GithubIcon } from "./GithubIcon";
 
 const ShownProjects = () => {
   return (
-    <div id="shownProject-card ">
+    <div id="shownProject-cards" className="w-full flex flex-col items-center">
          {projectsList.map((project) => (
         <div
           key={project.id}

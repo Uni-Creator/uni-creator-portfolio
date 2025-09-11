@@ -15,18 +15,25 @@ type ProjectType = {
 };
 
 type ProjectListType = ProjectType[];
+// A single feature inside a skill
+type Feature = {
+  id: string;              // unique identifier (useful for rendering)
+  title: string;           // short label e.g. "React"
+  description?: string;    // optional explanation of the feature/work
+  level?: "beginner" | "intermediate" | "advanced" | "expert"; // optional proficiency
+  iconUrl?: string;        // optional icon for UI
+};
 
-type FeaturesType = {
-  topic:string;
-  work:string
-}
+// A broader skill category
+type Skill = {
+  id: string;              // unique identifier
+  title: string;           // e.g. "Frontend Development"
+  summary?: string;        // short description about the category
+  features: Feature[];     // the list of individual features/tools
+};
 
-type SkillsType = {
-  title:string;
-  features:FeaturesType[];
-}
-
-type SkillsListType = SkillsType[];
+// The full skill list
+type SkillsListType = Skill[];
 
 type NavList = {
     id: string;
@@ -45,4 +52,4 @@ type AboutProps = {
 };
 
 
-export type { NavListsType, ProjectListType,AboutProps,SkillsListType,FeaturesType};
+export type { NavListsType, ProjectListType,AboutProps,SkillsListType,Skill };

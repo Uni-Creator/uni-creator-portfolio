@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { mySkillsLists } from "../../../constants";
+import { mySkillsList } from "../../../constants";
 import { useGSAP } from "@gsap/react";
 import { animateSlide } from "../../../animations/slideAnimation";
 
@@ -21,7 +21,7 @@ const Carousel = ({
   const prev = useRef<number>(0);
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const listLenght = mySkillsLists.length;
+  const listLength = mySkillsList.length;
 
   // Auto slide
   useEffect(() => {
@@ -47,7 +47,7 @@ const Carousel = ({
 
   const goToSlide = (index: number) => {
     if (animating) return;
-    const newIndex = (index + listLenght) % listLenght;
+    const newIndex = (index + listLength) % listLength;
     setCurrent(newIndex);
   };
 
@@ -63,15 +63,15 @@ const Carousel = ({
       onMouseOver={() => setPaused(true)}
       onMouseLeave={pauseWithDebounce}
       onTouchStart={() => setPaused(true)}
-      onTouchEnd={pauseWithDebounce}
     >
       {/* Slides */}
       <div className="relative">
-        {mySkillsLists.map(({ title, features }, index) => (
+        {mySkillsList.map(({ id, title, summary, features }, index) => (
           <Slide
-            key={index}
+            key={id}
             title={title}
-            skills={features}
+            summary={summary}
+            features={features}
             active={index === current}
             slideRef={(el) => (slideRefs.current[index] = el)}
           />
@@ -80,7 +80,7 @@ const Carousel = ({
 
       {/* Indicators + Navigation */}
       <Indicators
-        count={listLenght}
+        count={listLength}
         current={current}
         goToSlide={goToSlide}
         pauseWithDebounce={pauseWithDebounce}

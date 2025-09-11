@@ -1,5 +1,5 @@
 import type { AnimationType } from "../../animations/animationTypes";
-import type { FeaturesType } from "../../constants/constantTtypes";
+import type { Skill } from "../../constants/constantTtypes";
 
 type MenuIconProps = {
   isOpen: boolean;
@@ -33,9 +33,7 @@ interface CarouselProps {
   animationDuration?: number;
 }
 
-interface SlideProps {
-  title: string;
-  skills: FeaturesType[];
+interface SlideProps extends Omit<Skill, "id"> {
   active: boolean;
   slideRef: (el: HTMLDivElement | null) => void;
 }

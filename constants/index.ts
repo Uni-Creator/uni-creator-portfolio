@@ -1,3 +1,4 @@
+import type { AnimationType } from "../animations/animationTypes";
 import type { TimelineItem } from "../src/utils/utilsType";
 import type {
   AboutProps,
@@ -5,6 +6,10 @@ import type {
   NavListsType,
   ProjectListType,
 } from "./constantTtypes";
+
+
+const animateType:AnimationType = "slide-right";
+const animateDuration: number = 0.4;
 
 const navLists: NavListsType = [
   { id: "home",href:"#home" ,title: "Home" },
@@ -71,7 +76,7 @@ const projectsList: ProjectListType = [
 ];
 
 
-export const aboutData: AboutProps = {
+const aboutData: AboutProps = {
   heading: "About Me",
   description:
     "Hi! I’m Abhay Singh 👩‍💻, an AI/ML Engineer with a strong foundation in mathematics and cybersecurity. Passionate about deep learning, computer vision, and NLP, I’ve worked on projects ranging from real-time sign language recognition to AI-powered SaaS applications.",
@@ -113,82 +118,119 @@ const educationData: TimelineItem[] = [
   },
 ];
 
-const mySkillsLists: SkillsListType = [
+const mySkillsList: SkillsListType = [
   {
+    id: "ml-ai",
     title: "Machine Learning & AI",
+    summary: "Designing intelligent systems for data-driven decision making.",
     features: [
       {
-        topic: "Machine Learning (ML)",
-        work: "Designing and implementing predictive models.",
+        id: "ml",
+        title: "Machine Learning (ML)",
+        description: "Designing and implementing predictive and adaptive models.",
+        level: "advanced",
       },
       {
-        topic: "Deep Learning",
-        work: "Working with neural networks for complex data processing.",
+        id: "dl",
+        title: "Deep Learning",
+        description: "Building neural networks for complex data processing.",
+        level: "advanced",
       },
       {
-        topic: "Convolutional Neural Networks (CNN)",
-        work: "Specializing in image recognition tasks.",
+        id: "cnn",
+        title: "Convolutional Neural Networks (CNN)",
+        description: "Specializing in computer vision and image recognition tasks.",
+        level: "intermediate",
       },
       {
-        topic: "Natural Language Processing (NLP)",
-        work: "Developing AI systems for text and speech processing.",
+        id: "nlp",
+        title: "Natural Language Processing (NLP)",
+        description: "Developing AI systems for text, sentiment, and speech analysis.",
+        level: "advanced",
       },
       {
-        topic: "Generative AI",
-        work: "Creating models for AI-driven content generation.",
+        id: "genai",
+        title: "Generative AI",
+        description: "Creating AI-driven content generation models.",
+        level: "intermediate",
       },
     ],
   },
   {
+    id: "dev",
     title: "Programming & Development",
+    summary: "Building scalable, efficient, and maintainable applications.",
     features: [
       {
-        topic: "Python",
-        work: "Writing efficient and scalable programs for AI and automation.",
+        id: "python",
+        title: "Python",
+        description: "Efficient scripting and AI/ML-focused programming.",
+        level: "expert",
       },
       {
-        topic: "C++",
-        work: " High-performance programming for software and hardware applications.",
+        id: "cpp",
+        title: "C++",
+        description: "High-performance programming for systems and applications.",
+        level: "intermediate",
       },
       {
-        topic: "SQL",
-        work: "Querying, managing, and optimizing relational databases.",
+        id: "sql",
+        title: "SQL",
+        description: "Designing, querying, and optimizing relational databases.",
+        level: "advanced",
       },
       {
-        topic: "MATLAB",
-        work: "Mathematical computing, simulations, and algorithm prototyping.",
+        id: "matlab",
+        title: "MATLAB",
+        description: "Mathematical computing, prototyping, and simulations.",
+        level: "intermediate",
       },
       {
-        topic: "Web Scraping",
-        work: "Extracting structured data from web pages.",
+        id: "web-scraping",
+        title: "Web Scraping",
+        description: "Automating structured data extraction from websites.",
+        level: "advanced",
       },
     ],
   },
   {
+    id: "soft-skills",
     title: "Technical & Soft Skills",
+    summary: "Core skills for effective teamwork, leadership, and innovation.",
     features: [
       {
-        topic: "Problem Solving",
-        work: "Applying logical reasoning to tackle complex issues.",
+        id: "problem-solving",
+        title: "Problem Solving",
+        description: "Applying logical reasoning to tackle complex issues.",
+        level: "expert",
       },
       {
-        topic: "Critical Thinking",
-        work: " Evaluating problems to develop innovative solutions.",
+        id: "critical-thinking",
+        title: "Critical Thinking",
+        description: "Analyzing situations to develop innovative solutions.",
+        level: "advanced",
       },
       {
-        topic: "Team Coordination",
-        work: " Collaborating effectively on technical projects.",
+        id: "team-coordination",
+        title: "Team Coordination",
+        description: "Collaborating effectively in technical and cross-functional teams.",
+        level: "advanced",
       },
       {
-        topic: "Project Management",
-        work: "Organizing and executing project timelines efficiently.",
+        id: "project-management",
+        title: "Project Management",
+        description: "Planning and executing projects with clear milestones.",
+        level: "intermediate",
       },
       {
-        topic: "Research Skills",
-        work: "Investigating new technologies and methodologies.",
+        id: "research",
+        title: "Research Skills",
+        description: "Exploring new technologies and methodologies to innovate.",
+        level: "advanced",
       },
     ],
   },
 ];
 
-export { navLists, projectsList, educationData, mySkillsLists };
+
+export { navLists, projectsList, educationData, mySkillsList, aboutData, animateType, animateDuration };

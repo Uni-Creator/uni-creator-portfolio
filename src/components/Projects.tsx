@@ -14,7 +14,7 @@ const Projects = ({
       type: "words",
     });
 
-    const spinningToTimeline = gsap.timeline({
+    const spinningTopTimeline = gsap.timeline({
       ease: "bounce.in",
       duration: 0.6,
       scrollTrigger: {
@@ -22,7 +22,7 @@ const Projects = ({
         start: "top 70%",
       },
     });
-    spinningToTimeline
+    spinningTopTimeline
       .from("#spinning-top", {
         y: -100,
         opacity: 0,
@@ -40,9 +40,9 @@ const Projects = ({
     gsap.from(headingText.chars, {
       y: "100%",
       opacity: 0,
-      duration: 0.5,
+      duration: 0.6,
       ease: "Second.out",
-      stagger: 0.1,
+      stagger: 0.06,
 
       scrollTrigger: {
         trigger: headingText.elements,
@@ -52,9 +52,9 @@ const Projects = ({
     gsap.from(subHeadingText.words, {
       y: "100%",
       opacity: 0,
-      duration: 0.5,
+      duration: 0.6,
       ease: "Second.out",
-      stagger: 0.1,
+      stagger: 0.08,
 
       scrollTrigger: {
         trigger: subHeadingText.elements,
@@ -74,9 +74,9 @@ const Projects = ({
           <div className=" flex-center w-full flex-col space-y-5">
             <h1
               id="project-heading"
-              className="text-6xl w-full text-center  text-[clamp(3rem,4vw,1rem)] leading-15 break-words"
+              className="text-6xl w-full text-center  text-[clamp(3rem,4vw,1rem)] space-x-3 leading-15 break-words"
             >
-              <span className="heading-bg">Explore</span>{" "}
+              <span className="heading-bg">Explore</span>
               <p className="sm:inline">My Projects</p>
             </h1>
             <p
@@ -97,7 +97,6 @@ const Projects = ({
           </div>
         </div>
       </div>
-
      <ShownProjects/>
     </section>
   );
