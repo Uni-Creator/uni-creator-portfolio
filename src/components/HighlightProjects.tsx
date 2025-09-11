@@ -18,7 +18,7 @@ export default function HighlightProjects({
 
       {/* Projects */}
       <div id="highlight-projects" className="absolute w-full top-0">
-        <div className="flex flex-col justify-start items-center sm:items-end flex-wrap gap-20 p-10">
+        <div id="projectCard-container" className="flex flex-col justify-start items-center sm:items-end flex-wrap gap-20 p-10">
           {projects.map((project, index) => {
             const alignment = alignments[index % alignments.length]; // cycle through
             return (

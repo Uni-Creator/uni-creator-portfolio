@@ -47,10 +47,3 @@ const Home = ({
 };
 
 export default Home;
-
-
-// let typeSplit = new SplitType('[animate]', {
-//   types: 'lines, words, chars',
-//   tagName: 'span'
-// })
-
