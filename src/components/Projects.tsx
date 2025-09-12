@@ -37,18 +37,28 @@ const Projects = ({
       .to("#spinning-top", { y: 5, opacity: 0.9 })
       .to("#spinning-top", { y: 0, opacity: 1 });
 
+      gsap.from(headingText.elements[0].children[0],{
+        background:"white",
+        duration:1,
+        ease:"power2.in",
+        scrollTrigger: {
+        trigger: headingText.elements,
+        start: "top 70%",
+      },
+      })
+
     gsap.from(headingText.chars, {
       y: "100%",
       opacity: 0,
       duration: 0.6,
-      ease: "Second.out",
+      ease: "power2.out",
       stagger: 0.06,
-
       scrollTrigger: {
         trigger: headingText.elements,
-        start: "top center",
+        start: "top 70%",
       },
-    });
+    })
+
     gsap.from(subHeadingText.words, {
       y: "100%",
       opacity: 0,
@@ -58,7 +68,7 @@ const Projects = ({
 
       scrollTrigger: {
         trigger: subHeadingText.elements,
-        start: "top center",
+        start: "top 70%",
       },
     });
   }, []);
@@ -97,10 +107,9 @@ const Projects = ({
           </div>
         </div>
       </div>
-     <ShownProjects/>
+      <ShownProjects />
     </section>
   );
 };
-
 
 export default Projects;

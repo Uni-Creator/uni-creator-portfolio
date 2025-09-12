@@ -4,7 +4,7 @@
 @theme {
   --color-text-primary: #00204c;
   --color-active-text: #9b00e7;
-  --color-primary: #ffffff;
+  --color-primary: #eaf2ff;
   --color-bg-card: rgba(0, 32, 76, 0.2);
   --color-border-accent: rgba(0, 32, 76, 0.4);
   --color-dot: #00204c;
@@ -21,8 +21,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: #00204c;
-  background-color: #eaf2ff;
+  color: var(--color-text-primary);
+  background-color: var(--color-primary);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -148,7 +148,7 @@ html {
   }
 
   #about {
-    @apply relative min-h-screen w-full flex flex-col items-center justify-between px-5 sm:px-10 md:px-20 py-16 overflow-hidden;
+    @apply bg-gradient-to-b to-20% from-primary relative min-h-screen w-full flex flex-col items-center justify-between px-5 sm:px-10 md:px-20 py-16 overflow-hidden;
 
     img {
       @apply absolute inset-0 w-full h-full object-cover object-center -z-20;
@@ -158,13 +158,13 @@ html {
     @apply w-screen min-h-screen flex flex-col items-center justify-center px-4 sm:px-10 py-12;
 
     .carousel-container {
-      @apply relative w-full  h-[70vh] flex items-center justify-center 
+      @apply relative w-full h-[70vh] flex items-center justify-center 
            rounded-3xl overflow-hidden bg-[url('/images/skill-bg.avif')] bg-cover bg-center bg-fixed;
 
       /* Dark overlay for contrast */
       &::before {
         content: "";
-        @apply absolute inset-0 bg-black/70;
+        @apply absolute inset-0 bg-black/60;
         z-index: 0;
       }
 

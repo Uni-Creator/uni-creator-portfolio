@@ -8,7 +8,7 @@ import educationData from "./education";
 import contactDetails from "./contactDetails";
 
 //Slide Animation Change here for different animation
-const animateType:AnimationType = "slide-right";
+const animateType:AnimationType = "slide-down";
 const animateDuration: number = 0.8;
 
 const navLists: NavListsType = [

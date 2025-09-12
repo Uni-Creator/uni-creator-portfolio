@@ -1,7 +1,5 @@
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export const homeAnimations = (scope: HTMLElement | null) => {
   if (!scope) return;
