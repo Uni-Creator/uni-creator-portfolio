@@ -1,12 +1,39 @@
 import { projectsList } from "../../constants";
+import DetailItem from "./DetailItem";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
-import DetailItem from "./DetailItem"
 import { GithubIcon } from "../assets/icons/GithubIcon";
 
 const ShownProjects = () => {
+  useGSAP(() => {
+    const cards = gsap.utils.toArray<HTMLDivElement>(
+      "#shownProject-cards > div"
+    );
+
+    cards.forEach((card, i) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.6,
+          ease: "power3.out",
+          delay: i * 0.15,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            end: "top 10%",
+          },
+        }
+      );
+    });
+  }, []);
+
   return (
     <div id="shownProject-cards" className="w-full flex flex-col items-center">
-         {projectsList.map((project) => (
+      {projectsList.map((project) => (
         <div
           key={project.id}
           id={project.id}
@@ -65,7 +92,7 @@ const ShownProjects = () => {
                   target="_blank"
                   className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all"
                 >
-                 <GithubIcon/>
+                  <GithubIcon />
                   View on GitHub
                 </a>
               </div>
@@ -84,7 +111,7 @@ const ShownProjects = () => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ShownProjects
+export default ShownProjects;

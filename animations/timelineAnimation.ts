@@ -1,8 +1,8 @@
 import gsap from "gsap";
 
 export const timelineAnimation = (
-  container: HTMLDivElement,
-  title: HTMLHeadingElement
+  container: HTMLDivElement, // The main container of the timeline
+  title: HTMLHeadingElement // The heading element of the timeline
 ) => {
   // Animate heading
   gsap.fromTo(
@@ -22,8 +22,8 @@ export const timelineAnimation = (
   );
 
   // Animate vertical line grow
-  const line = container.querySelector(".timeline-line");
-  const items = gsap.utils.toArray<HTMLElement>(".timeline-item");
+  const line = container.querySelector(".timeline-line"); //Add this class to the vertical line element
+  const items = gsap.utils.toArray<HTMLElement>(".timeline-item"); // Add this class to each timeline item
 
 
   if (line) {
@@ -63,7 +63,7 @@ export const timelineAnimation = (
   });
 
   // Animate dots
-  const dots = gsap.utils.toArray<HTMLElement>(".timeline-dot");
+  const dots = gsap.utils.toArray<HTMLElement>(".timeline-dot"); // Add this class to each dot element
   dots.forEach((dot) => {
     gsap.fromTo(
       dot,

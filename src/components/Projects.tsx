@@ -1,7 +1,12 @@
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { SplitText } from "gsap/all";
 import ShownProjects from "../utils/ShownProjects";
+
+import {
+  animateBackgroundHighlight,
+  animateDrop,
+  animateHeading,
+  animateSubHeading,
+} from "../../animations";
 
 const Projects = ({
   sectionRef,
@@ -9,68 +14,10 @@ const Projects = ({
   sectionRef: (node?: Element | null) => void;
 }) => {
   useGSAP(() => {
-    const headingText = new SplitText("#project-heading", { type: "chars" });
-    const subHeadingText = new SplitText("#project-sub-heading", {
-      type: "words",
-    });
-
-    const spinningTopTimeline = gsap.timeline({
-      ease: "bounce.in",
-      duration: 0.6,
-      scrollTrigger: {
-        trigger: "#spinning-top",
-        start: "top 70%",
-      },
-    });
-    spinningTopTimeline
-      .from("#spinning-top", {
-        y: -100,
-        opacity: 0,
-      })
-      .to("#spinning-top", {
-        y: 40,
-        opacity: 0.3,
-      })
-      .to("#spinning-top", { y: -60, opacity: 0.5 })
-      .to("#spinning-top", { y: 20, opacity: 0.6 })
-      .to("#spinning-top", { y: -10, opacity: 0.7 })
-      .to("#spinning-top", { y: 5, opacity: 0.9 })
-      .to("#spinning-top", { y: 0, opacity: 1 });
-
-      gsap.from(headingText.elements[0].children[0],{
-        background:"white",
-        duration:1,
-        ease:"power2.in",
-        scrollTrigger: {
-        trigger: headingText.elements,
-        start: "top 70%",
-      },
-      })
-
-    gsap.from(headingText.chars, {
-      y: "100%",
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.out",
-      stagger: 0.06,
-      scrollTrigger: {
-        trigger: headingText.elements,
-        start: "top 70%",
-      },
-    })
-
-    gsap.from(subHeadingText.words, {
-      y: "100%",
-      opacity: 0,
-      duration: 0.6,
-      ease: "Second.out",
-      stagger: 0.08,
-
-      scrollTrigger: {
-        trigger: subHeadingText.elements,
-        start: "top 70%",
-      },
-    });
+    animateDrop("#spinning-top");
+    animateBackgroundHighlight("#project-heading span");
+    animateHeading("#project-heading");
+    animateSubHeading("#project-sub-heading");
   }, []);
 
   return (

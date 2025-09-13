@@ -19,7 +19,8 @@ export const MenuList = ({
     if (scrollTo.scrollto) {
       gsap.to(window, {
         duration: 1,
-        scrollTo: { y: scrollTo.scrollto, offsetY: 120 },
+        scrollTo: { y: scrollTo.scrollto, offsetY: 60,autoKill:true },
+        ease: "sine.out",
       });
     }
   }, [scrollTo]);

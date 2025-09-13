@@ -1,6 +1,10 @@
 import gsap from "gsap";
 import type { AnimationType } from "../animations/animationTypes";
 
+// Slide animation between two slides
+// Example usage: animateSlide(oldSlide, newSlide, "slide-left", 1, () => console.log("Animation complete"))
+// oldSlide can be null for the initial slide
+// onComplete is called after the animation finishes
 export const animateSlide = (
   oldSlide: HTMLDivElement | null,
   newSlide: HTMLDivElement | null,

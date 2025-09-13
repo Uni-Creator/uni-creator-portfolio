@@ -1,71 +1,29 @@
-import gsap from "gsap";
-
+import { gsap } from "gsap";
+import {
+  animateHeroImage,
+  animateHeading,
+  animateFeatureBackground,
+  animateProjectCards,
+} from "./utils";
 
 export const homeAnimations = (scope: HTMLElement | null) => {
   if (!scope) return;
+
+  // Hero timeline for entry
   const tl = gsap.timeline({ delay: 0.5 });
+  tl.from("#left-img", { opacity: 0, y: 10 })
+    .from("#right-img", { opacity: 0, y: 10 });
 
-  tl.from("#left-img", {
-    opacity: 0,
-    y: 10,
-  })
-    .from("#right-img", {
-      opacity: 0,
-      y: 10,
-    })
-    gsap.from("#headings", {
-      opacity: 0,
-      scale: 1.5,
-      duration:1
-    });
+  // Heading effect
+  animateHeading("#headings");
 
-  gsap.to("#f-bg", {
-    x: 0,
-    scale: 1.005,
-    ease: "power1.in",
-    scrollTrigger: {
-      trigger: "#home .feature",
-      start: "top center",
-      end: "bottom 70%",
-      scrub: true,
-    },
-  });
+  // Background effect
+  animateFeatureBackground("#f-bg");
 
-  gsap.to("#left-img", {
-    y: 50,
-    rotation: -10,
-    scrollTrigger: {
-      trigger: "#home #hero",
-      start: "top top",
-      end: "bottom center",
-      scrub: true,
-    },
-  });
+  // Hero floating images
+  animateHeroImage("#left-img", "left");
+  animateHeroImage("#right-img", "right");
 
-  gsap.to("#right-img", {
-    y: 50,
-    rotation: 10,
-    scrollTrigger: {
-      trigger: "#home #hero",
-      start: "top top",
-      end: "bottom center",
-      scrub: true,
-    },
-  });
-const cards = gsap.utils.toArray<HTMLElement>("#highlight-projects #projectCard-container .project-card");
-cards.forEach((card) => {
-   gsap.fromTo(
-        card,
-        { scaleY: 0, transformOrigin: "top" },
-        {
-          scaleY: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 80%",
-          },
-        }
-      );
-});
-
+  // Project cards animation
+  animateProjectCards("#highlight-projects #projectCard-container .project-card");
 };
