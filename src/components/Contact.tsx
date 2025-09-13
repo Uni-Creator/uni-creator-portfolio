@@ -107,10 +107,7 @@ const Contact = ({
     if (!formRef.current) return;
 
     const result = await sendEmail(formRef);
-
-    // setStatus(result.message);
-    console.log(result);
-    toast(result.message);
+    toast(result.message,{type:"error"});
 
   };
 
