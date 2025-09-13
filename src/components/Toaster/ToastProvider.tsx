@@ -1,63 +1,56 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import { v4 as uuidv4 } from "uuid";
-import clsx from "clsx";
+import { createContext, useContext, useState, type ReactNode } from "react";
 
-type ToastType = "success" | "error" | "info";
-
-interface Toast {
-  id: string;
+type Toast = {
+  id: number;
   message: string;
-  type: ToastType;
-}
+  type?: "success" | "error" | "info";
+};
 
-interface ToastContextProps {
-  addToast: (message: string, type?: ToastType, duration?: number) => void;
-}
+type ToastContextType = {
+  toast: (message: string, options?: { type?: "success" | "error" | "info" }) => void;
+};
 
-const ToastContext = createContext<ToastContextProps | undefined>(undefined);
+const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
-export const ToastProvider = ({ children }: { children: ReactNode }) => {
+export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
-  const addToast = (message: string, type: ToastType = "info", duration = 3000) => {
-    const id = uuidv4();
-    const newToast: Toast = { id, message, type };
+  const toast = (message: string, options?: { type?: "success" | "error" | "info" }) => {
+    const id = Date.now();
+    setToasts((prev) => [...prev, { id, message, type: options?.type }]);
 
-    setToasts((prev) => [...prev, newToast]);
-
+    // Auto remove after 3s
     setTimeout(() => {
-      setToasts((prev) => prev.filter((toast) => toast.id !== id));
-    }, duration);
+      setToasts((prev) => prev.filter((t) => t.id !== id));
+    }, 3000);
   };
 
   return (
-    <ToastContext.Provider value={{ addToast }}>
+    <ToastContext.Provider value={{ toast }}>
       {children}
 
-      {/* Toast Container */}
-      <div className="fixed top-5 right-5 flex flex-col space-y-3 z-[9999]">
-        {toasts.map((toast) => (
+      {/* Toast container */}
+      <div className="fixed top-5 right-5 flex flex-col space-y-3">
+        {toasts.map((t) => (
           <div
-            key={toast.id}
-            className={clsx(
-              "px-5 py-3 rounded-md shadow-lg text-white transition-all duration-300 animate-slideIn",
-              {
-                "bg-green-600": toast.type === "success",
-                "bg-red-600": toast.type === "error",
-                "bg-blue-600": toast.type === "info",
-              }
-            )}
+            key={t.id}
+            className={`px-4 py-2 rounded shadow text-white transition-opacity duration-300
+              ${t.type === "success" ? "bg-green-500" : ""}
+              ${t.type === "error" ? "bg-red-500" : ""}
+              ${t.type === "info" || !t.type ? "bg-blue-500" : ""}`}
           >
-            {toast.message}
+            {t.message}
           </div>
         ))}
       </div>
     </ToastContext.Provider>
   );
-};
+}
 
-export const useToast = (): ToastContextProps => {
+export function useToast() {
   const context = useContext(ToastContext);
-  if (!context) throw new Error("useToast must be used inside a ToastProvider");
+  if (!context) {
+    throw new Error("useToast must be used inside ToastProvider");
+  }
   return context;
-};
+}

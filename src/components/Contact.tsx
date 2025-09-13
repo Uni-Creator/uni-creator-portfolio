@@ -13,6 +13,7 @@ import { useRef } from "react";
 // import { animateHeading } from "../../animations";
 
 import { sendEmail } from "../../api/sendEmail";
+import { useToast } from "./Toaster/ToastProvider";
 
 const ICONS_MAP: Record<string, React.ElementType> = {
   github: GithubIcon,
@@ -28,6 +29,10 @@ const Contact = ({
 }: {
   sectionRef: (node?: Element | null) => void;
 }) => {
+    const { toast } = useToast();
+
+
+
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const formDivRef = useRef<HTMLDivElement | null>(null);
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -105,6 +110,8 @@ const Contact = ({
 
     // setStatus(result.message);
     console.log(result);
+    toast(result.message);
+
   };
 
   return (
