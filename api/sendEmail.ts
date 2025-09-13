@@ -16,11 +16,11 @@ export const sendEmail = async (form: React.RefObject<HTMLFormElement | null>) =
         message: (form.current[3] as HTMLTextAreaElement).value,
         email: contactDetails.email,
       },
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY2
     );
 
-    return { success: true, message: "Email sent successfully!",result };
+    return { type: "success", message: "Email sent successfully!" };
   } catch (error) {
-    return { success: false, message: "Failed to send email." };
+    return { type:"error", message: "Failed to send email." };
   }
 };
