@@ -5,6 +5,7 @@ import { ScrollToPlugin,SplitText } from "gsap/all";
 
 import { useSectionObserver } from "./utils/Oberver";
 
+
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import AboutSection from "./components/AboutSection";
@@ -35,6 +36,7 @@ function App() {
   }, [inHome, inAbout, inSkills, inContact]);
 
   return (
+    <ToastProvider>
     <div id="" className="overflow-x-hidden">
       <Navbar currentPage={currentPage} />
       <div id="">
@@ -48,6 +50,7 @@ function App() {
       </div>
       <Footer/>
     </div>
+    </ToastProvider>
   );
 }
 

@@ -8,9 +8,11 @@ import {
   Instagram,
   Discord,
 } from "../assets/icons";
-import gsap  from "gsap";
+import gsap from "gsap";
 import { useRef } from "react";
-import { animateHeading } from "../../animations";
+// import { animateHeading } from "../../animations";
+
+import { sendEmail } from "../../api/sendEmail";
 
 const ICONS_MAP: Record<string, React.ElementType> = {
   github: GithubIcon,
@@ -28,6 +30,7 @@ const Contact = ({
 }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const formDivRef = useRef<HTMLDivElement | null>(null);
+  const formRef = useRef<HTMLFormElement | null>(null);
   const iconsRef = useRef<HTMLDivElement | null>(null);
 
   // Convert email into socialLinks dynamically
@@ -37,63 +40,72 @@ const Contact = ({
   };
 
   useGSAP(() => {
-  // Video + overlay timeline
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: videoRef.current,
-      start: "top 80%",
-    },
-  });
+    // Video + overlay timeline
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: videoRef.current,
+        start: "top 80%",
+      },
+    });
 
-  // Overlay fade
-  tl.from("#overlay", {
-    opacity: 0,
-    duration: 1,
-  })
-    .fromTo(
+    // Overlay fade
+    tl.from("#overlay", {
+      opacity: 0,
+      duration: 1,
+    }).fromTo(
       videoRef.current,
       { scale: 1.2, opacity: 0 },
       { scale: 1, opacity: 1, duration: 2.5, ease: "power2.out" },
       "-=0.5"
     );
 
-  // Animate heading letters
-  const title = document.querySelector("#title-left");
-  if (title) {
-    const letters = title.textContent?.split("") || [];
-    title.innerHTML = letters.map(l => `<span class="letter">${l}</span>`).join("");
+    // Animate heading letters
+    const title = document.querySelector("#title-left");
+    if (title) {
+      const letters = title.textContent?.split("") || [];
+      title.innerHTML = letters
+        .map((l) => `<span class="letter">${l}</span>`)
+        .join("");
 
-    gsap.fromTo(
-      "#title-left .letter",
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.05,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: title,
-          start: "top 85%",
-        },
-      }
-    );
-  }
+      gsap.fromTo(
+        "#title-left .letter",
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.05,
+          duration: 0.6,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: title,
+            start: "top 85%",
+          },
+        }
+      );
+    }
 
+    // Form slide in
+    gsap.from(formDivRef.current, {
+      opacity: 0,
+      x: 150,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: formDivRef.current,
+        start: "top 85%",
+      },
+    });
+  }, []);
 
-  // Form slide in
-  gsap.from(formDivRef.current, {
-    opacity: 0,
-    x: 150,
-    duration: 1.2,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: formDivRef.current,
-      start: "top 85%",
-    },
-  });
-}, []);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current) return;
 
+    const result = await sendEmail(formRef);
+
+    // setStatus(result.message);
+    console.log(result);
+  };
 
   return (
     <section
@@ -123,28 +135,42 @@ const Contact = ({
 
           {/* Content */}
           <div className="relative z-20 p-8 sm:p-12 flex flex-col justify-center  text-text-primary">
-            <h3 id="title-left" className="text-2xl  font-bold mb-6">
+            <h3 id="title-left" className="text-2xl font-bold mb-6 text-white">
               Contact Information
             </h3>
 
-            <ul className="space-y-4">
-              <li>📍 {contactDetails.location}</li>
+            <ul className="space-y-4  text-gray-200">
               <li>
-                📧<span className="text-white/70"> Email:</span>
-                <span className="text-inherit select-all">
+                🌏
+                <span className="text-white/70 ml-1 ">
+                  {" "}
+                  {contactDetails.location}
+                </span>
+              </li>
+              <li>
+                📧
+                <span className="text-blue-300 select-all ml-1">
                   {contactDetails.email}
                 </span>
               </li>
               <li>
-                📞<span className="text-white/70">Phone: </span>{" "}
-                {contactDetails.phone}
+                📞{" "}
+                <span className="text-white/70 ml-1">
+                  {contactDetails.phone}
+                </span>{" "}
               </li>
             </ul>
 
             {/* Socials */}
             <div className="mt-8">
-              <h4 className="text-lg font-semibold mb-4">Connect with me</h4>
-              <div ref={iconsRef} id="iconsContainer" className="flex gap-6 ">
+              <h4 className="text-lg font-semibold mb-4 text-white/90">
+                Connect with me
+              </h4>
+              <div
+                ref={iconsRef}
+                id="iconsContainer"
+                className="flex gap-6 text-white"
+              >
                 {Object.entries(socialLinks).map(([key, link]) => {
                   const Icon = ICONS_MAP[key];
                   if (!Icon || !link) return null;
@@ -180,7 +206,7 @@ const Contact = ({
             Fill out the form and I’ll get back to you as soon as possible.
           </p>
 
-          <form className="space-y-6">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
