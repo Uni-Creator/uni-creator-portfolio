@@ -4,12 +4,15 @@ import gsap from "gsap";
 import { formFields } from "../../../constants";
 
 interface FormType {
-  handleSubmit: (e: React.FormEvent, formRef: React.RefObject<HTMLFormElement | null>) => Promise<void>;
+  handleSubmit: (
+    e: React.FormEvent,
+    formRef: React.RefObject<HTMLFormElement | null>
+  ) => Promise<void>;
+  formRef: React.RefObject<HTMLFormElement | null>; // ✅ accept as prop
 }
 
-const Form = ({handleSubmit}:FormType) => {
-    const formDivRef = useRef<HTMLDivElement | null>(null);
-    const formRef = useRef<HTMLFormElement | null>(null);
+const Form = ({ handleSubmit, formRef }: FormType) => {
+  const formDivRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
     gsap.from(formDivRef.current, {
@@ -24,7 +27,6 @@ const Form = ({handleSubmit}:FormType) => {
     });
   }, []);
 
-
   return (
     <div
       ref={formDivRef}
@@ -37,7 +39,11 @@ const Form = ({handleSubmit}:FormType) => {
         Fill out the form and I’ll get back to you as soon as possible.
       </p>
 
-      <form ref={formRef} onSubmit={(e) => handleSubmit(e, formRef)} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <form
+        ref={formRef}
+        onSubmit={(e) => handleSubmit(e, formRef)}
+        className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+      >
         {formFields.map((field) => (
           <div
             key={field.id}

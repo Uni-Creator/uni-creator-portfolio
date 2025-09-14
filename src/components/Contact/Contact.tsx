@@ -1,17 +1,40 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Info from "./Info";
 import Form from "./Form";
 import { sendEmail } from "../../../api/sendEmail";
 import { useToast } from "../Toaster/ToastProvider";
 import { isToastType } from "../Toaster/toasterHelperTypes";
+import { validateForm } from "../../utils/formValidate";
 
 const Contact = ({ sectionRef }: { sectionRef: (node?: Element | null) => void }) => {
   const { toast } = useToast();
+  const formRef = useRef<HTMLFormElement | null>(null); // ✅ create ref here
   const [videoAction, setVideoAction] = useState<"success" | "error" | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent, formRef: React.RefObject<HTMLFormElement | null>) => {
+  const handleSubmit = async (
+    e: React.FormEvent,
+    formRef: React.RefObject<HTMLFormElement | null>
+  ) => {
     e.preventDefault();
     if (!formRef.current) return;
+
+      const formData = new FormData(formRef.current);
+        const values = {
+          name: formData.get("name") as string,
+          email: formData.get("email") as string,
+          subject: formData.get("subject") as string,
+          message: formData.get("message") as string,
+        };
+    
+        // Validate
+        const { isValid, errors } = validateForm(values);
+    
+        if (!isValid) {
+          const firstError = Object.values(errors)[0];
+          if (firstError) toast(firstError, 4000, { type: "error" });
+          return;
+        }
+    
 
     const result = await sendEmail(formRef);
 
@@ -19,7 +42,7 @@ const Contact = ({ sectionRef }: { sectionRef: (node?: Element | null) => void }
       type: isToastType(result.type) ? result.type : "info",
     });
 
-    // set video action for Info component
+    // ✅ trigger videoAction for Info component
     if (result.type === "success") {
       setVideoAction("success");
     } else if (result.type === "error") {
@@ -38,7 +61,7 @@ const Contact = ({ sectionRef }: { sectionRef: (node?: Element | null) => void }
         <Info videoAction={videoAction} />
 
         {/* Right Side – Form */}
-        <Form handleSubmit={handleSubmit} />
+        <Form handleSubmit={handleSubmit} formRef={formRef} />
       </div>
     </section>
   );

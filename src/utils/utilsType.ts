@@ -44,6 +44,18 @@ interface NavigationProps {
   pauseWithDebounce: () => void;
 }
 
+type FormValues = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
+type ValidationResult = {
+  isValid: boolean;
+  errors: Partial<Record<keyof FormValues, string>>;
+};
+
 export type {
   MenuIconProps,
   MenuListProps,
@@ -52,4 +64,6 @@ export type {
   CarouselProps,
   SlideProps,
   NavigationProps,
+  ValidationResult,
+  FormValues
 };
