@@ -1,12 +1,12 @@
 import { useGSAP } from "@gsap/react";
-import ShownProjects from "../utils/ShownProjects";
+import ShownProjects from "./ShownProjects";
 
 import {
   animateBackgroundHighlight,
   animateDrop,
   animateHeading,
   animateSubHeading,
-} from "../../animations";
+} from "../../../animations";
 
 const Projects = ({
   sectionRef,

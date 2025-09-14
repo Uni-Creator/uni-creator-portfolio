@@ -61,4 +61,14 @@ interface ContactTtypes {
   socialLinks: {};
 }
 
-export type { NavListsType, ProjectListType,AboutProps,SkillsListType,Skill,ContactTtypes };
+// Define field configuration
+type Field = {
+  id: string;
+  label: string;
+  type: "text" | "email" | "textarea";
+  placeholder: string;
+  rows?: number; // for textarea
+  colSpan?: number; // for grid layout
+};
+
+export type { NavListsType, ProjectListType,AboutProps,SkillsListType,Skill,ContactTtypes,Field };

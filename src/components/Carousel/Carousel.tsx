@@ -6,8 +6,8 @@ import { animateSlide } from "../../../animations/slideAnimation";
 import Slide from "./Slide";
 import Indicators from "./Indicators";
 import Navigation from "./Navigation";
-import type { CarouselProps } from "../utilsType";
-import { debounce, throttle } from "../timing";
+import type { CarouselProps } from "../../utils/utilsType";
+import { debounce, throttle } from "../../utils/timing";
 
 const DEBOUNCE_DELAY = 2000;
 const THROTTLE_DELAY = 800; // prevent double animations

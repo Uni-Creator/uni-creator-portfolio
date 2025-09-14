@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { MenuIcon } from "../utils/MenuIcon";
+import { MenuIcon } from "./Navbar/MenuIcon";
 import { useMediaQuery } from "react-responsive";
-import { MenuList } from "../utils/MenuList";
+import { MenuList } from "./Navbar/MenuList";
 import gsap from "gsap";
 
 const Navbar = ({ currentPage }: { currentPage: string }) => {
@@ -47,7 +47,7 @@ const Navbar = ({ currentPage }: { currentPage: string }) => {
         <img
           src="/images/3D_Shape_1.avif"
           alt="logo"
-          className="w-[4vw] h-[4vw] min-w-[50px] min-h-[50px]"
+          className="max-w-[40px] max-h-[40px]"
         />
         <h3 className="font-bold text-2xl">Uni-Creator</h3>
       </div>

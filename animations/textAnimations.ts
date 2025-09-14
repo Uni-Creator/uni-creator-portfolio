@@ -12,7 +12,6 @@ export function animateHeading(selector: string, type?: string, options?: any) {
 
   gsap.from(headingText.chars, {
     y: "100%",
-    backgroundColor: "red",
     opacity: 0,
     duration: 0.6,
     ease: "power2.out",

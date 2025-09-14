@@ -1,4 +1,4 @@
-import type { MenuIconProps } from "./utilsType";
+import type { MenuIconProps } from "../../utils/utilsType";
 
 export const MenuIcon = ({ isOpen, setIsOpen }: MenuIconProps) => {
   const lineColor = isOpen ? "bg-white" : "bg-slate-700";

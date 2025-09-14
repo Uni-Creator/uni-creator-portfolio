@@ -8,7 +8,7 @@ import { useSectionObserver } from "./utils/Oberver";
 
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import AboutSection from "./components/AboutSection";
+import AboutSection from "./components/About";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
@@ -34,9 +34,9 @@ function App() {
     else if (inProjects) setCurrentPage("#projects");
     else if (inSkills) setCurrentPage("#skills");
     else if (inContact) setCurrentPage("#contact");
-    localStorage.setItem("inPage",currentPage)
   }, [inHome, inAbout, inSkills, inContact]);
-
+  localStorage.setItem("inPage",currentPage)
+  
   return (
     <ToastProvider>
     <div id="" className="overflow-x-hidden">

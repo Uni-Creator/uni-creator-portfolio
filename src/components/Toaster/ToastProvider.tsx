@@ -1,25 +1,6 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
-import { isToastType, type ToastType } from "./toasterHelperTypes";
+import { isToastType, type Toast, type ToastContextType, type ToastType } from "./toasterHelperTypes";
 
-type Toast = {
-  id: number;
-  message: string;
-  duration?: number;
-  type?: ToastType;
-};
-
-type ToastOptions = {
-  type?: ToastType;
-  duration?: number;
-};
-
-type ToastContextType = {
-  toast: (
-    message: string,
-    durationOrOptions?: number | ToastOptions,
-    options?: ToastOptions
-  ) => void;
-};
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
@@ -61,7 +42,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         {toasts.map((t) => (
           <div
             key={t.id}
-            className={`px-4 py-2 rounded-lg shadow text-white transition-opacity duration-300
+            className={`px-4 py-2  rounded-lg shadow text-white transition-opacity duration-300
               ${t.type === "success" ? "bg-green-500" : ""}
               ${t.type === "error" ? "bg-red-500" : ""}
               ${t.type === "info" ? "bg-blue-500" : ""}`}

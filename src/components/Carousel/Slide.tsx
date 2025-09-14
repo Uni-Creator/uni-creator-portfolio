@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import type { SlideProps } from "../utilsType";
+import type { SlideProps } from "../../utils/utilsType";
 
 const levelColors: Record<string, string> = {
   beginner: "bg-red-500/30 text-red-300",

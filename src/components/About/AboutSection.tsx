@@ -1,7 +1,7 @@
-import Wave from "../utils/Wave";
-import Timeline from "../utils/Timeline";
-import { aboutData, educationData } from "../../constants";
-import AboutMe from "../utils/AboutMe";
+import Wave from "../../utils/Wave";
+import Timeline from "./Timeline";
+import { aboutData, educationData } from "../../../constants";
+import AboutMe from "./AboutMe";
 
 const AboutSection = ({
   sectionRef,

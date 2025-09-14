@@ -6,6 +6,7 @@ import aboutData from "./aboutMe";
 import mySkillsList from "./skills";
 import educationData from "./education";
 import contactDetails from "./contactDetails";
+import formFields from "./formFields"
 
 //Slide Animation Change here for different animation
 const animateType:AnimationType = "slide-down";
@@ -26,4 +27,4 @@ const navLists: NavListsType = [
 
 
 
-export { navLists, educationData,projectsList ,mySkillsList, aboutData, animateType, animateDuration,contactDetails };
+export { navLists, educationData,projectsList ,mySkillsList, aboutData, animateType, animateDuration,contactDetails,formFields };

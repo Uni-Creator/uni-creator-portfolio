@@ -1,4 +1,4 @@
-import type { AboutProps } from "../../constants/constantTtypes";
+import type { AboutProps } from "../../../constants/constantTtypes";
 
 const AboutMe = ({ heading, description, highlights, tagline }: AboutProps) => {
   // Sort highlights by length so multi-word phrases get matched before single words
@@ -20,7 +20,7 @@ const AboutMe = ({ heading, description, highlights, tagline }: AboutProps) => {
 
   return (
     <div className="flex flex-col items-start justify-center space-y-6 text-text-primary/80 w-full max-w-5xl z-10">
-      <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight">
+      <h2 className="text-5xl md:text-6xl text-white font-extrabold tracking-tight">
         {heading}
       </h2>
 

@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import type { NavigationProps } from "../utilsType";
+import type { NavigationProps } from "../../utils/utilsType";
 
 
 const Navigation: FC<NavigationProps> = ({ current, goToSlide, pauseWithDebounce }) => {

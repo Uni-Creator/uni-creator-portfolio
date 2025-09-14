@@ -9,7 +9,7 @@ export function animateDrop(selector: string) {
     duration: 0.6,
     scrollTrigger: {
       trigger: selector,
-      start: "top 70%",
+      start: "top center",
     },
   });
 

@@ -74,7 +74,7 @@ export const timelineAnimation = (
         ease: "back.out(1.7)",
         scrollTrigger: {
           trigger: dot,
-          start: "top 90%",
+          start: "top 60%",
           end: "top 70%",
           scrub: true,
         },

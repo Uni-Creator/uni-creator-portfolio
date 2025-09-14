@@ -1,5 +1,5 @@
 import { animateDuration, animateType } from "../../constants";
-import Carousel from "../utils/Carousel/Carousel";
+import Carousel from "./Carousel/Carousel";
 
 const Skills = ({ sectionRef }: { sectionRef: (node?: Element | null) => void }) => {
   return (

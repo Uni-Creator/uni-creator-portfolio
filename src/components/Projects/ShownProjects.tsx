@@ -1,11 +1,14 @@
-import { projectsList } from "../../constants";
+import { projectsList } from "../../../constants";
 import DetailItem from "./DetailItem";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-import { GithubIcon } from "../assets/icons/GithubIcon";
+import { GithubIcon } from "../../assets/icons/GithubIcon";
+
+import { useTiltEffect } from "../../../animations";
 
 const ShownProjects = () => {
+  
   useGSAP(() => {
     const cards = gsap.utils.toArray<HTMLDivElement>(
       "#shownProject-cards > div"
@@ -32,12 +35,15 @@ const ShownProjects = () => {
   }, []);
 
   return (
-    <div id="shownProject-cards" className="w-full flex flex-col items-center">
-      {projectsList.map((project) => (
+    <div  id="shownProject-cards" className="w-full flex flex-col items-center">
+      {projectsList.map((project) => {
+      const {cardRef,eventHandlers}= useTiltEffect()
+      return (
         <div
           key={project.id}
           id={project.id}
-          className="max-w-6xl w-full flex flex-col md:flex-row items-stretch rounded-3xl shadow-2xl overflow-hidden bg-white/50 backdrop-blur-md mb-12 transition transform hover:scale-[1.01] hover:shadow-3xl"
+          ref={cardRef} {...eventHandlers}
+          className="max-w-6xl w-full flex flex-col md:flex-row items-stretch rounded-3xl shadow-2xl overflow-hidden bg-white/50 backdrop-blur-md mb-12  hover:shadow-3xl"
         >
           {/* Left Content */}
           <div className="flex-1 p-8 sm:p-12 flex flex-col justify-center">
@@ -104,12 +110,12 @@ const ShownProjects = () => {
             <img
               src={project.backgroundImg}
               alt={`${project.title} preview`}
-              className="w-full h-full object-cover  transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-full object-cover  transition-transform duration-500 "
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-50 group-hover:opacity-70 transition"></div>
           </div>
         </div>
-      ))}
+      )})}
     </div>
   );
 };
