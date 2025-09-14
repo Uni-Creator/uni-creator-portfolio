@@ -3,9 +3,8 @@
 @font-face {
   font-family: "MontserratPoppins";
   src: url("./assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf"),
-  url("./assets/fonts/Poppins/Poppins-Regular.ttf")
-    format("truetype");
-    font-display: swap; 
+    url("./assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-display: swap;
 }
 
 @theme {
@@ -28,9 +27,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: var(--color-text-primary);
-  background-color: var(--color-primary);
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -45,6 +41,11 @@
 html {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge Legacy */
+}
+
+body {
+  color: var(--color-text-primary);
+  background-color: var(--color-primary);
 }
 
 @utility flex-center {
@@ -69,7 +70,7 @@ html {
   }
 
   nav {
-    @apply z-20 w-full md:mt-10 mt-5 md:px-10 px-2 flex top-5 justify-between items-center;
+    @apply z-20 w-full md:mt-10 mt-5 md:px-10 px-2 flex  justify-between items-center;
 
     #logo {
       @apply shadow-md shadow-purple-500/30 flex justify-between text-center items-center space-x-2 bg-white rounded-full max-w-fit px-2 md:px-4 p-1 md:p-2;
@@ -155,20 +156,21 @@ html {
   }
 
   #about {
-    @apply bg-gradient-to-b to-20% from-primary relative min-h-screen w-full flex flex-col items-center justify-between px-5 sm:px-10 md:px-20 py-16 overflow-hidden;
+    @apply bg-gradient-to-b to-20% from-primary via-active-text/30 via-5% to-black/50 relative min-h-screen w-full flex flex-col items-center justify-between px-5 sm:px-10 md:px-20 py-16 overflow-hidden;
 
     img {
       @apply absolute inset-0 w-full h-full object-cover object-center -z-20;
     }
   }
   #skills {
-    @apply w-screen min-h-screen flex flex-col items-center justify-center px-4 sm:px-10 py-12;
+    @apply w-full min-h-screen flex flex-col items-center justify-center px-4 sm:px-10 py-12;
 
     .carousel-container {
-      @apply relative w-full h-[70vh] flex items-center justify-center 
-           rounded-3xl overflow-hidden bg-[url('/images/skill-bg.avif')] bg-cover bg-center bg-fixed;
+      @apply relative w-full flex items-center justify-center 
+             rounded-3xl overflow-hidden bg-[url('/images/skill-bg.avif')] bg-cover bg-center bg-fixed;
 
-      /* Dark overlay for contrast */
+      height: clamp(60vh, 75vh, 90vh);
+
       &::before {
         content: "";
         @apply absolute inset-0 bg-black/60;
@@ -181,30 +183,36 @@ html {
     }
 
     .slide-container {
-      @apply absolute inset-0 backdrop-blur-md;
+      @apply absolute inset-0 backdrop-blur-md opacity-0 transition-opacity duration-500;
     }
 
     .slide-container.active {
-      opacity: 1;
+      @apply opacity-100;
       pointer-events: auto;
-      z-index: 10; /* active slide above others */
+      z-index: 10;
     }
 
-    /* Slide Layout */
+    /* Slide layout */
     .slide {
       @apply flex flex-col md:flex-row gap-6 p-6 sm:p-10 
-            rounded-xl bg-black/20 shadow-lg border border-white/10 h-full;
+              rounded-xl bg-black/20 shadow-lg border border-white/10 w-full h-full;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    /* Title Block */
+    /* Title block */
     .title {
-      @apply md:w-1/3 w-full flex flex-col items-start justify-center space-y-3;
+      @apply w-full md:w-1/3 flex flex-col items-start justify-center space-y-3;
     }
+
     .title h2 {
-      @apply text-2xl md:text-3xl font-extrabold text-white;
+      font-size: clamp(1.25rem, 2.5vw, 2.5rem); /* never smaller than ~20px */
+      @apply font-extrabold text-white leading-tight;
     }
+
     .title p {
-      @apply text-sm md:text-base text-white/70 leading-relaxed break-words;
+      font-size: clamp(0.85rem, 1.2vw, 1rem); /* min ~14px */
+      @apply text-white/70 leading-relaxed break-words;
     }
 
     /* Divider */
@@ -212,51 +220,59 @@ html {
       @apply hidden md:block w-[1px] bg-white/20;
     }
 
-    /* Content Block */
+    /* Content block */
     .content {
-      @apply flex-1 overflow-y-auto max-h-[50vh] px-2;
+      @apply flex-1 px-2;
+      max-height: clamp(40vh, 55vh, 65vh);
+      overflow-y: auto;
     }
 
     .content ul {
-      @apply grid  sm:grid-cols-2 gap-4 max-h-[50vh]  overflow-y-auto;
+      @apply grid gap-4;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
 
     .content li {
-      @apply p-4  bg-white/10 rounded-lg hover:bg-white/20 transition;
+      @apply p-4 bg-white/10 rounded-lg hover:bg-white/20 transition;
     }
 
     .content li h3 {
-      @apply w-full  font-semibold text-white mb-1 group-hover:text-blue-300;
+      font-size: clamp(0.9rem, 1.3vw, 1.3rem); /* min ~14px */
+      @apply font-semibold text-white mb-1;
     }
 
     .content li span.level {
-      @apply w-fit text-xs font-medium px-2 py-1 rounded-full ml-2;
+      @apply text-xs font-medium px-2 py-1 rounded-full ml-2;
     }
 
     .content li p {
-      @apply text-white/70 text-sm leading-snug break-words;
+      font-size: clamp(0.8rem, 1vw, 1rem); /* min ~13px */
+      @apply text-white/70 leading-snug break-words;
     }
 
     /* Custom scrollbar */
     .content::-webkit-scrollbar {
-      width: 6px !important;
+      width: 6px;
     }
     .content::-webkit-scrollbar-thumb {
       @apply bg-white/30 rounded-full;
     }
-    /* Navigation Buttons */
+
+    /* Navigation buttons */
     .navigationButton {
-      @apply absolute top-1/2 transform -translate-y-1/2 
-           text-white/70 hover:text-white 
-           cursor-pointer text-6xl font-bold transition duration-300;
-      z-index: 20; /* keep on top */
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* subtle glow */
+      @apply absolute top-1/2 -translate-y-1/2 
+             text-white/70 hover:text-white cursor-pointer 
+             font-bold transition duration-300;
+      font-size: clamp(1.5rem, 3.5vw, 3rem); /* min ~24px */
+      z-index: 20;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
+
     .navigationButton:hover {
       text-shadow: 0 0 15px rgba(255, 255, 255, 0.6),
-        0 0 30px rgba(0, 150, 255, 0.4); /* brighter glow on hover */
-      /* transform: translateY(-50%) scale(1.1); small grow effect */
+        0 0 30px rgba(0, 150, 255, 0.4);
     }
+
     .prev {
       @apply left-2;
     }
@@ -267,20 +283,23 @@ html {
     /* Indicators */
     .indicators {
       @apply absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2;
-      z-index: 30; /* ensure above overlay & slides */
+      z-index: 30;
     }
+
     .indicator {
       @apply w-3 h-3 rounded-full bg-white/30 cursor-pointer transition;
-      box-shadow: 0 0 6px rgba(255, 255, 255, 0.2); /* faint glow */
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
     }
+
     .indicator:hover {
       @apply bg-white/70;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
       transform: scale(1.2);
     }
+
     .indicator.active {
       @apply bg-white;
-      box-shadow: 0 0 12px rgba(0, 200, 255, 0.8); /* strong glow for active */
+      box-shadow: 0 0 12px rgba(0, 200, 255, 0.8);
     }
   }
 }

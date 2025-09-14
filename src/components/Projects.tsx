@@ -21,14 +21,13 @@ const Projects = ({
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      id="projects"
-      className="w-full flex-center flex-col py-12 px-6 "
-    >
+    <section id="projects" className="w-full flex-center flex-col py-12 px-6 ">
       <div className="w-full flex-center flex sm:flex-nowrap gap-10  mb-10">
         <div className="flex-center max-sm:flex-wrap-reverse gap-5 w-full sm:w-fit ">
-          <div className=" flex-center w-full flex-col space-y-5">
+          <div
+            ref={sectionRef}
+            className=" flex-center w-full flex-col space-y-5"
+          >
             <h1
               id="project-heading"
               className="text-6xl w-full text-center  text-[clamp(3rem,4vw,1rem)] space-x-3 leading-15 break-words"

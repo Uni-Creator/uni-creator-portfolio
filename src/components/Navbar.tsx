@@ -41,7 +41,7 @@ const Navbar = ({ currentPage }: { currentPage: string }) => {
   return (
     <nav
       ref={navRef}
-      className="fixed-nav w-full z-50 transition-transform backdrop-blur-sm"
+      className="fixed-nav w-full z-50 flex  transition-transform backdrop-blur-sm"
     >
       <div id="logo" className="flex items-center gap-2">
         <img

@@ -19,17 +19,17 @@ const AboutMe = ({ heading, description, highlights, tagline }: AboutProps) => {
   const matches = description.match(pattern);
 
   return (
-    <div className="flex flex-col items-start justify-center space-y-6 text-white w-full max-w-5xl z-10">
+    <div className="flex flex-col items-start justify-center space-y-6 text-text-primary/80 w-full max-w-5xl z-10">
       <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight">
         {heading}
       </h2>
 
-      <p className="text-lg md:text-xl leading-relaxed text-gray-200">
+      <p className="text-xl leading-relaxed  text-white">
         {parts.map((part, i) => (
           <span key={i}>
             {part}
             {matches && matches[i] ? (
-              <strong className="text-indigo-300">{matches[i]}</strong>
+              <strong className="text-[#4DFFBE]/60">{matches[i]}</strong>
             ) : null}
           </span>
         ))}

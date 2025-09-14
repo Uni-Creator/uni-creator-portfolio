@@ -14,6 +14,7 @@ import { useRef } from "react";
 
 import { sendEmail } from "../../api/sendEmail";
 import { useToast } from "./Toaster/ToastProvider";
+import { isToastType } from "./Toaster/toasterHelperTypes";
 
 const ICONS_MAP: Record<string, React.ElementType> = {
   github: GithubIcon,
@@ -107,7 +108,7 @@ const Contact = ({
     if (!formRef.current) return;
 
     const result = await sendEmail(formRef);
-    toast(result.message,{type:"error"});
+    toast(result.message, { type: isToastType(result.type) ? result.type : "info" });
 
   };
 

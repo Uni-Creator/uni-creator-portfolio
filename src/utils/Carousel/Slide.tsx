@@ -12,23 +12,23 @@ const Slide: FC<SlideProps> = ({ title, summary, features, active, slideRef }) =
   return (
     <div
       ref={slideRef}
-      className={`slide-container absolute bottom-0 left-0 w-full h-full ${
-        active ? "z-10" : "z-0"
+      className={`slide-container w-full h-full transition-opacity duration-500 ${
+        active ? "active opacity-100" : "opacity-0"
       }`}
       style={{
-        visibility: active ? "visible" : "hidden", // GSAP will override during animation
+        visibility: active ? "visible" : "hidden", // GSAP overrides anyway
         pointerEvents: active ? "auto" : "none",
       }}
     >
       <div className="slide">
         {/* Title Block */}
-        <div className="title text-center flex flex-col w-full md:w-1/3">
+        <div className="title text-center md:text-left flex flex-col w-full md:w-1/3">
           <h2>{title}</h2>
           {summary && <p>{summary}</p>}
         </div>
 
         {/* Divider */}
-        <div className="divider"></div>
+        <div className="divider" />
 
         {/* Features */}
         <div className="content">
@@ -36,11 +36,12 @@ const Slide: FC<SlideProps> = ({ title, summary, features, active, slideRef }) =
             {features.map(({ id, title, description, level }) => (
               <li key={id}>
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-ellipsis">{title}</h3>
+                  <h3 className="">{title}</h3>
                   {level && (
                     <span
                       className={`level self-start ${
-                        levelColors[level] || "bg-gray-500/30 text-gray-300"
+                        levelColors[level.toLowerCase()] ||
+                        "bg-gray-500/30 text-gray-300"
                       }`}
                     >
                       {level}
@@ -56,4 +57,5 @@ const Slide: FC<SlideProps> = ({ title, summary, features, active, slideRef }) =
     </div>
   );
 };
+
 export default Slide;

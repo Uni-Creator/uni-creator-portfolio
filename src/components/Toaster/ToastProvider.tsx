@@ -1,17 +1,23 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
+import { isToastType, type ToastType } from "./toasterHelperTypes";
 
 type Toast = {
   id: number;
   message: string;
   duration?: number;
-  type?: "success" | "error" | "info";
+  type?: ToastType;
+};
+
+type ToastOptions = {
+  type?: ToastType;
+  duration?: number;
 };
 
 type ToastContextType = {
   toast: (
     message: string,
-    durationOrOptions?: number | { type?: "success" | "error" | "info"; duration?: number },
-    maybeOptions?: { type?: "success" | "error" | "info" }
+    durationOrOptions?: number | ToastOptions,
+    options?: ToastOptions
   ) => void;
 };
 
@@ -20,25 +26,29 @@ const ToastContext = createContext<ToastContextType | undefined>(undefined);
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
-  const toast: ToastContextType["toast"] = (message, durationOrOptions, maybeOptions) => {
+  const toast: ToastContextType["toast"] = (
+    message,
+    durationOrOptions,
+    options
+  ) => {
     let duration = 3000;
-    let options: { type?: "success" | "error" | "info" } = {};
+    let type: ToastType = "info";
 
-    // Case 1: toast(message, { type: "error" })
-    if (typeof durationOrOptions === "object") {
-      options = durationOrOptions;
-      duration = durationOrOptions.duration ?? 3000;
-    }
-    // Case 2: toast(message, 3000, { type: "error" })
-    else if (typeof durationOrOptions === "number") {
+    if (typeof durationOrOptions === "number") {
       duration = durationOrOptions;
-      if (maybeOptions) options = maybeOptions;
+      if (options?.type && isToastType(options.type)) {
+        type = options.type;
+      }
+    } else if (typeof durationOrOptions === "object") {
+      if (durationOrOptions.duration) duration = durationOrOptions.duration;
+      if (durationOrOptions.type && isToastType(durationOrOptions.type)) {
+        type = durationOrOptions.type;
+      }
     }
 
     const id = Date.now();
-    setToasts((prev) => [...prev, { id, message, type: options?.type, duration }]);
+    setToasts((prev) => [...prev, { id, message, type, duration }]);
 
-    // Auto remove after duration
     setTimeout(() => {
       setToasts((prev) => prev.filter((t) => t.id !== id));
     }, duration);
@@ -47,8 +57,6 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   return (
     <ToastContext.Provider value={{ toast }}>
       {children}
-
-      {/* Toast container */}
       <div className="fixed top-5 right-5 flex flex-col space-y-3 z-50">
         {toasts.map((t) => (
           <div
@@ -56,7 +64,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
             className={`px-4 py-2 rounded-lg shadow text-white transition-opacity duration-300
               ${t.type === "success" ? "bg-green-500" : ""}
               ${t.type === "error" ? "bg-red-500" : ""}
-              ${t.type === "info" || !t.type ? "bg-blue-500" : ""}`}
+              ${t.type === "info" ? "bg-blue-500" : ""}`}
           >
             {t.message}
           </div>
@@ -68,8 +76,6 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 
 export function useToast() {
   const context = useContext(ToastContext);
-  if (!context) {
-    throw new Error("useToast must be used inside ToastProvider");
-  }
+  if (!context) throw new Error("useToast must be used inside ToastProvider");
   return context;
 }

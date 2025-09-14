@@ -19,7 +19,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin,SplitText);
 ScrollToPlugin.config({ autoKill: true });
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("#home");
+  const [currentPage, setCurrentPage] = useState(localStorage.getItem("inPage")||"#home");
 
   // Section observers
   const { ref: homeRef, inView: inHome } = useSectionObserver();
@@ -34,6 +34,7 @@ function App() {
     else if (inProjects) setCurrentPage("#projects");
     else if (inSkills) setCurrentPage("#skills");
     else if (inContact) setCurrentPage("#contact");
+    localStorage.setItem("inPage",currentPage)
   }, [inHome, inAbout, inSkills, inContact]);
 
   return (
