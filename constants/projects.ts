@@ -24,7 +24,7 @@ const projectsList: ProjectListType = [
     subtitle: "LLM + Retrieval",
     img: "/images/hero-rag.avif",
     backgroundImg:
-      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.chatbase.co%2Fblog%2Frag-from-scratch&psig=AOvVaw1q-jA0cxbNB8Jfw8r52CDU&ust=1758018819482000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMikv9rI2o8DFQAAAAAdAAAAABAL",
+      "https://blogs.nvidia.com/wp-content/uploads/2023/11/Retrieval-Augmented-Generation-RAG-KV-1-1680x897.jpg",
     projectDetails: {
       problem: "Users struggle to query and synthesize information across multiple document formats.",
       solution: "Built a Retrieval-Augmented Generation (RAG) chatbot that processes PDFs, DOCX, TXT, and CSV files.",
