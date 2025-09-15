@@ -1,13 +1,13 @@
 import type { AboutProps } from "./constantTtypes";
 const aboutData: AboutProps = {
   heading: "About Me",
- description:
-    "I am an engineering student specializing in artificial intelligence, machine learning, and computer systems. I focus on building efficient, data-driven solutions through strong programming, analytical, and problem-solving skills. With experience in AI/ML, software development, and research, I am driven to create innovative technologies that bridge theory and real-world applications.",
-   highlights: [
+  description:
+  "Hi! I’m Abhay Singh 👩‍💻, an engineering student specializing in Artificial Intelligence, Machine Learning, and Computer systems. Passionate about building data-driven solutions, I have hands-on experience in AI/ML, software development, and research, working on projects that bridge theory with real-world applications.",
+  highlights: [
     { text: "Abhay Singh"},
-   { text: "artificial intelligence" },
-    { text: "machine learning" },
-    { text: "computer systems" },
+   { text: "Artificial Intelligence" },
+    { text: "Machine Learning" },
+    { text: "Computer systems" },
     { text: "data-driven solutions" },
     { text: "programming" },
     { text: "analytical" },
