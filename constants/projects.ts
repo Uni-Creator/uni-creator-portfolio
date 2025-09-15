@@ -1,19 +1,36 @@
-import type {ProjectListType } from "./constantTtypes";
-const projectsList:ProjectListType = [
+import type { ProjectListType } from "./constantTtypes";
+
+const projectsList: ProjectListType = [
   {
-    id: "lung-cancer-classification",
-    href: "#lung-cancer-classification",
-    title: "Lung Cancer Classification",
-    subtitle: "CNN",
-    img: "/images/hero-lung-cancer.avif",
+    id: "nanogpt",
+    href: "#nanogpt",
+    title: "NanoGPT",
+    subtitle: "LLM / NLP",
+    img: "/images/hero-nano.avif",
     backgroundImg:
-      "https://static.wixstatic.com/media/11062b_347949d9b58c411b8da6c6fd304a02b4~mv2_d_4102_5700_s_4_2.jpg/v1/fill/w_1225,h_876,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_347949d9b58c411b8da6c6fd304a02b4~mv2_d_4102_5700_s_4_2.jpg",
+      "https://static.wixstatic.com/media/11062b_68684546683843bc9dd026c63768d725~mv2.jpg/v1/fill/w_1225,h_850,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_68684546683843bc9dd026c63768d725~mv2.jpg",
     projectDetails: {
-      problem: "Difficulty in early detection of lung cancer leads to late diagnoses and poor survival rates.",
-      solution: "Developed a CNN model trained on chest CT scans to classify lung cancer stages with high accuracy.",
-      techUsed: "TensorFlow, Keras, OpenCV, Scikit-learn.",
-      impact: "Achieved 85% accuracy on test data; enables faster, more reliable screening support for radiologists.",
-      githubLink: "https://github.com/Uni-Creator/LungCancerClassification"
+      problem: "Training large language models requires enormous compute resources, limiting accessibility.",
+      solution: "Implemented a lightweight GPT architecture (NanoGPT) optimized for smaller datasets and faster training.",
+      techUsed: "PyTorch, Transformers, CUDA.",
+      impact: "Reduced training time by 40% while maintaining competitive perplexity on benchmark datasets.",
+      githubLink: "https://github.com/Uni-Creator/NanoGPT"
+    }
+  },
+  {
+    id: "rag-multifile-qa",
+    href: "#rag-multifile-qa",
+    title: "RAG Multi-File QA",
+    subtitle: "LLM + Retrieval",
+    img: "/images/hero-rag.avif",
+    backgroundImg:
+      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.chatbase.co%2Fblog%2Frag-from-scratch&psig=AOvVaw1q-jA0cxbNB8Jfw8r52CDU&ust=1758018819482000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMikv9rI2o8DFQAAAAAdAAAAABAL",
+    projectDetails: {
+      problem: "Users struggle to query and synthesize information across multiple document formats.",
+      solution: "Built a Retrieval-Augmented Generation (RAG) chatbot that processes PDFs, DOCX, TXT, and CSV files.",
+      techUsed: "LangChain, Hugging Face Transformers, FAISS, Streamlit.",
+      impact: "Enabled accurate Q&A across diverse documents with 90%+ retrieval precision and real-time responses.",
+      githubLink: "https://github.com/Uni-Creator/RAG-MultiFile-QA"
     }
   },
   {
@@ -33,19 +50,19 @@ const projectsList:ProjectListType = [
     }
   },
   {
-    id: "nanogPT",
-    href: "#nanogPT",
-    title: "NanoGPT",
-    subtitle: "LLM / NLP",
-    img: "/images/hero-nano.avif",
+    id: "lung-cancer-classification",
+    href: "#lung-cancer-classification",
+    title: "Lung Cancer Classification",
+    subtitle: "CNN",
+    img: "/images/hero-lung-cancer.avif",
     backgroundImg:
-      "https://static.wixstatic.com/media/11062b_68684546683843bc9dd026c63768d725~mv2.jpg/v1/fill/w_1225,h_850,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_68684546683843bc9dd026c63768d725~mv2.jpg",
+      "https://static.wixstatic.com/media/11062b_347949d9b58c411b8da6c6fd304a02b4~mv2_d_4102_5700_s_4_2.jpg/v1/fill/w_1225,h_876,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_347949d9b58c411b8da6c6fd304a02b4~mv2_d_4102_5700_s_4_2.jpg",
     projectDetails: {
-      problem: "Training large language models requires enormous compute resources, limiting accessibility.",
-      solution: "Implemented a lightweight GPT architecture (NanoGPT) optimized for smaller datasets and faster training.",
-      techUsed: "PyTorch, Transformers, CUDA.",
-      impact: "Reduced training time by 40% while maintaining competitive perplexity on benchmark datasets.",
-      githubLink: "https://github.com/Uni-Creator/NanoGPT"
+      problem: "Difficulty in early detection of lung cancer leads to late diagnoses and poor survival rates.",
+      solution: "Developed a CNN model trained on chest CT scans to classify lung cancer stages with high accuracy.",
+      techUsed: "TensorFlow, Keras, OpenCV, Scikit-learn.",
+      impact: "Achieved 85% accuracy on test data; enables faster, more reliable screening support for radiologists.",
+      githubLink: "https://github.com/Uni-Creator/LungCancerClassification"
     }
   }
 ];
