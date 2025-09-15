@@ -16,7 +16,7 @@ export const sendEmail = async (form: React.RefObject<HTMLFormElement | null>) =
         message: (form.current[3] as HTMLTextAreaElement).value,
         email: contactDetails.email,
       },
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY2
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     );
     if(!result) throw new Error("Server Error!")
     return { type: "success", message: "Email sent successfully!" };
