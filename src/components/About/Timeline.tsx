@@ -11,7 +11,6 @@ const Timeline = ({ sectionTitle, items }: TimelineProps) => {
   useGSAP(
     () => {
       if (containerRef.current && titleRef.current) {
-        console.log("inside useGsap")
         timelineAnimation(containerRef.current, titleRef.current);
       }
     },

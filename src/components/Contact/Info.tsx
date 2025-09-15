@@ -6,7 +6,7 @@ import { TypingAnimation } from "../../../animations";
 import SocialLinks from "./SocialLinks";
 
 
-const Info = ({ videoAction }: { videoAction: "success" | "error" | null }) => {
+const Info = ({ videoAction, setVideoAction }: { videoAction: "success" | "error" | null; setVideoAction: (videoAction: React.SetStateAction<"error" | "success" | null>) => void }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
@@ -30,6 +30,7 @@ const Info = ({ videoAction }: { videoAction: "success" | "error" | null }) => {
       };
       video.addEventListener("timeupdate", stopVideo);
     }
+    setVideoAction(null)
   }, [videoAction]);
 
   useGSAP(() => {

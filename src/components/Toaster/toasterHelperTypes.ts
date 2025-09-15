@@ -8,7 +8,7 @@ export type Toast = {
   id: number;
   message: string;
   duration?: number;
-  type?: ToastType;
+  type: ToastType;
 };
 
 export type ToastOptions = {

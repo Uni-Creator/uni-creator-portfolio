@@ -21,13 +21,15 @@ const Navbar = ({ currentPage }: { currentPage: string }) => {
       if (currentScroll > lastScroll.current) {
         gsap.to(navRef.current, {
           opacity: 0,
-          duration: 0.3,
-          ease: "power2.out",
+          duration: 0.6,
+          y:-100,
+          ease: "easeIn",
         });
       } else {
         gsap.to(navRef.current, {
           opacity: 1,
           duration: 0.3,
+          y:0,
           ease: "power2.out",
         });
       }
@@ -43,7 +45,8 @@ const Navbar = ({ currentPage }: { currentPage: string }) => {
       ref={navRef}
       className="fixed-nav w-full z-50 flex  transition-transform backdrop-blur-sm"
     >
-      <div id="logo" className="flex items-center gap-2">
+      <a href="#home">
+        <div id="logo" className="flex items-center gap-2">
         <img
           src="/images/3D_Shape_1.avif"
           alt="logo"
@@ -51,6 +54,7 @@ const Navbar = ({ currentPage }: { currentPage: string }) => {
         />
         <h3 className="font-bold text-2xl">Uni-Creator</h3>
       </div>
+      </a>
 
       <MenuIcon isOpen={isOpen} setIsOpen={setIsOpen} />
       <MenuList

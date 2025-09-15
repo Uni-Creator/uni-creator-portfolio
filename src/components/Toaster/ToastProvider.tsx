@@ -1,6 +1,10 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
-import { isToastType, type Toast, type ToastContextType, type ToastType } from "./toasterHelperTypes";
-
+import {
+  isToastType,
+  type Toast,
+  type ToastContextType,
+  type ToastType,
+} from "./toasterHelperTypes";
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
@@ -35,6 +39,12 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     }, duration);
   };
 
+  const icons: Record<ToastType, string> = {
+    success: "✔️",
+    error: "❌",
+    info: "ℹ️",
+  };
+
   return (
     <ToastContext.Provider value={{ toast }}>
       {children}
@@ -42,12 +52,13 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         {toasts.map((t) => (
           <div
             key={t.id}
-            className={`px-4 py-2  rounded-lg shadow text-white transition-opacity duration-300
+            className={`flex items-center space-x-2 px-4 py-2 rounded-lg shadow text-white transition-opacity duration-300
               ${t.type === "success" ? "bg-green-500" : ""}
               ${t.type === "error" ? "bg-red-500" : ""}
-              ${t.type === "info" ? "bg-blue-500" : ""}`}
+              ${t.type === "info" ? "bg-blue-400" : ""}`}
           >
-            {t.message}
+            <span className="text-lg">{icons[t.type]}</span>
+            <span>{t.message}</span>
           </div>
         ))}
       </div>

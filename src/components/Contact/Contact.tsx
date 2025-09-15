@@ -1,52 +1,38 @@
 import { useRef, useState } from "react";
 import Info from "./Info";
 import Form from "./Form";
-import { sendEmail } from "../../../api/sendEmail";
-import { useToast } from "../Toaster/ToastProvider";
-import { isToastType } from "../Toaster/toasterHelperTypes";
-import { validateForm } from "../../utils/formValidate";
+import { useSendEmail } from "../../../hooks/useSendEmail";
 
-const Contact = ({ sectionRef }: { sectionRef: (node?: Element | null) => void }) => {
-  const { toast } = useToast();
-  const formRef = useRef<HTMLFormElement | null>(null); // ✅ create ref here
-  const [videoAction, setVideoAction] = useState<"success" | "error" | null>(null);
+const Contact = ({
+  sectionRef,
+}: {
+  sectionRef: (node?: Element | null) => void;
+}) => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [videoAction, setVideoAction] = useState<"success" | "error" | null>(
+    null
+  );
+  const { loading, emailer } = useSendEmail();
 
-  const handleSubmit = async (
-    e: React.FormEvent,
-    formRef: React.RefObject<HTMLFormElement | null>
-  ) => {
+  const handleSubmit: SubmitType = async (e) => {
     e.preventDefault();
-    if (!formRef.current) return;
 
-      const formData = new FormData(formRef.current);
-        const values = {
-          name: formData.get("name") as string,
-          email: formData.get("email") as string,
-          subject: formData.get("subject") as string,
-          message: formData.get("message") as string,
-        };
-    
-        // Validate
-        const { isValid, errors } = validateForm(values);
-    
-        if (!isValid) {
-          const firstError = Object.values(errors)[0];
-          if (firstError) toast(firstError, 4000, { type: "error" });
-          return;
+    const results = await emailer(formRef);
+
+    // Update video action based on result type
+    if (!results) return;
+    setVideoAction(results.type === "success" ? "success" : "error");
+
+    // Reset form fields
+    if (formRef.current) {
+      Array.from(formRef.current.elements).forEach((element) => {
+        if (
+          element instanceof HTMLInputElement ||
+          element instanceof HTMLTextAreaElement
+        ) {
+          element.value = ""; // Clear input and textarea values
         }
-    
-
-    const result = await sendEmail(formRef);
-
-    toast(result.message, 5000, {
-      type: isToastType(result.type) ? result.type : "info",
-    });
-
-    // ✅ trigger videoAction for Info component
-    if (result.type === "success") {
-      setVideoAction("success");
-    } else if (result.type === "error") {
-      setVideoAction("error");
+      });
     }
   };
 
@@ -56,15 +42,20 @@ const Contact = ({ sectionRef }: { sectionRef: (node?: Element | null) => void }
       id="contact"
       className="w-screen min-h-screen flex items-center justify-center px-4 sm:px-10 py-16"
     >
-      <div className="video-background-container w-full max-w-6xl rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-2">
+      <div className="video-background-container">
         {/* Left Side – Info */}
-        <Info videoAction={videoAction} />
+        <Info videoAction={videoAction} setVideoAction={setVideoAction} />
 
         {/* Right Side – Form */}
-        <Form handleSubmit={handleSubmit} formRef={formRef} />
+        <Form handleSubmit={handleSubmit} formRef={formRef} loading={loading} />
       </div>
     </section>
   );
 };
 
 export default Contact;
+
+// Fixed SubmitType interface
+interface SubmitType {
+  (e: React.FormEvent): Promise<void>;
+}

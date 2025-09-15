@@ -21,18 +21,15 @@ const Projects = ({
   }, []);
 
   return (
-    <section id="projects" className="w-full flex-center flex-col py-12 px-6 ">
-      <div className="w-full flex-center flex sm:flex-nowrap gap-10  mb-10">
-        <div className="flex-center max-sm:flex-wrap-reverse gap-5 w-full sm:w-fit ">
+    <section id="projects">
+      <div className="container">
+        <div>
           <div
             ref={sectionRef}
             className=" flex-center w-full flex-col space-y-5"
           >
-            <h1
-              id="project-heading"
-              className="text-6xl w-full text-center  text-[clamp(3rem,4vw,1rem)] space-x-3 leading-15 break-words"
-            >
-              <span className="heading-bg">Explore</span>
+            <h1 id="project-heading">
+              <span className="">Explore</span>
               <p className="sm:inline">My Projects</p>
             </h1>
             <p
@@ -43,7 +40,7 @@ const Projects = ({
             </p>
           </div>
 
-          <div className="flex-center sm:w-[12vw] sm:h-[12vw] w-[100px]">
+          <div className="img-container">
             <img
               id="spinning-top"
               src="/images/projectSec-1.avif"

@@ -43,12 +43,12 @@ const ShownProjects = () => {
           key={project.id}
           id={project.id}
           ref={cardRef} {...eventHandlers}
-          className="max-w-6xl w-full flex flex-col md:flex-row items-stretch rounded-3xl shadow-2xl overflow-hidden bg-white/50 backdrop-blur-md mb-12  hover:shadow-3xl"
+          className="card"
         >
           {/* Left Content */}
           <div className="flex-1 p-8 sm:p-12 flex flex-col justify-center">
             {/* Icon / Thumb */}
-            <div className="w-16 h-16 rounded-2xl overflow-hidden flex items-center justify-center bg-indigo-100 mb-6 p-1">
+            <div className="iconThumb">
               <img
                 src={project.img}
                 alt={project.title}
@@ -95,9 +95,7 @@ const ShownProjects = () => {
               <div className="mt-8">
                 <a
                   href={project.projectDetails.githubLink}
-                  target="_blank"
-                  className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all"
-                >
+                  target="_blank">
                   <GithubIcon />
                   View on GitHub
                 </a>
@@ -112,7 +110,7 @@ const ShownProjects = () => {
               alt={`${project.title} preview`}
               className="w-full h-full object-cover  transition-transform duration-500 "
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-50 group-hover:opacity-70 transition"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50 group-hover:opacity-70 transition"></div>
           </div>
         </div>
       )})}

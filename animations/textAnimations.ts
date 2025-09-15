@@ -18,7 +18,7 @@ export function animateHeading(selector: string, type?: string, options?: any) {
     stagger: 0.06,
     scrollTrigger: {
       trigger: headingText.elements,
-      start: "top 70%",
+      start: "top 90%",
     },
   });
 
