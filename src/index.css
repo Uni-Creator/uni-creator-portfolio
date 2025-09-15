@@ -302,7 +302,6 @@ body {
       @apply w-full flex-center flex sm:flex-nowrap gap-10  mb-10;
 
       div{
-        @apply flex-center max-sm:flex-wrap-reverse gap-5 w-full sm:w-fit;
 
         .img-container{
           @apply flex-center sm:w-[12vw] sm:h-[12vw] w-[100px];
