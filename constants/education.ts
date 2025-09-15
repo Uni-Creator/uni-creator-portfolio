@@ -19,7 +19,7 @@ const educationData: TimelineItem[] = [
     period: "2020 – 2021",
     title: "High School",
     subtitle: "R.K. Modern Sr. Sec. School (CBSE)",
-    details: ["Qualification: 10th Grade", "Percentage: 90%"],
+    details: ["Qualification: 10th Grade", "Percentage: 74%"],
   },
 ];
 
