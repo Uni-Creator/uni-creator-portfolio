@@ -2,14 +2,12 @@ import Wave from "../../utils/Wave";
 import Timeline from "./Timeline";
 import { aboutData, educationData } from "../../../constants";
 import AboutMe from "./AboutMe";
+import { useRefs } from "../../../context/RefsContext";
 
-const AboutSection = ({
-  sectionRef,
-}: {
-  sectionRef: (node?: Element | null) => void;
-}) => {
+const AboutSection = () => {
+  const {aboutRef} = useRefs()
   return (
-    <section ref={sectionRef} id="about">
+    <section ref={aboutRef} id="about">
       <img
         src="/images/aboutMe-bg.avif"
         alt="About me background"      />
