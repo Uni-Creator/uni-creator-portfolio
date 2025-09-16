@@ -68,6 +68,12 @@ const mySkillsList: SkillsListType = [
         level: "intermediate",
       },
       {
+        id: "r",
+        title: "R",
+        description: "Statistical computing, data visualization, and data analysis.",
+        level: "intermediate",
+      },
+      {
         id: "web-scraping",
         title: "Web Scraping",
         description: "Automating structured data extraction from websites.",
