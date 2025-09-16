@@ -3,13 +3,8 @@ import { MenuIcon } from "./MenuIcon";
 import { useMediaQuery } from "react-responsive";
 import { MenuList } from "./MenuList";
 import gsap from "gsap";
-import { usePage } from "../../../context/PageContext";
 
-const Navbar = () => {
-
-  const { currentPage } = usePage();
-
-
+const Navbar = ({ currentPage }: { currentPage: string }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const [isOpen, setIsOpen] = useState(false);
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);

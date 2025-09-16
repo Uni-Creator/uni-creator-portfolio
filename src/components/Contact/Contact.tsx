@@ -2,12 +2,12 @@ import { useRef, useState } from "react";
 import Info from "./Info";
 import Form from "./Form";
 import { useSendEmail } from "../../../hooks/useSendEmail";
-import { useRefs } from "../../../context/RefsContext";
 
-const Contact = () => {
-    const {projectsRef} = useRefs()
-  
-
+const Contact = ({
+  sectionRef,
+}: {
+  sectionRef: (node?: Element | null) => void;
+}) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [videoAction, setVideoAction] = useState<"success" | "error" | null>(
     null
@@ -38,7 +38,7 @@ const Contact = () => {
 
   return (
     <section
-      ref={projectsRef}
+      ref={sectionRef}
       id="contact"
       className="w-screen min-h-screen flex items-center justify-center px-4 sm:px-10 py-16"
     >

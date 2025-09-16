@@ -1,49 +1,42 @@
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin, SplitText } from "gsap/all";
-
-import { RefsProvider, useRefs } from "../context/RefsContext";
 import { PageProvider, usePage } from "../context/PageContext";
-
-import Navbar from "./components/Navbar/Navbar";
-import Home from "./components/Home";
 import AboutSection from "./components/About";
-import Skills from "./components/Skills";
 import Contact from "./components/Contact";
-import Projects from "./components/Projects";
 import Footer from "./components/Footer";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar/Navbar";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
 import { ToastProvider } from "./components/Toaster/ToastProvider";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, SplitText);
-ScrollToPlugin.config({ autoKill: true });
+import { ScrollToPlugin,ScrollTrigger,SplitText } from "gsap/all";
 
-function AppContent() {
-
-  return (
-    <div className="overflow-x-hidden">
-      <Navbar />
-      <main>
-        <Home/>
-        <AboutSection/>
-        <Skills />
-        <Projects/>
-        <Contact/>
-      </main>
-      <Footer />
-    </div>
-  );
-}
+gsap.registerPlugin(ScrollToPlugin,SplitText,ScrollTrigger)
 
 function App() {
   return (
+    <PageProvider>
+      <InnerApp />
+    </PageProvider>
+  );
+}
+export default App;
+function InnerApp() {
+  const { currentPage, homeRef, aboutRef, skillsRef, projectsRef, contactRef } = usePage();
+
+  return (
     <ToastProvider>
-      <RefsProvider>
-        <PageProvider>
-          <AppContent />
-        </PageProvider>
-      </RefsProvider>
+    <div className="overflow-x-hidden">
+      <Navbar currentPage={currentPage} />
+      <main>
+        <Home sectionRef={homeRef} />
+        <AboutSection sectionRef={aboutRef} />
+        <Skills sectionRef={skillsRef} />
+        <Projects sectionRef={projectsRef} />
+        <Contact sectionRef={contactRef} />
+      </main>
+      <Footer />
+    </div>
     </ToastProvider>
   );
 }
-
-export default App;
