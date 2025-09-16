@@ -18,10 +18,11 @@ export const MenuList = ({
   useGSAP(() => {
     if (scrollTo.scrollto) {
       gsap.to(window, {
-        duration: 1,
-        scrollTo: { y: scrollTo.scrollto, offsetY: 60,autoKill:true },
-        ease: "sine.out",
-      });
+  duration: 1,
+  scrollTo: scrollTo.scrollto, // just pass string selector
+  ease: "sine.out",
+});
+
     }
   }, [scrollTo]);
 
