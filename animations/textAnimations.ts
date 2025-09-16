@@ -5,24 +5,26 @@ import { SplitText } from "gsap/all";
 // provide selector, type of split (chars, words, lines), and additional options
 // Example usage: animateHeading(".my-heading", "chars", {linesClass: "my-line"})
 export function animateHeading(selector: string, type?: string, options?: any) {
-  const headingText = new SplitText(selector, {
-    type: type ? type : "chars",
-    ...options,
-  });
+  document.fonts.ready.then(() => {
+    const headingText = new SplitText(selector, {
+      type: type ? type : "chars",
+      ...options,
+    });
 
-  gsap.from(headingText.chars, {
-    y: "100%",
-    opacity: 0,
-    duration: 0.6,
-    ease: "power2.out",
-    stagger: 0.06,
-    scrollTrigger: {
-      trigger: headingText.elements,
-      start: "top 90%",
-    },
-  });
+    gsap.from(headingText.chars, {
+      y: "100%",
+      opacity: 0,
+      duration: 0.6,
+      ease: "power2.out",
+      stagger: 0.06,
+      scrollTrigger: {
+        trigger: headingText.elements,
+        start: "top 90%",
+      },
+    });
 
-  return headingText;
+    return headingText;
+  });
 }
 
 // Function to animate subheadings with a split text effect and scroll trigger
@@ -33,7 +35,8 @@ export function animateSubHeading(
   type?: string,
   options?: any
 ) {
-  const subHeadingText = new SplitText(selector, {
+   document.fonts.ready.then(()=>{
+    const subHeadingText = new SplitText(selector, {
     type: type ? type : "words",
     ...options,
   });
@@ -51,6 +54,8 @@ export function animateSubHeading(
   });
 
   return subHeadingText;
+   })
+  
 }
 
 // Function to animate background highlight on text elements
