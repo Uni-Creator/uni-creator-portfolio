@@ -1,10 +1,15 @@
 import { useState, useRef, useEffect } from "react";
-import { MenuIcon } from "./Navbar/MenuIcon";
+import { MenuIcon } from "./MenuIcon";
 import { useMediaQuery } from "react-responsive";
-import { MenuList } from "./Navbar/MenuList";
+import { MenuList } from "./MenuList";
 import gsap from "gsap";
+import { usePage } from "../../../context/PageContext";
 
-const Navbar = ({ currentPage }: { currentPage: string }) => {
+const Navbar = () => {
+
+  const { currentPage } = usePage();
+
+
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const [isOpen, setIsOpen] = useState(false);
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);

@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin,SplitText } from "gsap/all";
+import { ScrollToPlugin, SplitText } from "gsap/all";
 
-import { useSectionObserver } from "./utils/Oberver";
+import { RefsProvider, useRefs } from "../context/RefsContext";
+import { PageProvider, usePage } from "../context/PageContext";
 
-
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home";
 import AboutSection from "./components/About";
 import Skills from "./components/Skills";
@@ -15,43 +14,34 @@ import Projects from "./components/Projects";
 import Footer from "./components/Footer";
 import { ToastProvider } from "./components/Toaster/ToastProvider";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin,SplitText);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, SplitText);
 ScrollToPlugin.config({ autoKill: true });
 
+function AppContent() {
+
+  return (
+    <div className="overflow-x-hidden">
+      <Navbar />
+      <main>
+        <Home/>
+        <AboutSection/>
+        <Skills />
+        <Projects/>
+        <Contact/>
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
 function App() {
-  const [currentPage, setCurrentPage] = useState(localStorage.getItem("inPage")||"#home");
-
-  // Section observers
-  const { ref: homeRef, inView: inHome } = useSectionObserver();
-  const { ref: aboutRef, inView: inAbout } = useSectionObserver();
-  const { ref: skillsRef, inView: inSkills } = useSectionObserver();
-  const { ref: projectsRef, inView: inProjects } = useSectionObserver();
-  const { ref: contactRef, inView: inContact } = useSectionObserver();
-
-  useEffect(() => {
-    if (inHome) setCurrentPage("#home");
-    else if (inAbout) setCurrentPage("#about");
-    else if (inProjects) setCurrentPage("#projects");
-    else if (inSkills) setCurrentPage("#skills");
-    else if (inContact) setCurrentPage("#contact");
-  }, [inHome, inAbout, inSkills, inContact]);
-  localStorage.setItem("inPage",currentPage)
-  
   return (
     <ToastProvider>
-    <div id="" className="overflow-x-hidden">
-      <Navbar currentPage={currentPage} />
-      <div id="">
-        <main>
-          <Home sectionRef={homeRef} />
-          <AboutSection sectionRef={aboutRef} />
-          <Skills sectionRef={skillsRef} />
-          <Projects sectionRef={projectsRef} />
-          <Contact sectionRef={contactRef} />
-        </main>
-      </div>
-      <Footer/>
-    </div>
+      <RefsProvider>
+        <PageProvider>
+          <AppContent />
+        </PageProvider>
+      </RefsProvider>
     </ToastProvider>
   );
 }

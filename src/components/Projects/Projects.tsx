@@ -7,12 +7,12 @@ import {
   animateHeading,
   animateSubHeading,
 } from "../../../animations";
+import { useRefs } from "../../../context/RefsContext";
 
-const Projects = ({
-  sectionRef,
-}: {
-  sectionRef: (node?: Element | null) => void;
-}) => {
+const Projects = () => {
+    const {projectsRef} = useRefs()
+  
+
   useGSAP(() => {
     animateDrop("#spinning-top");
     animateBackgroundHighlight("#project-heading span");
@@ -25,7 +25,7 @@ const Projects = ({
       <div className="container w-full flex-center flex sm:flex-nowrap gap-10  mb-10">
         <div className=" flex-center max-sm:flex-wrap-reverse gap-5 w-full sm:w-fit">
           <div
-            ref={sectionRef}
+            ref={projectsRef}
             className=" flex-center w-full flex-col space-y-5"
           >
             <h1 id="project-heading">

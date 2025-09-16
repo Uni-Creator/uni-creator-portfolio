@@ -3,12 +3,10 @@ import { useGSAP } from "@gsap/react";
 import HighlightProjects from "./HighlightProjects";
 import { projectsList } from "../../constants";
 import { homeAnimations } from "../../animations/homeAnimation";
+import { useRefs } from "../../context/RefsContext";
 
-const Home = ({
-  sectionRef,
-}: {
-  sectionRef: (node?: Element | null) => void;
-}) => {
+const Home = () => {
+  const {homeRef} = useRefs()
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -20,7 +18,7 @@ const Home = ({
 
   return (
     <section ref={scrollRef} id="home" className="relative mt-10">
-      <div ref={sectionRef} id="hero" className="relative z-10">
+      <div ref={homeRef} id="hero" className="relative z-10">
         <div id="hero-image-container" className="">
           <img id="left-img" src="/images/3D_Shape_2.avif" alt="hero-img-left" />
           <img id="right-img" src="/images/3D_Shape_4.avif" alt="hero-img-right" />

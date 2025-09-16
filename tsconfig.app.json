@@ -23,5 +23,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "animations/homeAnimation.ts"]
+  "include": ["src", "animations/homeAnimation.ts", "context/Oberver.ts"]
 }
