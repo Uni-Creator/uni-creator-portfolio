@@ -9,12 +9,12 @@ import Navigation from "./Navigation";
 import type { CarouselProps } from "../../utils/utilsType";
 import { debounce, throttle } from "../../utils/timing";
 
-const DEBOUNCE_DELAY = 2000;
-const THROTTLE_DELAY = 800; // prevent double animations
+const DEBOUNCE_DELAY = 300;
+const THROTTLE_DELAY = 200; // prevent double animations
 
 const Carousel = ({
   animationType = "slide-up",
-  animationDuration = 0.6,
+  animationDuration = 0.1,
 }: CarouselProps) => {
   const [current, setCurrent] = useState<number>(0);
   const [paused, setPaused] = useState<boolean>(false);

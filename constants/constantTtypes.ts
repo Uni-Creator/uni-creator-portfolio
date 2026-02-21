@@ -10,7 +10,9 @@ type ProjectType = {
       solution:string,
       techUsed:string,
       impact:string,
-      githubLink:string
+      githubLink:string,
+      liveLink?:string,
+      demoLink?:string
     }
 };
 

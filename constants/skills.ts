@@ -2,121 +2,156 @@ import type { SkillsListType } from "./constantTtypes";
 
 const mySkillsList: SkillsListType = [
   {
-    id: "ml-ai",
-    title: "Machine Learning & AI",
-    summary: "Designing intelligent systems for data-driven decision making.",
+    id: "ai-ml",
+    title: "AI / Machine Learning",
+    summary: "Building practical AI systems using modern ML and deep learning tools.",
     features: [
       {
-        id: "ml",
-        title: "Machine Learning (ML)",
-        description: "Designing and implementing predictive and adaptive models.",
-        level: "beginner",
-      },
-      {
-        id: "dl",
-        title: "Deep Learning",
-        description: "Building neural networks for complex data processing.",
-        level: "advanced",
-      },
-      {
-        id: "cnn",
-        title: "Convolutional Neural Networks (CNN)",
-        description: "Specializing in computer vision and image recognition tasks.",
+        id: "machine-learning",
+        title: "Machine Learning",
+        description: "Building supervised and unsupervised models for prediction and analysis.",
         level: "intermediate",
       },
       {
-        id: "nlp",
-        title: "Natural Language Processing (NLP)",
-        description: "Developing AI systems for text, sentiment, and speech analysis.",
+        id: "deep-learning",
+        title: "Deep Learning",
+        description: "Designing neural networks using PyTorch and modern DL techniques.",
+        level: "intermediate",
+      },
+      {
+        id: "computer-vision",
+        title: "Computer Vision",
+        description: "Real-time vision systems using OpenCV, MediaPipe and CNNs.",
         level: "advanced",
       },
       {
-        id: "genai",
+        id: "reinforcement-learning",
+        title: "Reinforcement Learning",
+        description: "Experimenting with learning agents, neuroevolution and game AI.",
+        level: "beginner"
+      },
+      {
+        id: "nlp",
+        title: "Natural Language Processing",
+        description: "LLMs, embeddings, semantic search and RAG pipelines.",
+        level: "intermediate",
+      },
+      {
+        id: "generative-ai",
         title: "Generative AI",
-        description: "Creating AI-driven content generation models.",
+        description: "Working with transformers, HuggingFace models and LLM applications.",
         level: "intermediate",
       },
     ],
   },
+
   {
-    id: "dev",
-    title: "Programming & Development",
-    summary: "Building scalable, efficient, and maintainable applications.",
+    id: "programming",
+    title: "Programming",
+    summary: "Developing software systems, AI pipelines and automation tools.",
     features: [
       {
         id: "python",
         title: "Python",
-        description: "Efficient scripting and AI/ML-focused programming.",
-        level: "expert",
+        description: "Primary language for AI, automation, and backend systems.",
+        level: "advanced",
       },
       {
         id: "cpp",
         title: "C++",
-        description: "High-performance programming for systems and applications.",
+        description: "Algorithmic programming and performance-focused applications.",
         level: "intermediate",
       },
       {
         id: "sql",
-        title: "SQL",
-        description: "Designing, querying, and optimizing relational databases.",
+        title: "SQL / Databases",
+        description: "Database schema design, queries and backend data management.",
         level: "advanced",
       },
       {
-        id: "matlab",
-        title: "MATLAB",
-        description: "Mathematical computing, prototyping, and simulations.",
-        level: "intermediate",
-      },
-      {
-        id: "r",
-        title: "R",
-        description: "Statistical computing, data visualization, and data analysis.",
+        id: "api",
+        title: "Backend APIs",
+        description: "Designing APIs and backend logic using modern services.",
         level: "intermediate",
       },
       {
         id: "web-scraping",
-        title: "Web Scraping",
-        description: "Automating structured data extraction from websites.",
+        title: "Data Collection / Web Scraping",
+        description: "Automating data extraction pipelines.",
         level: "advanced",
       },
     ],
   },
+
   {
-    id: "soft-skills",
-    title: "Technical & Soft Skills",
-    summary: "Core skills for effective teamwork, leadership, and innovation.",
+    id: "tools",
+    title: "Frameworks & Tools",
+    summary: "Libraries and platforms used across AI and product development.",
     features: [
       {
-        id: "problem-solving",
-        title: "Problem Solving",
-        description: "Applying logical reasoning to tackle complex issues.",
-        level: "expert",
-      },
-      {
-        id: "critical-thinking",
-        title: "Critical Thinking",
-        description: "Analyzing situations to develop innovative solutions.",
-        level: "advanced",
-      },
-      {
-        id: "team-coordination",
-        title: "Team Coordination",
-        description: "Collaborating effectively in technical and cross-functional teams.",
-        level: "advanced",
-      },
-      {
-        id: "project-management",
-        title: "Project Management",
-        description: "Planning and executing projects with clear milestones.",
+        id: "pytorch",
+        title: "PyTorch",
+        description: "Model development, training and experimentation.",
         level: "intermediate",
       },
       {
+        id: "opencv",
+        title: "OpenCV",
+        description: "Image processing and real-time computer vision systems.",
+        level: "advanced",
+      },
+      {
+        id: "langchain",
+        title: "LangChain",
+        description: "Building RAG pipelines and LLM-powered applications.",
+        level: "intermediate",
+      },
+      {
+        id: "supabase",
+        title: "Supabase",
+        description: "Authentication, database, storage and backend infrastructure.",
+        level: "advanced",
+      },
+      {
+        id: "git",
+        title: "Git / GitHub",
+        description: "Version control, collaboration and project management.",
+        level: "advanced",
+      },
+    ],
+  },
+
+  {
+    id: "engineering",
+    title: "Engineering Skills",
+    summary: "Core abilities required to design and ship real systems.",
+    features: [
+      {
+        id: "system-design",
+        title: "System Design",
+        description: "Designing scalable application architectures.",
+        level: "intermediate",
+      },
+      {
+        id: "problem-solving",
+        title: "Problem Solving",
+        description: "Breaking down complex technical challenges logically.",
+        level: "advanced",
+      },
+      {
         id: "research",
-        title: "Research Skills",
-        description: "Exploring new technologies and methodologies to innovate.",
+        title: "Technical Research",
+        description: "Exploring new models, papers and technologies.",
+        level: "advanced",
+      },
+      {
+        id: "project-building",
+        title: "Project Development",
+        description: "Turning ideas into working software products.",
         level: "advanced",
       },
     ],
   },
 ];
-export default mySkillsList;
+
+export default mySkillsList;  

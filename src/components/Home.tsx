@@ -41,7 +41,7 @@ const Home = ({
         </div>
       </div>
 
-      <HighlightProjects projects={projectsList} />
+      <HighlightProjects projects={projectsList.slice(0, 3)} />
     </section>
   );
 };

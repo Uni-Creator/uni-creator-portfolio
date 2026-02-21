@@ -6,7 +6,7 @@ const educationData: TimelineItem[] = [
     subtitle: "Central University of Karnataka",
     details: [
       "Relevant Coursework: Computer Architecture, Machine Learning, Artificial Intelligence, Data Structures, Cybersecurity, Software Development.",
-      "CGPA: 8.0 (Overall)",
+      "CGPA: 8.2 (Overall)",
     ],
   },
   {

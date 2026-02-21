@@ -12,7 +12,7 @@ const Slide: FC<SlideProps> = ({ title, summary, features, active, slideRef }) =
   return (
     <div
       ref={slideRef}
-      className={`slide-container w-full h-full transition-opacity duration-500 ${
+      className={`slide-container w-full h-full transition-opacity duration-200 ${
         active ? "active opacity-100" : "opacity-0"
       }`}
       style={{
