@@ -5,22 +5,21 @@ const projectsList: ProjectListType = [
     id: "cuk-commit",
     href: "#cuk-commit",
     title: "CUK Commit",
-    subtitle: "Full-Stack System Design",
+    subtitle: "Authentication & Backend",
     img: "/images/projects/cukcommit.avif",
     backgroundImg: "/images/projects/bg-cukcommit.avif",
     projectDetails: {
       problem:
-        "Campus students rely on generic dating apps with fake accounts and poor filtering.",
+        "Campus dating apps often lack verification, secure authentication, and structured matching systems.",
       solution:
-        "Built a university-exclusive dating platform with verified profiles, onboarding flow, secure authentication, and matching logic.",
+        "Implemented the complete authentication and backend infrastructure for the app, including login/signup, password reset flows, database design, matching logic, and push notification system.",
       techUsed:
-        "Flutter, Supabase, PostgreSQL, Edge Functions, OAuth, FCM",
+        "Flutter, Supabase, PostgreSQL, Edge Functions, FCM, OAuth",
       impact:
-        "Designed and deployed a full backend system including authentication, storage, database architecture, and notification system.",
+        "Built and integrated the backend with Flutter, handled authentication flows, Supabase database architecture, matching system, push notifications, deep link callbacks, and core app routing.",
       githubLink: "https://github.com/CUK-COMMIT/cukcommit-downloads",
       liveLink: "https://cuk-commit.vercel.app/",
       demoLink: "https://github.com/user-attachments/assets/fc0dc4ab-6eb7-4b5b-af38-8c8a727ea8da"
-
     }
   },
   {
@@ -40,8 +39,8 @@ const projectsList: ProjectListType = [
       impact:
         "Enabled semantic document search and contextual answers using embeddings and vector databases.",
       githubLink: "https://github.com/Uni-Creator/RAG-MultiFile-QA",
-      liveLink: "https://rag-multifile-qa.vercel.app/"
-    }
+      liveLink: "https://rag-multifile.streamlit.app/"
+    } 
   },
   {
     id: "hand-gesture-automation",
@@ -52,7 +51,7 @@ const projectsList: ProjectListType = [
     backgroundImg: "/images/projects/bg-gesture.avif",
     projectDetails: {
       problem:
-        "Traditional mouse input is inefficient for touchless interaction and accessibility.",
+        "Standard mouse and keyboard input require physical contact, making interaction difficult in situations where touchless control, accessibility, or hands-free operation is needed.",
       solution:
         "Created a real-time hand tracking system that converts webcam gestures into cursor movement and clicks.",
       techUsed:
@@ -60,7 +59,7 @@ const projectsList: ProjectListType = [
       impact:
         "Achieved smooth real-time control enabling hands-free computer interaction.",
       githubLink: "https://github.com/Uni-Creator/HandGestureAutomation",
-      demoLink: "https://hand-gesture-automation.vercel.app/"
+      demoLink: "https://github.com/user-attachments/assets/e914f0d4-db16-4bc7-b61d-b92f7e13c1c5"
     }
   },
   {
@@ -122,7 +121,7 @@ const projectsList: ProjectListType = [
       githubLink:
         "https://github.com/Uni-Creator/FlappyBird_GeneticAI_NEAT",
       liveLink: "https://flappy-bird-neat.vercel.app/",
-      demoLink: "https://flappy-bird-neat.vercel.app/"
+      demoLink: "https://github.com/user-attachments/assets/56b17a39-52e2-45a5-afd4-c24c7ee50357"
     }
   }
 ];
