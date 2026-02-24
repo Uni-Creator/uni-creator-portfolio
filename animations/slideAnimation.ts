@@ -24,8 +24,8 @@ export const animateSlide = (
     gsap.killTweensOf(oldSlide);
     tl.to(oldSlide, {
       autoAlpha: 0,
-      duration: duration / 2,
-      ease: "power2.in",
+      duration: duration * 0.6,
+      ease: "power1.inOut",
     });
   }
 
@@ -34,14 +34,14 @@ export const animateSlide = (
   gsap.killTweensOf(newSlide);
   gsap.set(newSlide, { visibility: "visible" });
 
-  const overlap = oldSlide ? "-=0.3" : "0";
+  const overlap = oldSlide ? `-=${duration * 0.65}` : "0";
 
   switch (type) {
     case "fade":
       tl.fromTo(
         newSlide,
         { autoAlpha: 0 },
-        { autoAlpha: 1, duration, ease: "power2.out" },
+        { autoAlpha: 1, duration, ease: "power1.inOut" },
         overlap
       );
       break;
@@ -49,7 +49,7 @@ export const animateSlide = (
     case "slide-up":
       tl.fromTo(
         newSlide,
-        { autoAlpha: 0, y: 100 },
+        { autoAlpha: 0, y: 40 },
         { autoAlpha: 1, y: 0, duration, ease: "power2.out" },
         overlap
       );
@@ -58,7 +58,7 @@ export const animateSlide = (
     case "slide-down":
       tl.fromTo(
         newSlide,
-        { autoAlpha: 0, y: -100 },
+        { autoAlpha: 0, y: -40 },
         { autoAlpha: 1, y: 0, duration, ease: "power2.out" },
         overlap
       );
@@ -67,7 +67,7 @@ export const animateSlide = (
     case "slide-left":
       tl.fromTo(
         newSlide,
-        { autoAlpha: 0, x: 100 },
+        { autoAlpha: 0, x: 40 },
         { autoAlpha: 1, x: 0, duration, ease: "power2.out" },
         overlap
       );
@@ -76,7 +76,7 @@ export const animateSlide = (
     case "slide-right":
       tl.fromTo(
         newSlide,
-        { autoAlpha: 0, x: -100 },
+        { autoAlpha: 0, x: -40 },
         { autoAlpha: 1, x: 0, duration, ease: "power2.out" },
         overlap
       );
@@ -113,7 +113,7 @@ export const animateSlide = (
       tl.fromTo(
         newSlide,
         { autoAlpha: 0 },
-        { autoAlpha: 1, duration, ease: "power2.out" },
+        { autoAlpha: 1, duration, ease: "power1.inOut" },
         overlap
       );
   }

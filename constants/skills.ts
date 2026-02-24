@@ -66,7 +66,7 @@ const mySkillsList: SkillsListType = [
         id: "sql",
         title: "SQL / Databases",
         description: "Database schema design, queries and backend data management.",
-        level: "advanced",
+        level: "intermediate",
       },
       {
         id: "api",

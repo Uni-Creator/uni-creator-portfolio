@@ -12,9 +12,8 @@ const Slide: FC<SlideProps> = ({ title, summary, features, active, slideRef }) =
   return (
     <div
       ref={slideRef}
-      className={`slide-container w-full h-full transition-opacity duration-200 ${
-        active ? "active opacity-100" : "opacity-0"
-      }`}
+      className={`slide-container w-full h-full transition-opacity duration-700 ease-in-out ${active ? "active opacity-100" : "opacity-0"
+        }`}
       style={{
         visibility: active ? "visible" : "hidden", // GSAP overrides anyway
         pointerEvents: active ? "auto" : "none",
@@ -39,10 +38,9 @@ const Slide: FC<SlideProps> = ({ title, summary, features, active, slideRef }) =
                   <h3 className="">{title}</h3>
                   {level && (
                     <span
-                      className={`level self-start ${
-                        levelColors[level.toLowerCase()] ||
+                      className={`level self-start ${levelColors[level.toLowerCase()] ||
                         "bg-gray-500/30 text-gray-300"
-                      }`}
+                        }`}
                     >
                       {level}
                     </span>

@@ -188,7 +188,7 @@ body {
     }
 
     .slide-container {
-      @apply absolute inset-0 backdrop-blur-md opacity-0 transition-opacity duration-500;
+      @apply absolute inset-0 backdrop-blur-md opacity-0 transition-opacity duration-700;
     }
 
     .slide-container.active {

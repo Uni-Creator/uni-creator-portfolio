@@ -79,7 +79,7 @@ const projectsList: ProjectListType = [
       impact:
         "Allows users to search images using natural language queries.",
       githubLink: "https://github.com/Uni-Creator/SmartGallery",
-      demoLink: "https://smart-gallery.vercel.app/"
+      demoLink: "https://github.com/user-attachments/assets/cd0bea7f-06ff-48d0-9c4f-0b1954e63030"
     }
   },
   {
@@ -120,7 +120,7 @@ const projectsList: ProjectListType = [
         "Agents progressively improved over generations demonstrating effective neuroevolution.",
       githubLink:
         "https://github.com/Uni-Creator/FlappyBird_GeneticAI_NEAT",
-      liveLink: "https://flappy-bird-neat.vercel.app/",
+      // liveLink: "https://flappy-bird-neat.vercel.app/",
       demoLink: "https://github.com/user-attachments/assets/56b17a39-52e2-45a5-afd4-c24c7ee50357"
     }
   }
