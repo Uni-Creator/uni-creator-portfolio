@@ -1,5 +1,5 @@
 import { useGSAP } from "@gsap/react";
-import { navLists, projectsList } from "../../../constants";
+import { navLists, projectsList, resumeList } from "../../../constants";
 import type { MenuListProps } from "../../utils/utilsType";
 import { useState, type MouseEvent } from "react";
 import gsap from "gsap";
@@ -10,6 +10,8 @@ export const MenuList = ({
   setIsOpen,
   isProjectsOpen,
   setIsProjectsOpen,
+  isResumeOpen,
+  setIsResumeOpen,
   currentPage,
 }: MenuListProps) => {
   const [scrollTo, setScrollTo] = useState<{ scrollto: string }>({
@@ -39,6 +41,14 @@ export const MenuList = ({
       setScrollTo({ scrollto: href });
     }
   };
+
+  const handleResumeClick = (e: MouseEvent) => {
+    e.preventDefault();
+    if (isMobile) {
+      setIsResumeOpen(!isResumeOpen);
+    }
+  };
+
   return (
     <div
       id="menuList"
@@ -59,20 +69,38 @@ export const MenuList = ({
                 ? "border-b-3 border-active-text"
                 : ""
             } relative  max-w-fit`}
-            onMouseEnter={() =>
-              !isMobile && list.id === "projects" && setIsProjectsOpen(true)
-            }
-            onMouseLeave={() => !isMobile && setIsProjectsOpen(false)}
+            onMouseEnter={() => {
+              if (!isMobile) {
+                if (list.id === "projects") setIsProjectsOpen(true);
+                if (list.id === "resume") setIsResumeOpen(true);
+              }
+            }}
+            onMouseLeave={() => {
+              if (!isMobile) {
+                if (list.id === "projects") setIsProjectsOpen(false);
+                if (list.id === "resume") setIsResumeOpen(false);
+              }
+            }}
           >
             <a
               href={list.href}
-              target="_blank"
               className={`hover:text-active-text text-xl md:text-xl`}
-              onClick={(e) =>
-                list.id !== "resume" && handleLinkClick(e, list.href)
-              }
+              onClick={(e) => {
+                if (list.id === "resume") {
+                  handleResumeClick(e);
+                } else if (list.id !== "resume") {
+                  handleLinkClick(e, list.href);
+                }
+              }}
             >
               {list.title}
+              {list.id === "resume" && (
+                <span className="ml-1 text-xs inline-block transition-transform duration-200"
+                  style={{ transform: isResumeOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                >
+                  ▾
+                </span>
+              )}
             </a>
             {list.id === "projects" && isProjectsOpen && (
               <ul className="md:absolute rounded  md:top-7 text-md md:right-0 md:bg-white md:shadow-lg md:rounded-lg md:p-2 mt-2 md:mt-0">
@@ -87,6 +115,25 @@ export const MenuList = ({
                       className="hover:text-active-text whitespace-nowrap"
                     >
                       {project.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {list.id === "resume" && isResumeOpen && (
+              <ul className="md:absolute rounded md:top-7 text-md md:right-0 md:bg-white md:shadow-lg md:rounded-lg md:p-2 mt-2 md:mt-0 min-w-[120px]">
+                {resumeList.map((resume) => (
+                  <li
+                    key={resume.id}
+                    className="p-2"
+                  >
+                    <a
+                      href={resume.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-active-text whitespace-nowrap"
+                    >
+                      {resume.title}
                     </a>
                   </li>
                 ))}

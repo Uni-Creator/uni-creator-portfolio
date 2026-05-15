@@ -5,8 +5,14 @@ const ContactDetails:ContactTtypes = {
   location: "New Delhi, India",
   phone: "+91 7836953713",
   email: "uni.creator001@gmail.com",
-  resumeUrl:
-    "https://5d1b98fc-9f35-4fc6-afed-01861f8eace7.filesusr.com/ugd/3048a2_fd50f532cc814bbb932c69ebf4eea7d0.pdf",
+  resumeUrls: {
+    aiml:
+      "https://drive.google.com/file/d/1Vp-wSAivZarrHR51CFfH8mCf81shoJZC/view?usp=drive_link",
+    rl:
+      "https://drive.google.com/file/d/1w1sgiXrXG0W2tvElVJzzaNlmza9DmuEl/view?usp=drive_link",
+    research:
+      "https://drive.google.com/file/d/1QOh20-tfDj2pdnkXycFEx4_PMvIboAiA/view?usp=drive_link",
+  },
   socialLinks:{
     github: "https://github.com/Uni-Creator",
     linkedin: "http://www.linkedin.com/in/singhrabhay",

@@ -8,6 +8,7 @@ const Navbar = ({ currentPage }: { currentPage: string }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const [isOpen, setIsOpen] = useState(false);
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const lastScroll = useRef(window.scrollY);
 
@@ -63,6 +64,8 @@ const Navbar = ({ currentPage }: { currentPage: string }) => {
         setIsOpen={setIsOpen}
         isProjectsOpen={isProjectsOpen}
         setIsProjectsOpen={setIsProjectsOpen}
+        isResumeOpen={isResumeOpen}
+        setIsResumeOpen={setIsResumeOpen}
         currentPage={currentPage}
       />
     </nav>

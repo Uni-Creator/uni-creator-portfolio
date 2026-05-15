@@ -59,9 +59,19 @@ interface ContactTtypes {
   location: string;
   phone: string;
   email: string;
-  resumeUrl: string;
+  resumeUrls: {
+    aiml: string;
+    rl: string;
+    research: string;
+  };
   socialLinks: {};
 }
+
+type ResumeListItem = {
+  id: string;
+  title: string;
+  href: string;
+};
 
 // Define field configuration
 type Field = {
@@ -73,4 +83,4 @@ type Field = {
   colSpan?: number; // for grid layout
 };
 
-export type { NavListsType, ProjectListType,AboutProps,SkillsListType,Skill,ContactTtypes,Field };
+export type { NavListsType, ProjectListType,AboutProps,SkillsListType,Skill,ContactTtypes,Field,ResumeListItem };

@@ -12,6 +12,8 @@ type MenuListProps = {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isProjectsOpen: boolean;
   setIsProjectsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isResumeOpen: boolean;
+  setIsResumeOpen: React.Dispatch<React.SetStateAction<boolean>>;
   currentPage: string;
 };
 

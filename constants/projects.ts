@@ -2,6 +2,30 @@ import type { ProjectListType } from "./constantTtypes";
 
 const projectsList: ProjectListType = [
   {
+    id: "rt-asl-recognition",
+    href: "#rt-asl-recognition",
+    title: "sign Sight",
+    subtitle: "Deep Learning",
+    img: "/images/projects/asl.avif",
+    backgroundImg: "/images/projects/bg-asl.avif",
+    projectDetails: {
+      problem:
+        "Communication barriers exist between deaf individuals and people unfamiliar with sign language.",
+      solution:
+        "Implemented an LSTM-based model to recognize sign language gestures in real time from webcam input.",
+      techUsed:
+        "PyTorch, OpenCV, MediaPipe",
+      impact:
+        "Demonstrates temporal gesture recognition using sequential deep learning models.",
+      githubLink:
+        "https://github.com/Uni-Creator/signSight",
+      liveLink:  
+        "https://github.com/Uni-Creator/signSight/releases/download/v1.0.0/signSightv1.0.0.apk",
+      demoLink: 
+        "https://github.com/user-attachments/assets/130351a1-b1d9-4432-a4a4-7e64ee8ec296",
+    }
+  },
+  {
     id: "cuk-commit",
     href: "#cuk-commit",
     title: "CUK Commit",
@@ -43,26 +67,6 @@ const projectsList: ProjectListType = [
     } 
   },
   {
-    id: "hand-gesture-automation",
-    href: "#hand-gesture-automation",
-    title: "Hand Gesture Automation",
-    subtitle: "Computer Vision",
-    img: "/images/projects/gesture.avif",
-    backgroundImg: "/images/projects/bg-gesture.avif",
-    projectDetails: {
-      problem:
-        "Standard mouse and keyboard input require physical contact, making interaction difficult in situations where touchless control, accessibility, or hands-free operation is needed.",
-      solution:
-        "Created a real-time hand tracking system that converts webcam gestures into cursor movement and clicks.",
-      techUsed:
-        "Python, OpenCV, MediaPipe",
-      impact:
-        "Achieved smooth real-time control enabling hands-free computer interaction.",
-      githubLink: "https://github.com/Uni-Creator/HandGestureAutomation",
-      demoLink: "https://github.com/user-attachments/assets/e914f0d4-db16-4bc7-b61d-b92f7e13c1c5"
-    }
-  },
-  {
     id: "smart-gallery",
     href: "#smart-gallery",
     title: "SmartGallery",
@@ -83,23 +87,23 @@ const projectsList: ProjectListType = [
     }
   },
   {
-    id: "rt-asl-recognition",
-    href: "#rt-asl-recognition",
-    title: "Sign Language Recognition",
-    subtitle: "Deep Learning",
-    img: "/images/projects/asl.avif",
-    backgroundImg: "/images/projects/bg-asl.avif",
+    id: "hand-gesture-automation",
+    href: "#hand-gesture-automation",
+    title: "Hand Gesture Automation",
+    subtitle: "Computer Vision",
+    img: "/images/projects/gesture.avif",
+    backgroundImg: "/images/projects/bg-gesture.avif",
     projectDetails: {
       problem:
-        "Communication barriers exist between deaf individuals and people unfamiliar with sign language.",
+        "Standard mouse and keyboard input require physical contact, making interaction difficult in situations where touchless control, accessibility, or hands-free operation is needed.",
       solution:
-        "Implemented an LSTM-based model to recognize sign language gestures in real time from webcam input.",
+        "Created a real-time hand tracking system that converts webcam gestures into cursor movement and clicks.",
       techUsed:
-        "PyTorch, OpenCV, MediaPipe",
+        "Python, OpenCV, MediaPipe",
       impact:
-        "Demonstrates temporal gesture recognition using sequential deep learning models.",
-      githubLink:
-        "https://github.com/Uni-Creator/Real-Time-Sign-Language-Recognition",
+        "Achieved smooth real-time control enabling hands-free computer interaction.",
+      githubLink: "https://github.com/Uni-Creator/HandGestureAutomation",
+      demoLink: "https://github.com/user-attachments/assets/e914f0d4-db16-4bc7-b61d-b92f7e13c1c5"
     }
   },
   {
@@ -120,7 +124,6 @@ const projectsList: ProjectListType = [
         "Agents progressively improved over generations demonstrating effective neuroevolution.",
       githubLink:
         "https://github.com/Uni-Creator/FlappyBird_GeneticAI_NEAT",
-      // liveLink: "https://flappy-bird-neat.vercel.app/",
       demoLink: "https://github.com/user-attachments/assets/56b17a39-52e2-45a5-afd4-c24c7ee50357"
     }
   }
