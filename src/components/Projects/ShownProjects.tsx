@@ -189,7 +189,7 @@ const FlagshipCard = ({ project }: { project: ProjectType }) => {
       ref={cardRef}
       {...eventHandlers}
       id={project.id}
-      className="project-card-item col-span-1 md:col-span-2 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition"
+      className="project-card-item col-span-1 md:col-span-2 bg-white border border-slate-200 rounded-xl shadow-sm md:hover:shadow-md"
     >
       {/* Top Banner Image Container */}
       <div className="project-card-image max-h-56" aria-hidden="true">
@@ -254,7 +254,7 @@ const StandardProjectCard = ({ project }: { project: ProjectType }) => {
       ref={cardRef}
       {...eventHandlers}
       id={project.id}
-      className="project-card-item bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition"
+      className="project-card-item bg-white border border-slate-200 rounded-xl shadow-sm md:hover:shadow-md"
     >
       {/* Image container — fixed 16/9 aspect ratio */}
       <div className="project-card-image" aria-hidden="true">

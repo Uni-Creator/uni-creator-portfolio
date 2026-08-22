@@ -6,6 +6,8 @@ const Navigation: FC<NavigationProps> = ({ current, goToSlide, pauseWithDebounce
   return (
     <>
       <button
+        type="button"
+        aria-label="Previous slide"
         onClick={() => {
           goToSlide(current - 1);
           pauseWithDebounce();
@@ -16,6 +18,8 @@ const Navigation: FC<NavigationProps> = ({ current, goToSlide, pauseWithDebounce
       </button>
 
       <button
+        type="button"
+        aria-label="Next slide"
         onClick={() => {
           goToSlide(current + 1);
           pauseWithDebounce();

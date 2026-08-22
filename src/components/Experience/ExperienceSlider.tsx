@@ -5,17 +5,20 @@ import ExperienceSlide from "./ExperienceSlide";
 const ExperienceSlider = () => {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
+
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
 
   const total = experienceData.length;
 
-  // Auto-play timer
+  // Auto-play
   useEffect(() => {
-    if (paused) return;
+    if (paused || total <= 1) return;
+
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % total);
     }, 7000);
+
     return () => clearInterval(timer);
   }, [paused, total]);
 
@@ -27,10 +30,15 @@ const ExperienceSlider = () => {
     setCurrent((prev) => (prev + 1) % total);
   };
 
-  // Touch handlers for mobile swipe support
+  // -----------------------------
+  // Touch / Swipe
+  // -----------------------------
+
   const handleTouchStart = (e: React.TouchEvent) => {
     setPaused(true);
+
     touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = null;
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
@@ -38,15 +46,28 @@ const ExperienceSlider = () => {
   };
 
   const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
-    const distance = touchStartX.current - touchEndX.current;
-    if (distance > 50) {
-      nextSlide(); // Swiped left
-    } else if (distance < -50) {
-      prevSlide(); // Swiped right
+    if (
+      touchStartX.current === null ||
+      touchEndX.current === null
+    ) {
+      setPaused(false);
+      return;
     }
+
+    const distance =
+      touchStartX.current - touchEndX.current;
+
+    const SWIPE_THRESHOLD = 50;
+
+    if (distance > SWIPE_THRESHOLD) {
+      nextSlide();
+    } else if (distance < -SWIPE_THRESHOLD) {
+      prevSlide();
+    }
+
     touchStartX.current = null;
     touchEndX.current = null;
+
     setPaused(false);
   };
 
@@ -59,23 +80,60 @@ const ExperienceSlider = () => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Slides Container */}
-      <div className="relative min-h-[380px] sm:min-h-[340px] flex items-center justify-center">
+      {/* Fixed viewport */}
+      <div
+        className="
+          relative
+          w-full
+          min-h-[520px]
+          sm:min-h-[420px]
+          md:min-h-[380px]
+        "
+      >
         {experienceData.map((item, index) => (
-          <ExperienceSlide key={index} item={item} active={index === current} />
+          <ExperienceSlide
+            key={index}
+            item={item}
+            active={index === current}
+          />
         ))}
       </div>
 
-      {/* Navigation Controls & Indicator Bar */}
+      {/* Navigation */}
       <div className="flex items-center justify-between mt-6 px-2">
-        {/* Prev Button */}
+        {/* Previous */}
         <button
           onClick={prevSlide}
-          className="p-2.5 rounded-full bg-white border border-slate-200 text-slate-700 hover:text-slate-900 hover:border-slate-400 shadow-sm transition cursor-pointer flex items-center justify-center"
+          className="
+            p-2.5
+            rounded-full
+            bg-white
+            border
+            border-slate-200
+            text-slate-700
+            hover:text-slate-900
+            hover:border-slate-400
+            shadow-sm
+            transition
+            cursor-pointer
+            flex
+            items-center
+            justify-center
+          "
           aria-label="Previous experience slide"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2.5}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </button>
 
@@ -85,24 +143,59 @@ const ExperienceSlider = () => {
             <button
               key={index}
               onClick={() => setCurrent(index)}
-              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                index === current
-                  ? "w-8 bg-slate-900"
-                  : "w-2.5 bg-slate-300 hover:bg-slate-400"
-              }`}
+              className={`
+                h-2.5
+                rounded-full
+                transition-all
+                duration-300
+                cursor-pointer
+                ${
+                  index === current
+                    ? "w-8 bg-slate-900"
+                    : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                }
+              `}
               aria-label={`Go to slide ${index + 1}`}
+              aria-current={
+                index === current ? "true" : undefined
+              }
             />
           ))}
         </div>
 
-        {/* Next Button */}
+        {/* Next */}
         <button
           onClick={nextSlide}
-          className="p-2.5 rounded-full bg-white border border-slate-200 text-slate-700 hover:text-slate-900 hover:border-slate-400 shadow-sm transition cursor-pointer flex items-center justify-center"
+          className="
+            p-2.5
+            rounded-full
+            bg-white
+            border
+            border-slate-200
+            text-slate-700
+            hover:text-slate-900
+            hover:border-slate-400
+            shadow-sm
+            transition
+            cursor-pointer
+            flex
+            items-center
+            justify-center
+          "
           aria-label="Next experience slide"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2.5}
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </button>
       </div>

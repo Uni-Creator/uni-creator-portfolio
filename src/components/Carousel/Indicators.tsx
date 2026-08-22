@@ -9,18 +9,25 @@ interface IndicatorsProps {
 
 const Indicators: FC<IndicatorsProps> = ({ count, current, goToSlide, pauseWithDebounce }) => {
   return (
-    <div className="absolute indicators bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+    <div className="absolute indicators bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-1">
       {Array.from({ length: count }).map((_, index) => (
         <button
           key={index}
-          className={`w-2.5 h-2.5 rounded-full transition-colors duration-300 ${
-            index === current ? "bg-white" : "bg-gray-500"
-          }`}
+          type="button"
+          aria-label={`Go to slide ${index + 1}`}
+          aria-current={index === current}
+          className="p-2 flex items-center justify-center"
           onClick={() => {
             goToSlide(index);
             pauseWithDebounce();
           }}
-        ></button>
+        >
+          <span
+            className={`block w-2.5 h-2.5 rounded-full transition-colors duration-300 ${
+              index === current ? "bg-white" : "bg-gray-500"
+            }`}
+          />
+        </button>
       ))}
     </div>
   );
