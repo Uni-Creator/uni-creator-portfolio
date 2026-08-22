@@ -1,17 +1,17 @@
 function DetailItem({
-  icon,
   label,
   text,
 }: {
-  icon: string;
   label: string;
   text: string;
 }) {
   return (
-    <div className="flex items-start gap-3">
-      <span className="text-indigo-500 text-xl">{icon}</span>
-      <p>
-        <strong>{label}:</strong> {text}
+    <div className="mb-3 last:mb-0">
+      <span className="block font-bold text-xs sm:text-sm text-slate-900 tracking-tight">
+        {label}
+      </span>
+      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mt-0.5">
+        {text}
       </p>
     </div>
   );

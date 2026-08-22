@@ -5,6 +5,7 @@ interface PageContextType {
   currentPage: string;
   homeRef: (node?: Element | null) => void;
   aboutRef: (node?: Element | null) => void;
+  experienceRef: (node?: Element | null) => void;
   skillsRef: (node?: Element | null) => void;
   projectsRef: (node?: Element | null) => void;
   contactRef: (node?: Element | null) => void;
@@ -15,6 +16,7 @@ const PageContext = createContext<PageContextType | null>(null);
 export const PageProvider = ({ children }: { children: React.ReactNode }) => {
   const { ref: homeRef, inView: inHome } = useSectionObserver();
   const { ref: aboutRef, inView: inAbout } = useSectionObserver();
+  const { ref: experienceRef, inView: inExperience } = useSectionObserver();
   const { ref: skillsRef, inView: inSkills } = useSectionObserver();
   const { ref: projectsRef, inView: inProjects } = useSectionObserver();
   const { ref: contactRef, inView: inContact } = useSectionObserver();
@@ -26,10 +28,11 @@ export const PageProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     if (inHome) setCurrentPage("#home");
     else if (inAbout) setCurrentPage("#about");
+    else if (inExperience) setCurrentPage("#experience");
     else if (inProjects) setCurrentPage("#projects");
     else if (inSkills) setCurrentPage("#skills");
     else if (inContact) setCurrentPage("#contact");
-  }, [inHome, inAbout, inSkills, inProjects, inContact]);
+  }, [inHome, inAbout, inExperience, inSkills, inProjects, inContact]);
 
   useEffect(() => {
     localStorage.setItem("inPage", currentPage);
@@ -37,7 +40,15 @@ export const PageProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <PageContext.Provider
-      value={{ currentPage, homeRef, aboutRef, skillsRef, projectsRef, contactRef }}
+      value={{
+        currentPage,
+        homeRef,
+        aboutRef,
+        experienceRef,
+        skillsRef,
+        projectsRef,
+        contactRef,
+      }}
     >
       {children}
     </PageContext.Provider>

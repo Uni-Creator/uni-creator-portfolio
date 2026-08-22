@@ -1,6 +1,6 @@
 import type { AboutProps } from "../../../constants/constantTtypes";
 
-const AboutMe = ({ heading, description, highlights, tagline }: AboutProps) => {
+const AboutMe = ({ heading, paragraphs, highlights }: AboutProps) => {
   // Sort highlights by length so multi-word phrases get matched before single words
   const sortedHighlights = [...highlights].sort(
     (a, b) => b.text.length - a.text.length
@@ -12,33 +12,41 @@ const AboutMe = ({ heading, description, highlights, tagline }: AboutProps) => {
     "gi"
   );
 
-  // Replace with <strong>
-  const parts = description.split(pattern);
+  // Highlight a single paragraph string
+  const renderHighlighted = (text: string, paraIndex: number) => {
+    const parts = text.split(pattern);
+    const matches = text.match(pattern);
 
-  // Extract matches separately
-  const matches = description.match(pattern);
-
-  return (
-    <div className="flex flex-col items-start justify-center space-y-6 text-text-primary/80 w-full max-w-5xl z-10">
-      <h2 className="text-5xl md:text-6xl text-white font-extrabold tracking-tight">
-        {heading}
-      </h2>
-
-      <p className="text-xl leading-relaxed  text-white">
+    return (
+      <p
+        key={paraIndex}
+        className="text-lg leading-relaxed text-white/90 mb-4 last:mb-0"
+      >
         {parts.map((part, i) => (
           <span key={i}>
             {part}
             {matches && matches[i] ? (
-              <strong className="text-[#4DFFBE]/60">{matches[i]}</strong>
+              <strong className="text-white font-semibold underline underline-offset-4 decoration-indigo-400">
+                {matches[i]}
+              </strong>
             ) : null}
           </span>
         ))}
       </p>
+    );
+  };
 
-      <span className="text-lg italic text-indigo-200">{tagline}</span>
+  return (
+    <div className="flex flex-col items-start justify-center space-y-4 text-text-primary/80 w-full max-w-3xl z-10">
+      <h2 className="text-4xl md:text-5xl text-white font-extrabold tracking-tight mb-4">
+        {heading}
+      </h2>
+
+      <div className="space-y-3">
+        {paragraphs.map((para, i) => renderHighlighted(para, i))}
+      </div>
     </div>
   );
 };
-
 
 export default AboutMe;

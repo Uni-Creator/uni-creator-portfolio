@@ -1,28 +1,61 @@
+type TechnicalDetails = {
+  problem: string;
+  solution: string;
+  result: string;
+  techStack?: string;
+  githubLink?: string;
+  liveLink?: string;
+  demoLink?: string;
+};
+
+type ProjectSubComponent = {
+  title: string;
+  subtitle: string;
+  description: string;
+  architecture?: string[];
+  techStack: string;
+  githubLink?: string;
+  demoLink?: string;
+  liveLink?: string;
+  technicalDetails?: TechnicalDetails;
+  details?: TechnicalDetails;
+};
+
 type ProjectType = {
     id: string;
     href: string;
     title: string;
-    subtitle:string;
-    img:string;
-    backgroundImg?:string,
-    projectDetails ?:{
-      problem:string,
-      solution:string,
-      techUsed:string,
-      impact:string,
-      githubLink:string,
-      liveLink?:string,
-      demoLink?:string
-    }
+    subtitle: string;
+    description?: string;
+    img: string;
+    backgroundImg?: string;
+    category?: string;
+    isFlagship?: boolean;
+    components?: {
+      recognition?: ProjectSubComponent;
+      production?: ProjectSubComponent;
+    };
+    architecture?: string[];
+    techStack?: string;
+    githubLink?: string;
+    liveLink?: string;
+    demoLink?: string;
+    technicalDetails?: TechnicalDetails;
+    projectDetails?: TechnicalDetails & {
+      techStack?: string;
+      githubLink?: string;
+      liveLink?: string;
+      demoLink?: string;
+    };
 };
 
 type ProjectListType = ProjectType[];
+
 // A single feature inside a skill
 type Feature = {
   id: string;              // unique identifier (useful for rendering)
   title: string;           // short label e.g. "React"
   description?: string;    // optional explanation of the feature/work
-  level?: "beginner" | "intermediate" | "advanced" | "expert"; // optional proficiency
   iconUrl?: string;        // optional icon for UI
 };
 
@@ -48,22 +81,16 @@ type NavListsType = NavList[];
 
 type AboutProps = {
   heading: string;
-  description: string;
+  paragraphs: string[];
   highlights: { text: string; highlight?: boolean }[];
-  tagline: string;
 };
 
 
 interface ContactTtypes {
   id: string;
   location: string;
-  phone: string;
   email: string;
-  resumeUrls: {
-    aiml: string;
-    rl: string;
-    research: string;
-  };
+  resumeUrls: string; 
   socialLinks: {};
 }
 
@@ -83,4 +110,22 @@ type Field = {
   colSpan?: number; // for grid layout
 };
 
-export type { NavListsType, ProjectListType,AboutProps,SkillsListType,Skill,ContactTtypes,Field,ResumeListItem };
+// Experience / Work timeline item
+type ExperienceItem = {
+  period: string;
+  title: string;
+  subtitle: string;
+  location?: string;
+  details: string[];
+};
+
+// Generic timeline item (education + experience share this shape)
+type TimelineItem = {
+  period: string;
+  title: string;
+  subtitle?: string;
+  location?: string;
+  details: string[];
+};
+
+export type { NavListsType, ProjectListType, ProjectType, ProjectSubComponent, TechnicalDetails, AboutProps, SkillsListType, Skill, ContactTtypes, Field, ResumeListItem, ExperienceItem, TimelineItem };

@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import { navLists, projectsList, resumeList } from "../../../constants";
 import type { MenuListProps } from "../../utils/utilsType";
-import { useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import gsap from "gsap";
 
 export const MenuList = ({
@@ -17,14 +17,37 @@ export const MenuList = ({
   const [scrollTo, setScrollTo] = useState<{ scrollto: string }>({
     scrollto: "",
   });
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobile) {
+      document.body.style.overflow = isOpen ? "hidden" : "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen, isMobile]);
+
+  // Close on outside click
+  useEffect(() => {
+    if (!isMobile || !isOpen) return;
+    const handleOutside = (e: MouseEvent | globalThis.MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutside);
+    return () => document.removeEventListener("mousedown", handleOutside);
+  }, [isMobile, isOpen, setIsOpen]);
+
   useGSAP(() => {
     if (scrollTo.scrollto) {
       gsap.to(window, {
-  duration: 1,
-  scrollTo: scrollTo.scrollto, // just pass string selector
-  ease: "sine.out",
-});
-
+        duration: 1,
+        scrollTo: scrollTo.scrollto,
+        ease: "sine.out",
+      });
     }
   }, [scrollTo]);
 
@@ -51,6 +74,7 @@ export const MenuList = ({
 
   return (
     <div
+      ref={menuRef}
       id="menuList"
       className={`${
         isOpen && isMobile ? "nav-list-mobile" : "hidden"
@@ -65,10 +89,9 @@ export const MenuList = ({
         {navLists.map((list) => (
           <li
             key={list.id}
-            className={`${currentPage === list.href
-                ? "border-b-3 border-active-text"
-                : ""
-            } relative  max-w-fit`}
+            className={`${
+              currentPage === list.href ? "border-b-3 border-active-text" : ""
+            } relative max-w-fit`}
             onMouseEnter={() => {
               if (!isMobile) {
                 if (list.id === "projects") setIsProjectsOpen(true);
@@ -84,26 +107,30 @@ export const MenuList = ({
           >
             <a
               href={list.href}
-              className={`hover:text-active-text text-xl md:text-xl`}
+              className={`hover:text-active-text text-xl md:text-base lg:text-lg`}
               onClick={(e) => {
                 if (list.id === "resume") {
                   handleResumeClick(e);
-                } else if (list.id !== "resume") {
+                } else {
                   handleLinkClick(e, list.href);
                 }
               }}
             >
               {list.title}
               {list.id === "resume" && (
-                <span className="ml-1 text-xs inline-block transition-transform duration-200"
-                  style={{ transform: isResumeOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                <span
+                  className="ml-1 text-xs inline-block transition-transform duration-200"
+                  style={{
+                    transform: isResumeOpen ? "rotate(180deg)" : "rotate(0deg)",
+                  }}
                 >
                   ▾
                 </span>
               )}
             </a>
+
             {list.id === "projects" && isProjectsOpen && (
-              <ul className="md:absolute rounded  md:top-7 text-md md:right-0 md:bg-white md:shadow-lg md:rounded-lg md:p-2 mt-2 md:mt-0">
+              <ul className="md:absolute rounded md:top-7 text-md md:right-0 md:bg-white md:shadow-lg md:rounded-lg md:p-2 mt-2 md:mt-0">
                 {projectsList.map((project, pIdx) => (
                   <li
                     key={project.href + pIdx}
@@ -112,7 +139,7 @@ export const MenuList = ({
                   >
                     <a
                       href={project.href}
-                      className="hover:text-active-text whitespace-nowrap"
+                      className="hover:text-active-text whitespace-nowrap text-sm"
                     >
                       {project.title}
                     </a>
@@ -120,18 +147,17 @@ export const MenuList = ({
                 ))}
               </ul>
             )}
+
             {list.id === "resume" && isResumeOpen && (
-              <ul className="md:absolute rounded md:top-7 text-md md:right-0 md:bg-white md:shadow-lg md:rounded-lg md:p-2 mt-2 md:mt-0 min-w-[120px]">
+              <ul className="md:absolute rounded md:top-7 text-md md:right-0 md:bg-white md:shadow-lg md:rounded-lg md:p-2 mt-2 md:mt-0 min-w-[150px]">
                 {resumeList.map((resume) => (
-                  <li
-                    key={resume.id}
-                    className="p-2"
-                  >
+                  <li key={resume.id} className="p-2">
                     <a
                       href={resume.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-active-text whitespace-nowrap"
+                      className="hover:text-active-text whitespace-nowrap text-sm"
+                      onClick={() => isMobile && setIsOpen(false)}
                     >
                       {resume.title}
                     </a>

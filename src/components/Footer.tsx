@@ -1,52 +1,46 @@
-import { GithubIcon, LinkedinIcon, TwitterIcon } from "../assets/icons";
+import { GithubIcon, LinkedinIcon } from "../assets/icons";
+import { contactDetails } from "../../constants";
+
+const socialLinks = contactDetails.socialLinks as Record<string, string>;
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-primary text-text-primary to-purple-500  py-8 mt-10">
-      <div className="container mx-auto px-4 flex flex-col justify-between items-center space-y-6">
-        {/* Brand Section */}
-        <div className="text-lg w-full text-center font-semibold">
-          © {new Date().getFullYear()} Uni-Creator. All rights reserved.
+    <footer className="bg-gradient-to-b from-primary text-text-primary to-purple-500 py-8 mt-10">
+      <div className="container mx-auto px-4 flex flex-col justify-between items-center space-y-5">
+        {/* Brand */}
+        <div className="text-base w-full text-center font-semibold">
+          © {new Date().getFullYear()} Abhay Singh · Uni-Creator
         </div>
 
-        {/* Creator Section */}
-        <div className="text-sm w-full text-text-primary/40 text-center font-semibold">
-          Created By:{" "}
+        {/* Social Links */}
+        <div className="flex items-center gap-5">
           <a
-            href="https://github.com/shivamByteLab"
+            href={socialLinks.github || "https://github.com/Uni-Creator"}
             target="_blank"
-            title="https://github.com/shivamByteLab"
-            className="mx-2 text-white/70 hover:text-yellow-300 transition duration-300"
-          >
-            shivamByteLab
-          </a>
-        </div>
-
-        {/* Social Media Links */}
-        <div className="flex space-x-4">
-          <a
-            href="https://github.com/shivamByteLab"
-            target="_blank"
-            className="text-white/70 hover:text-yellow-300 transition duration-300"
+            rel="noopener noreferrer"
+            className="text-text-primary/70 hover:text-text-primary transition duration-300"
             title="GitHub"
+            aria-label="Abhay Singh on GitHub"
           >
-            <i className="fab fa-github text-2xl"><GithubIcon size={18}/></i>
+            <GithubIcon size={20} />
           </a>
           <a
-            href="https://linkedin.com/in/shivam99singh33"
+            href={socialLinks.linkedin || "http://www.linkedin.com/in/singhrabhay"}
             target="_blank"
-            className="text-white/70 hover:text-yellow-300 transition duration-300"
+            rel="noopener noreferrer"
+            className="text-text-primary/70 hover:text-text-primary transition duration-300"
             title="LinkedIn"
+            aria-label="Abhay Singh on LinkedIn"
           >
-            <i className="fab fa-linkedin text-2xl"><LinkedinIcon size={18}/></i>
+            <LinkedinIcon size={20} />
           </a>
           <a
-            href="https://x.com/shivam99singh33"
-            target="_blank"
-            className="text-black/70 hover:text-yellow-300 transition duration-300"
-            title="Twitter"
+            href={`mailto:${contactDetails.email}`}
+            className="text-text-primary/70 hover:text-text-primary transition duration-300 text-sm font-medium"
+            title="Email"
+            aria-label="Email Abhay Singh"
           >
-            <i className="fab fa-twitter text-2xl"><TwitterIcon size={18}/></i>
+            {contactDetails.email}
           </a>
         </div>
       </div>

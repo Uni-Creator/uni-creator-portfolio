@@ -7,11 +7,12 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar/Navbar";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
+import Experience from "./components/Experience";
 import { ToastProvider } from "./components/Toaster/ToastProvider";
 
-import { ScrollToPlugin,ScrollTrigger,SplitText } from "gsap/all";
+import { ScrollToPlugin, ScrollTrigger, SplitText } from "gsap/all";
 
-gsap.registerPlugin(ScrollToPlugin,SplitText,ScrollTrigger)
+gsap.registerPlugin(ScrollToPlugin, SplitText, ScrollTrigger);
 
 function App() {
   return (
@@ -21,22 +22,32 @@ function App() {
   );
 }
 export default App;
+
 function InnerApp() {
-  const { currentPage, homeRef, aboutRef, skillsRef, projectsRef, contactRef } = usePage();
+  const {
+    currentPage,
+    homeRef,
+    aboutRef,
+    experienceRef,
+    skillsRef,
+    projectsRef,
+    contactRef,
+  } = usePage();
 
   return (
     <ToastProvider>
-    <div className="overflow-x-hidden">
-      <Navbar currentPage={currentPage} />
-      <main>
-        <Home sectionRef={homeRef} />
-        <AboutSection sectionRef={aboutRef} />
-        <Skills sectionRef={skillsRef} />
-        <Projects sectionRef={projectsRef} />
-        <Contact sectionRef={contactRef} />
-      </main>
-      <Footer />
-    </div>
+      <div className="overflow-x-hidden">
+        <Navbar currentPage={currentPage} />
+        <main>
+          <Home sectionRef={homeRef} />
+          <AboutSection sectionRef={aboutRef} />
+          <Experience sectionRef={experienceRef} />
+          <Projects sectionRef={projectsRef} />
+          <Skills sectionRef={skillsRef} />
+          <Contact sectionRef={contactRef} />
+        </main>
+        <Footer />
+      </div>
     </ToastProvider>
   );
 }

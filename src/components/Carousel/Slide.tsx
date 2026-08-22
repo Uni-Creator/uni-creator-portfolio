@@ -1,21 +1,15 @@
 import type { FC } from "react";
 import type { SlideProps } from "../../utils/utilsType";
 
-const levelColors: Record<string, string> = {
-  beginner: "bg-red-500/30 text-red-300",
-  intermediate: "bg-yellow-500/30 text-yellow-300",
-  advanced: "bg-blue-500/30 text-blue-300",
-  expert: "bg-green-500/30 text-green-300",
-};
-
 const Slide: FC<SlideProps> = ({ title, summary, features, active, slideRef }) => {
   return (
     <div
       ref={slideRef}
-      className={`slide-container w-full h-full transition-opacity duration-700 ease-in-out ${active ? "active opacity-100" : "opacity-0"
-        }`}
+      className={`slide-container w-full h-full transition-opacity duration-700 ease-in-out ${
+        active ? "active opacity-100" : "opacity-0"
+      }`}
       style={{
-        visibility: active ? "visible" : "hidden", // GSAP overrides anyway
+        visibility: active ? "visible" : "hidden",
         pointerEvents: active ? "auto" : "none",
       }}
     >
@@ -32,19 +26,10 @@ const Slide: FC<SlideProps> = ({ title, summary, features, active, slideRef }) =
         {/* Features */}
         <div className="content">
           <ul>
-            {features.map(({ id, title, description, level }) => (
+            {features.map(({ id, title, description }) => (
               <li key={id}>
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="">{title}</h3>
-                  {level && (
-                    <span
-                      className={`level self-start ${levelColors[level.toLowerCase()] ||
-                        "bg-gray-500/30 text-gray-300"
-                        }`}
-                    >
-                      {level}
-                    </span>
-                  )}
+                <div className="mb-2">
+                  <h3>{title}</h3>
                 </div>
                 {description && <p>{description}</p>}
               </li>

@@ -4,154 +4,167 @@ const mySkillsList: SkillsListType = [
   {
     id: "ai-ml",
     title: "AI / Machine Learning",
-    summary: "Building practical AI systems using modern ML and deep learning tools.",
-    features: [
-      {
-        id: "machine-learning",
-        title: "Machine Learning",
-        description: "Building supervised and unsupervised models for prediction and analysis.",
-        level: "intermediate",
-      },
-      {
-        id: "deep-learning",
-        title: "Deep Learning",
-        description: "Designing neural networks using PyTorch and modern DL techniques.",
-        level: "intermediate",
-      },
-      {
-        id: "computer-vision",
-        title: "Computer Vision",
-        description: "Real-time vision systems using OpenCV, MediaPipe and CNNs.",
-        level: "advanced",
-      },
-      {
-        id: "reinforcement-learning",
-        title: "Reinforcement Learning",
-        description: "Experimenting with learning agents, neuroevolution and game AI.",
-        level: "beginner"
-      },
-      {
-        id: "nlp",
-        title: "Natural Language Processing",
-        description: "LLMs, embeddings, semantic search and RAG pipelines.",
-        level: "intermediate",
-      },
-      {
-        id: "generative-ai",
-        title: "Generative AI",
-        description: "Working with transformers, HuggingFace models and LLM applications.",
-        level: "intermediate",
-      },
-    ],
-  },
-
-  {
-    id: "programming",
-    title: "Programming",
-    summary: "Developing software systems, AI pipelines and automation tools.",
-    features: [
-      {
-        id: "python",
-        title: "Python",
-        description: "Primary language for AI, automation, and backend systems.",
-        level: "advanced",
-      },
-      {
-        id: "cpp",
-        title: "C++",
-        description: "Algorithmic programming and performance-focused applications.",
-        level: "intermediate",
-      },
-      {
-        id: "sql",
-        title: "SQL / Databases",
-        description: "Database schema design, queries and backend data management.",
-        level: "intermediate",
-      },
-      {
-        id: "api",
-        title: "Backend APIs",
-        description: "Designing APIs and backend logic using modern services.",
-        level: "intermediate",
-      },
-      {
-        id: "web-scraping",
-        title: "Data Collection / Web Scraping",
-        description: "Automating data extraction pipelines.",
-        level: "advanced",
-      },
-    ],
-  },
-
-  {
-    id: "tools",
-    title: "Frameworks & Tools",
-    summary: "Libraries and platforms used across AI and product development.",
+    summary: "Building and training models for deep learning, NLP, and generative AI tasks.",
     features: [
       {
         id: "pytorch",
         title: "PyTorch",
-        description: "Model development, training and experimentation.",
-        level: "intermediate",
+        description: "Model development, training loops, custom datasets, and experimentation.",
       },
       {
-        id: "opencv",
-        title: "OpenCV",
-        description: "Image processing and real-time computer vision systems.",
-        level: "advanced",
+        id: "tensorflow",
+        title: "TensorFlow / Keras",
+        description: "Building and fine-tuning models for classification and sequence tasks.",
+      },
+      {
+        id: "scikit-learn",
+        title: "Scikit-learn",
+        description: "Classical ML pipelines, feature engineering, cross-validation.",
+      },
+      {
+        id: "huggingface",
+        title: "Hugging Face",
+        description: "Pretrained transformers, tokenizers, and model hub integration.",
       },
       {
         id: "langchain",
         title: "LangChain",
         description: "Building RAG pipelines and LLM-powered applications.",
-        level: "intermediate",
-      },
-      {
-        id: "supabase",
-        title: "Supabase",
-        description: "Authentication, database, storage and backend infrastructure.",
-        level: "advanced",
-      },
-      {
-        id: "git",
-        title: "Git / GitHub",
-        description: "Version control, collaboration and project management.",
-        level: "advanced",
       },
     ],
   },
 
   {
-    id: "engineering",
-    title: "Engineering Skills",
-    summary: "Core abilities required to design and ship real systems.",
+    id: "computer-vision",
+    title: "Computer Vision",
+    summary: "Real-time vision systems, image understanding, and semantic retrieval.",
     features: [
       {
-        id: "system-design",
-        title: "System Design",
-        description: "Designing scalable application architectures.",
-        level: "intermediate",
+        id: "opencv",
+        title: "OpenCV",
+        description: "Image processing, video capture, and real-time computer vision.",
       },
       {
-        id: "problem-solving",
-        title: "Problem Solving",
-        description: "Breaking down complex technical challenges logically.",
-        level: "advanced",
+        id: "mediapipe",
+        title: "MediaPipe",
+        description: "Hand, pose, and face landmark estimation for real-time applications.",
       },
       {
-        id: "research",
-        title: "Technical Research",
-        description: "Exploring new models, papers and technologies.",
-        level: "advanced",
+        id: "clip",
+        title: "CLIP",
+        description: "Vision-language embeddings for semantic image search and retrieval.",
       },
       {
-        id: "project-building",
-        title: "Project Development",
-        description: "Turning ideas into working software products.",
-        level: "advanced",
+        id: "yolo",
+        title: "YOLO",
+        description: "Object detection for real-time video and image analysis.",
+      },
+    ],
+  },
+
+  {
+    id: "ai-systems",
+    title: "AI Systems",
+    summary: "Designing retrieval pipelines, deploying models, and integrating AI into applications.",
+    features: [
+      {
+        id: "rag",
+        title: "RAG Pipelines",
+        description: "Retrieval-Augmented Generation with chunking, embeddings, and vector search.",
+      },
+      {
+        id: "embeddings",
+        title: "Embeddings & Vector Search",
+        description: "Semantic similarity, FAISS indexing, and retrieval systems.",
+      },
+      {
+        id: "model-deployment",
+        title: "Model Deployment",
+        description: "Exporting models and serving inference through REST APIs.",
+      },
+      {
+        id: "llm-apis",
+        title: "LLM APIs",
+        description: "Integrating language model endpoints into application pipelines.",
+      },
+      {
+        id: "rest-apis",
+        title: "REST APIs",
+        description: "Designing and consuming API endpoints for AI system integration.",
+      },
+    ],
+  },
+
+  {
+    id: "software",
+    title: "Software",
+    summary: "Core programming, version control, and system tooling.",
+    features: [
+      {
+        id: "python",
+        title: "Python",
+        description: "Primary language for AI, automation, data pipelines, and backends.",
+      },
+      {
+        id: "cpp",
+        title: "C++",
+        description: "Algorithmic and performance-focused programming.",
+      },
+      {
+        id: "sql",
+        title: "SQL",
+        description: "Database schema design, queries, and relational data management.",
+      },
+      {
+        id: "git",
+        title: "Git / GitHub",
+        description: "Version control, branching, and collaborative development.",
+      },
+      {
+        id: "linux",
+        title: "Linux",
+        description: "Command-line tooling, scripting, and server-side workflows.",
+      },
+      {
+        id: "docker",
+        title: "Docker",
+        description: "Containerizing services and managing deployment environments.",
+      },
+    ],
+  },
+
+  {
+    id: "backend",
+    title: "Backend & Infrastructure",
+    summary: "Building API services, managing databases, and deploying backend systems.",
+    features: [
+      {
+        id: "flask",
+        title: "Flask / FastAPI",
+        description: "Python web frameworks for building and serving API endpoints.",
+      },
+      {
+        id: "postgresql",
+        title: "PostgreSQL",
+        description: "Relational database design, queries, and schema management.",
+      },
+      {
+        id: "supabase",
+        title: "Supabase",
+        description: "Authentication, database, storage, and edge functions.",
+      },
+      {
+        id: "redis",
+        title: "Redis",
+        description: "Caching model inference results and reducing backend load.",
+      },
+      {
+        id: "streamlit",
+        title: "Streamlit",
+        description: "Building and deploying AI-focused web interfaces quickly.",
       },
     ],
   },
 ];
 
-export default mySkillsList;  
+export default mySkillsList;

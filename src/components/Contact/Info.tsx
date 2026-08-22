@@ -30,7 +30,7 @@ const Info = ({ videoAction, setVideoAction }: { videoAction: "success" | "error
       };
       video.addEventListener("timeupdate", stopVideo);
     }
-    setVideoAction(null)
+    setVideoAction(null);
   }, [videoAction]);
 
   useGSAP(() => {
@@ -43,18 +43,15 @@ const Info = ({ videoAction, setVideoAction }: { videoAction: "success" | "error
       },
     });
 
-    tl.from("#overlay", { opacity: 0, duration: 1 })
-      .fromTo(
-        videoRef.current,
-        { scale: 1.2, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 2.5, ease: "power2.out" },
-        "-=0.5"
-      );
+    tl.from("#overlay", { opacity: 0, duration: 1 }).fromTo(
+      videoRef.current,
+      { scale: 1.2, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 2.5, ease: "power2.out" },
+      "-=0.5"
+    );
 
     TypingAnimation("#title-left");
   }, []);
-
-
 
   return (
     <div className="relative w-full h-full order-2 md:order-1">
@@ -67,6 +64,7 @@ const Info = ({ videoAction, setVideoAction }: { videoAction: "success" | "error
           muted
           playsInline
           className="w-full h-full object-cover"
+          aria-hidden="true"
         />
       </div>
 
@@ -78,9 +76,19 @@ const Info = ({ videoAction, setVideoAction }: { videoAction: "success" | "error
         </h3>
 
         <ul className="space-y-4 text-gray-200">
-          <li>🌏 <span className="text-white/70 ml-1">{contactDetails.location}</span></li>
-          <li>📧 <span className="text-blue-300 select-all ml-1">{contactDetails.email}</span></li>
-          <li>📞 <span className="text-white/70 ml-1">{contactDetails.phone}</span></li>
+          <li>
+            🌏{" "}
+            <span className="text-white/70 ml-1">{contactDetails.location}</span>
+          </li>
+          <li>
+            📧{" "}
+            <a
+              href={`mailto:${contactDetails.email}`}
+              className="text-blue-300 select-all ml-1 hover:text-blue-200 transition"
+            >
+              {contactDetails.email}
+            </a>
+          </li>
         </ul>
 
         <SocialLinks />
