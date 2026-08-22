@@ -269,7 +269,7 @@ body {
     }
 
     .content li {
-      @apply p-4 bg-slate-800/80 rounded-lg hover:bg-slate-800 border border-slate-750 transition;
+      @apply p-4 bg-slate-800/80 rounded-lg hover:bg-slate-800 border border-slate-700 transition;
     }
 
     .content li h3 {
