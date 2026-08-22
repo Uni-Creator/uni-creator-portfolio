@@ -285,7 +285,7 @@ const StandardProjectCard = ({ project }: { project: ProjectType }) => {
         </div>
 
         {/* Short description (2-3 lines desktop) */}
-        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-3">
+        <p className="text-sm sm:text-base text-slate-700 leading-relaxed mb-3">
           {project.description || details?.solution}
         </p>
 

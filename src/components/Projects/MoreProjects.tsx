@@ -3,28 +3,40 @@ import { GithubIcon } from "../../assets/icons/GithubIcon";
 
 const MORE_PROJECTS = [
   {
-    id: "hand-gesture-automation",
-    title: "Hand Gesture Automation",
-    subtitle: "Computer Vision · Real-Time Gesture Control",
-    github: "https://github.com/Uni-Creator/HandGestureAutomation",
-  },
-  {
     id: "nanogpt",
     title: "NanoGPT",
     subtitle: "Language Model · Transformer from Scratch",
     github: "https://github.com/Uni-Creator/NanoGPT",
   },
   {
+    id: "hand-gesture-automation",
+    title: "Hand Gesture Automation",
+    subtitle: "Computer Vision · Real-Time Gesture Control",
+    github: "https://github.com/Uni-Creator/HandGestureAutomation",
+  },
+  {
     id: "face-recognition",
     title: "Face Recognition",
     subtitle: "Computer Vision · OpenCV Pipeline",
-    github: "https://github.com/Uni-Creator/FaceRecognition",
+    github: "https://github.com/Uni-Creator/face_recognition",
   },
   {
     id: "chat-llm",
     title: "Chat-with-LLM",
     subtitle: "LLM · Streamlit Chat Interface",
-    github: "https://github.com/Uni-Creator",
+    github: "https://github.com/Uni-Creator/Chat-with-LLM",
+  },
+  {
+    id: "crowd-detection",
+    title: "Crowd Detection",
+    subtitle: "Computer Vision · Real-Time Crowd Detection",
+    github: "https://github.com/Uni-Creator/Crowd-Detection",
+  },
+  { 
+    id: "wikiword",
+    title: "WikiWord",
+    subtitle: "Wikipedia crawler with similaity search",
+    github: "https://github.com/Uni-Creator/WikiWord",
   },
 ];
 
