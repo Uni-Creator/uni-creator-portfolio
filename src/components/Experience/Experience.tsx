@@ -1,4 +1,5 @@
-import ExperienceSlider from "./ExperienceSlider";
+import Timeline from "../About/Timeline";
+import experienceData from "../../../constants/experience";
 
 const Experience = ({
   sectionRef,
@@ -15,7 +16,7 @@ const Experience = ({
         <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-10 tracking-tight text-center sm:text-left">
           Experience
         </h2>
-        <ExperienceSlider />
+        <Timeline items={experienceData} variant="light" />
       </div>
     </section>
   );

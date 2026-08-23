@@ -53,18 +53,18 @@ const PlayIcon = () => (
 
 /* ── Flowchart component for system architectures (matching website light theme) ── */
 const ArchitectureFlow = ({ steps }: { steps: string[] }) => (
-  <div className="my-3 p-3 bg-slate-50/90 rounded-lg border border-slate-200/80 text-xs">
-    <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase block mb-2">
+  <div className="my-3 p-3.5 bg-slate-50/90 rounded-lg border border-slate-200/80 text-xs sm:text-sm">
+    <span className="text-xs font-bold tracking-wider text-slate-500 uppercase block mb-2">
       System Architecture
     </span>
     <div className="flex flex-wrap items-center gap-1.5 leading-normal">
       {steps.map((step, idx) => (
         <span key={idx} className="flex items-center gap-1.5">
-          <span className="bg-white text-slate-800 border border-slate-200/90 px-2.5 py-1 rounded-md text-xs font-semibold shadow-2xs">
+          <span className="bg-white text-slate-800 border border-slate-200/90 px-2.5 py-1 rounded-md text-xs sm:text-sm font-semibold shadow-2xs">
             {step}
           </span>
           {idx < steps.length - 1 && (
-            <span className="text-indigo-500 font-bold text-xs select-none">→</span>
+            <span className="text-indigo-500 font-bold text-xs sm:text-sm select-none">→</span>
           )}
         </span>
       ))}
@@ -84,18 +84,18 @@ const FlagshipSubCard = ({
   const details = component.technicalDetails || component.details;
 
   return (
-    <div className="flex-1 bg-slate-50/70 rounded-lg p-4 border border-slate-200 flex flex-col justify-between">
+    <div className="flex-1 bg-slate-50/70 rounded-xl p-5 sm:p-6 border border-slate-200 flex flex-col justify-between">
       <div>
         <div className="mb-2">
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-500 block mb-1">
             {typeLabel}
           </span>
-          <h3 className="font-extrabold text-slate-900 text-lg">
+          <h3 className="font-extrabold text-slate-900 text-lg sm:text-xl">
             {component.title}
           </h3>
         </div>
 
-        <p className="text-xs text-slate-600 mb-3 leading-relaxed">
+        <p className="text-sm sm:text-base text-slate-600 mb-3 leading-relaxed">
           {component.description}
         </p>
 
@@ -104,7 +104,7 @@ const FlagshipSubCard = ({
         )}
 
         {/* Tech Stack */}
-        <div className="my-2 text-xs text-slate-700">
+        <div className="my-2.5 text-sm text-slate-700">
           <strong className="text-slate-900 font-bold">Tech:</strong>{" "}
           <span className="text-slate-700">{component.techStack}</span>
         </div>
@@ -114,14 +114,14 @@ const FlagshipSubCard = ({
           <div className="mt-3 pt-2 border-t border-slate-200/60">
             <button
               onClick={() => setExpanded(!expanded)}
-              className="inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition cursor-pointer"
+              className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition cursor-pointer"
             >
               <span>{expanded ? "Technical Details ↑" : "Technical Details →"}</span>
             </button>
 
             {expanded && (
-              <div className="mt-3 p-3 bg-white rounded border border-slate-200 space-y-2.5 text-xs">
-                <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase block mb-1">
+              <div className="mt-3 p-3.5 bg-white rounded-lg border border-slate-200 space-y-2.5 text-xs sm:text-sm">
+                <span className="text-xs font-bold tracking-wider text-slate-500 uppercase block mb-1">
                   TECHNICAL DETAILS
                 </span>
                 {details.problem && (
@@ -146,7 +146,7 @@ const FlagshipSubCard = ({
             href={component.githubLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-github text-xs py-1.5 px-3"
+            className="btn-github text-xs sm:text-sm py-2 px-3.5"
             onClick={() =>
               track("project_opened", {
                 project: component.title,
@@ -163,7 +163,7 @@ const FlagshipSubCard = ({
             href={component.demoLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-demo text-xs py-1.5 px-3"
+            className="btn-demo text-xs sm:text-sm py-2 px-3.5"
             onClick={() =>
               track("project_opened", {
                 project: component.title,
@@ -295,7 +295,7 @@ const StandardProjectCard = ({ project }: { project: ProjectType }) => {
         )}
 
         {/* Tech Stack */}
-        <div className="text-xs text-slate-700 mb-3">
+        <div className="text-sm text-slate-700 mb-3">
           <strong className="text-slate-900 font-bold">Tech:</strong>{" "}
           {project.techStack || details?.techStack}
         </div>
@@ -305,14 +305,14 @@ const StandardProjectCard = ({ project }: { project: ProjectType }) => {
           <div className="mb-4 pt-2 border-t border-slate-100">
             <button
               onClick={() => setShowDetails(!showDetails)}
-              className="inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition cursor-pointer"
+              className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition cursor-pointer"
             >
               <span>{showDetails ? "Technical Details ↑" : "Technical Details →"}</span>
             </button>
 
             {showDetails && (
-              <div className="mt-2.5 p-3.5 bg-slate-50 rounded-lg border border-slate-200 text-xs space-y-2.5">
-                <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase block mb-1">
+              <div className="mt-2.5 p-3.5 bg-slate-50 rounded-lg border border-slate-200 text-xs sm:text-sm space-y-2.5">
+                <span className="text-xs font-bold tracking-wider text-slate-500 uppercase block mb-1">
                   TECHNICAL DETAILS
                 </span>
                 {details.problem && (

@@ -26,8 +26,9 @@ type TimelineItem = {
 };
 
 type TimelineProps = {
-  sectionTitle: string;
+  sectionTitle?: string;
   items: TimelineItem[];
+  variant?: "dark" | "light";
 };
 
 
