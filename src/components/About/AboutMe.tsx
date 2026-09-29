@@ -26,7 +26,7 @@ const AboutMe = ({ heading, paragraphs, highlights }: AboutProps) => {
           <span key={i}>
             {part}
             {matches && matches[i] ? (
-              <strong className="text-white font-semibold underline underline-offset-4 decoration-indigo-400">
+              <strong className="text-indigo-400/70 font-semibold">
                 {matches[i]}
               </strong>
             ) : null}

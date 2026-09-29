@@ -126,56 +126,248 @@ body {
   }
 
   /* ─────────────────────────────────────
-     Hero Section
+     Hero Section — Editorial Split Layout
   ───────────────────────────────────── */
   #home {
     @apply w-full;
 
+    /* ── Hero outer section ── */
     #hero {
-      @apply w-full min-h-[70vh] md:min-h-[75vh] flex flex-col justify-center items-center relative overflow-hidden py-10 md:py-14;
+      @apply relative w-full overflow-hidden;
+      min-height: calc(100svh - 80px);
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 3rem) 0;
 
-      #hero-image-container {
-        @apply absolute inset-0 w-full h-full flex items-center justify-between px-4 sm:px-12 pointer-events-none opacity-20 -z-10 overflow-hidden;
-
-        img {
-          @apply w-16 h-16 sm:w-28 sm:h-28 md:w-36 md:h-36 max-w-full object-contain grayscale opacity-60;
-        }
+      /* Desktop: two-column split */
+      @media (min-width: 768px) {
+        grid-template-columns: 55% 45%;
+        align-items: stretch;
+        padding-bottom: 0;
       }
 
-      #headings {
-        @apply w-full text-center px-4 sm:px-8 max-w-4xl mx-auto flex flex-col items-center;
+      /* Subtle radial highlight behind portrait on desktop */
+      &::after {
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 55% 65% at 80% 55%,
+          rgba(99, 102, 241, 0.045) 0%,
+          transparent 70%
+        );
+        z-index: 0;
+      }
+    }
 
-        h1 {
-          @apply font-extrabold text-slate-900 tracking-tight leading-[1.18];
-          font-size: clamp(2rem, 4.2vw, 3.75rem);
-          max-width: 900px;
-          margin: 0 auto;
-        }
+    /* ── Left column: text ── */
+    #hero-text {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: clamp(2rem, 5vw, 3.5rem);
 
-        p {
-          @apply text-slate-600 font-medium leading-relaxed;
-          font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-          max-width: 680px;
-          margin: 1rem auto 0;
-        }
+      @media (min-width: 768px) {
+        padding-right: clamp(1.5rem, 3vw, 3rem);
+        padding-bottom: clamp(3rem, 6vw, 5rem);
+      }
+    }
+
+    /* Eyebrow: accent line + role label */
+    #hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+    }
+
+    #hero-accent-line {
+      display: block;
+      width: 2.15rem;
+      height: 1.8px;
+      background: #4f46e5;
+      border-radius: 99px;
+      flex-shrink: 0;
+    }
+
+    #hero-role-label {
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 0rem;
+      text-transform: uppercase;
+      color: #4f46e5;
+    }
+
+    /* Primary name */
+    #hero-name {
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.06;
+      letter-spacing: -0.025em;
+      margin: 0 0 clamp(0.6rem, 1.5vw, 1rem);
+      font-size: clamp(3rem, 6.5vw, 5.5rem);
+    }
+
+    /* Role title */
+    #hero-title {
+      font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+      font-weight: 600;
+      color: #4f46e5;
+      margin: 0 0 clamp(0.9rem, 2vw, 1.35rem);
+      letter-spacing: -0.01em;
+    }
+
+    /* Description copy */
+    #hero-description {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: rgba(15, 23, 42, 0.6);
+      font-weight: 400;
+      line-height: 1.7;
+      max-width: 44ch;
+      margin: 0 0 clamp(1.75rem, 3.5vw, 2.5rem);
+    }
+
+    /* CTA buttons */
+    #hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+
+      .hero-btn {
+        @apply inline-flex items-center gap-2 font-semibold rounded-xl px-6 py-3 transition-all duration-200 text-sm sm:text-base no-underline cursor-pointer;
       }
 
-      /* Hero CTA Buttons */
-      #hero-cta {
-        @apply flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 md:mt-8;
-
-        .hero-btn {
-          @apply inline-flex items-center gap-2 font-semibold rounded-xl px-6 py-3 transition-all duration-200 text-sm sm:text-base no-underline cursor-pointer;
-        }
-
-        .hero-btn-primary {
-          @apply bg-slate-900 text-white hover:bg-slate-800 shadow-sm hover:shadow-md transform hover:-translate-y-0.5;
-        }
-
-        .hero-btn-secondary {
-          @apply bg-white text-slate-800 border border-slate-300 hover:border-slate-400 shadow-sm hover:shadow-md transform hover:-translate-y-0.5;
-        }
+      .hero-btn-primary {
+        @apply bg-slate-900 text-white hover:bg-slate-800 shadow-sm hover:shadow-md;
+        transform: translateY(0);
+        &:hover { transform: translateY(-2px); }
       }
+
+      .hero-btn-secondary {
+        @apply bg-white text-slate-800 border border-slate-300 hover:border-slate-400 shadow-sm hover:shadow-md;
+        transform: translateY(0);
+        &:hover { transform: translateY(-2px); }
+      }
+    }
+
+    /* ── Decorative shapes behind portrait ── */
+    #hero-shapes {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: visible;
+    }
+
+    /* Large ring — centred behind portrait */
+    #hero-shape-ring {
+      position: absolute;
+      width: clamp(260px, 42vw, 480px);
+      height: clamp(260px, 42vw, 480px);
+      border-radius: 50%;
+      border: 2px solid rgba(99, 102, 241, 0.22);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -48%);
+    }
+
+    /* Soft filled indigo blob */
+    #hero-shape-blob {
+      position: absolute;
+      width: clamp(160px, 26vw, 300px);
+      height: clamp(160px, 26vw, 300px);
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(3, 5, 93, 0.1) 0%,
+        rgba(4, 16, 241, 0.03) 60%,
+        transparent 80%
+      );
+      top: 50%;
+      left: 50%;
+      transform: translate(-42%, -52%);
+    }
+
+    /* Small accent dot — top right area */
+    #hero-shape-dot-a {
+      position: absolute;
+      width: clamp(10px, 1.4vw, 16px);
+      height: clamp(10px, 1.4vw, 16px);
+      border-radius: 50%;
+      background: #4f46e5;
+      opacity: 0.45;
+      top: 18%;
+      right: 12%;
+    }
+
+    /* Small accent dot — bottom left area */
+    #hero-shape-dot-b {
+      position: absolute;
+      width: clamp(7px, 1vw, 11px);
+      height: clamp(7px, 1vw, 11px);
+      border-radius: 50%;
+      background: #818cf8;
+      opacity: 0.35;
+      bottom: 22%;
+      left: 10%;
+    }
+
+    /* Thin arc — partial ring, offset */
+    #hero-shape-arc {
+      position: absolute;
+      width: clamp(120px, 20vw, 220px);
+      height: clamp(120px, 20vw, 220px);
+      border-radius: 50%;
+      border: 1.5px solid rgba(129, 140, 248, 0.28);
+      /* Show only the top-right quarter using clip-path */
+      clip-path: polygon(50% 0%, 100% 0%, 100% 50%, 50% 50%);
+      top: 10%;
+      right: 5%;
+    }
+
+    /* ── Right column: portrait ── */
+    #hero-portrait-col {
+      /* Hidden on narrow screens — portrait & shapes only on desktop */
+      display: none;
+
+      @media (min-width: 770px) {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        height: auto;
+        align-items: flex-end;
+        justify-content: flex-end;
+      }
+    }
+
+    #hero-portrait-wrap {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+
+      @media (min-width: 768px) {
+        height: clamp(380px, 65vh, 620px);
+      }
+    }
+
+    #hero-portrait {
+      display: block;
+      height: 100%;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      object-position: bottom center;
+      /* White bg blends into site bg — use mix-blend to trim any
+         bright edge fringing on light backgrounds */
+      mix-blend-mode: multiply;
+      user-select: none;
+      pointer-events: none;
     }
   }
 

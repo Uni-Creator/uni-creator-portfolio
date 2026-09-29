@@ -20,7 +20,7 @@ const AboutSection = ({
       {/* About content */}
       <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 w-full max-w-6xl z-10">
         <img
-          src="/images/profile.jpg"
+          src="/images/me/profile.jpg"
           alt="Abhay Singh"
           className="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover border-4 border-indigo-400/60 shadow-xl shrink-0 opacity-100 z-10"
         />
