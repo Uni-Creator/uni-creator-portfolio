@@ -49,7 +49,7 @@ const Navbar = ({ currentPage }: { currentPage: string }) => {
       <a href="#home">
         <div id="logo" className="flex items-center gap-2">
         <img
-          src="/images/3D_Shape_1.avif"
+          src="/images/logo.png"
           alt="logo"
           className="max-w-[40px] max-h-[40px]"
         />
