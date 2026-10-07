@@ -1,0 +1,40 @@
+.tl-button {
+  display: inline-block;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  font-family: ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.15s;
+}
+.tl-button:hover { background: rgba(127, 127, 127, 0.16); }
+.tl-button:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+.tl-ssh {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 100%;
+  padding: 0.45rem 0.55rem 0.45rem 0.9rem;
+  border: 1px solid rgba(127, 127, 127, 0.45);
+  border-radius: 8px;
+  background: rgba(10, 10, 20, 0.55);
+  color: #c0caf5;
+  font-family: ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
+  font-size: 0.9rem;
+}
+.tl-ssh code { overflow-x: auto; white-space: nowrap; }
+.tl-ssh button {
+  padding: 0.25rem 0.7rem;
+  border: 1px solid rgba(127, 127, 127, 0.5);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.tl-ssh button:hover { background: rgba(127, 127, 127, 0.2); }
+.tl-ssh button:focus-visible { outline: 2px solid #7dcfff; outline-offset: 2px; }

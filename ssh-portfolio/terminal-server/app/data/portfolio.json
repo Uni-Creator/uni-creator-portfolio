@@ -1,0 +1,210 @@
+{
+ "_note": "Generated from src/constants/*.ts by scripts/export_portfolio_data.ts. Re-run that script to refresh; skills is empty until you do.",
+ "profile": {
+  "name": "ABHAY SINGH",
+  "headline": "AI/ML ENGINEER • DEVELOPER",
+  "tagline": "Computer Vision • AI/ML • Backend • Systems"
+ },
+ "projects": [
+  {
+   "id": "sign-language-ai",
+   "title": "Sign Language AI",
+   "subtitle": "Recognition + Generation",
+   "category": "Research",
+   "components": {
+    "recognition": {
+     "title": "signBridge",
+     "subtitle": "Real-Time ISL Recognition",
+     "description": "Built and trained a real-time Indian Sign Language recognition system using a custom Swin3D + BiLSTM model. The model was exposed through a custom Flask API and integrated into a Flutter application.",
+     "architecture": [
+      "Video",
+      "Preprocessing",
+      "Swin3D + BiLSTM",
+      "Flask API",
+      "Flutter Application"
+     ],
+     "techStack": "Python, PyTorch, Swin3D, BiLSTM, Flask, Flutter, OpenCV",
+     "githubLink": "https://github.com/Uni-Creator/signBridge",
+     "demoLink": "https://github.com/user-attachments/assets/130351a1-b1d9-4432-a4a4-7e64ee8ec296",
+     "technicalDetails": {
+      "problem": "Real-time Indian Sign Language recognition requires processing video sequences through a deep model and delivering results to a mobile application with minimal latency.",
+      "solution": "Trained Swin3D + BiLSTM spatial-temporal model in PyTorch on custom ISL video dataset, exposed inference via custom Flask REST API, and built Flutter mobile frontend.",
+      "result": "Functional end-to-end pipeline from mobile camera video input to real-time sign label recognition in Flutter application."
+     }
+    },
+    "production": {
+     "title": "Sign Language Pose Generation",
+     "subtitle": "SOKE / MotionVQVAE Generation",
+     "description": "Reproduced and extended a SOKE-based Sign Language Production pipeline for Indian Sign Language, using SMPL-X representations and MotionVQVAE-based discrete motion tokenization.",
+     "architecture": [
+      "Text",
+      "Motion Token Prediction",
+      "MotionVQVAE",
+      "Body + Hand Motion",
+      "SMPL-X / Pose"
+     ],
+     "techStack": "Python, PyTorch, MotionVQVAE, VQ-VAE, SMPL-X, Deep Learning",
+     "githubLink": "https://github.com/Uni-Creator/sign-language-pose-generation",
+     "technicalDetails": {
+      "problem": "Generating realistic and accurate 3D sign language motion sequences from text requires understanding both body and hand kinematics in a discrete, learnable representation.",
+      "solution": "Built custom SMPL-X fusion pipeline (SMPLest-X body + HaMeR/WiLoR hands via inverse kinematics) converting 6,200+ ISL videos into clean 3D pose sequences. Designed and trained three-branch MotionVQVAE tokenizer and autoregressive SLP transformer.",
+      "result": "Reduced mean MPJPE to 39.80mm (7.04mm body) on held-out sequences across 6 controlled experiments. Established a 17-18% token-accuracy baseline."
+     }
+    }
+   }
+  },
+  {
+   "id": "smart-gallery",
+   "title": "SmartGallery",
+   "subtitle": "Computer Vision · CLIP · Embeddings · Semantic Search",
+   "category": "Computer Vision",
+   "description": "Developed a desktop application that generates captions, auto-tags and CLIP embeddings for photos and supports natural-language semantic search using vector similarity.",
+   "techStack": "Python, CLIP, OpenCV, FAISS, NLP, Desktop UI",
+   "architecture": [
+    "Images",
+    "Captioning / Tagging",
+    "CLIP Embeddings",
+    "FAISS",
+    "Semantic Search"
+   ],
+   "githubLink": "https://github.com/Uni-Creator/SmartGallery",
+   "demoLink": "https://github.com/user-attachments/assets/cd0bea7f-06ff-48d0-9c4f-0b1954e63030",
+   "technicalDetails": {
+    "problem": "Managing thousands of photos manually makes semantic search and organization impractical without embedding-based retrieval.",
+    "solution": "Developed a desktop application that generates captions, auto-tags, and CLIP embeddings for each photo in a watched folder, supporting natural-language queries and live folder updates.",
+    "result": "Natural-language image search across local photo libraries using vector similarity against precomputed embeddings."
+   }
+  },
+  {
+   "id": "rag-multifile-qa",
+   "title": "RAG Multi-File QA",
+   "subtitle": "LLM · RAG · Retrieval",
+   "category": "LLM",
+   "description": "Built a Retrieval-Augmented Generation system that allows users to upload and query PDFs, DOCX, TXT and CSV documents.",
+   "techStack": "Python, LangChain, Hugging Face, FAISS, Embeddings, Streamlit",
+   "architecture": [
+    "Documents",
+    "Parsing",
+    "Chunking",
+    "Embeddings",
+    "FAISS",
+    "Retrieval",
+    "LLM",
+    "Answer"
+   ],
+   "githubLink": "https://github.com/Uni-Creator/RAG-MultiFile-QA",
+   "liveLink": "https://rag-multifile.streamlit.app/",
+   "technicalDetails": {
+    "problem": "Information stored across multiple documents is difficult to search and synthesize efficiently.",
+    "solution": "Built a Retrieval-Augmented Generation pipeline supporting PDF, DOCX, TXT and CSV documents. The system parses documents, chunks content, generates embeddings, stores them in FAISS, retrieves relevant context, and passes the retrieved context to an LLM for answer generation.",
+    "result": "Enables natural-language querying across multiple document types using semantic retrieval and contextual generation."
+   }
+  },
+  {
+   "id": "cuk-commit",
+   "title": "CUK Commit",
+   "subtitle": "Backend · Authentication · Full Stack",
+   "category": "Backend",
+   "description": "Implemented the complete authentication and backend infrastructure for the campus app, including login/signup, password reset, database schema, matching logic, FCM push notifications, and OAuth.",
+   "techStack": "Flutter, Supabase, PostgreSQL, Edge Functions, FCM, OAuth",
+   "githubLink": "https://github.com/CUK-COMMIT/cukcommit-downloads",
+   "liveLink": "https://cuk-commit.vercel.app/",
+   "demoLink": "https://github.com/user-attachments/assets/fc0dc4ab-6eb7-4b5b-af38-8c8a727ea8da",
+   "technicalDetails": {
+    "problem": "Campus applications require secure verification, reliable authentication, structured relational schemas, and real-time push notification pipelines.",
+    "solution": "Implemented the complete authentication and backend infrastructure for the app, including login/signup, password reset flows, database design, matching logic, FCM push notifications, OAuth, and deep link callbacks.",
+    "result": "Functional authentication system, database architecture, matching logic, and push notification pipeline integrated with the Flutter application."
+   }
+  },
+  {
+   "id": "neural-drive",
+   "title": "NeuralDrive",
+   "subtitle": "Evolutionary AI · Simulation",
+   "category": "Simulation",
+   "description": "Applied the NEAT (NeuroEvolution of Augmenting Topologies) algorithm to evolve neural networks capable of navigating an autonomous driving simulation.",
+   "techStack": "Python, NEAT, Evolutionary Algorithms, Neural Network Evolution, Pygame",
+   "githubLink": "https://github.com/Uni-Creator/NeuralDrive",
+   "technicalDetails": {
+    "problem": "Gradient-based training is impractical for autonomous driving simulations where the environment is non-differentiable.",
+    "solution": "Applied the NEAT algorithm to evolve neural networks capable of navigating a driving simulation. Networks are evaluated using a fitness function based on distance travelled and collision avoidance.",
+    "result": "Agents progressively improve driving behavior over generations through fitness-based selection in a simulation environment."
+   }
+  }
+ ],
+ "about": {
+  "heading": "About Me",
+  "paragraphs": [
+   "I'm Abhay Singh, an engineering student focused on AI/ML engineering and intelligent systems.",
+   "I build end-to-end AI applications spanning deep learning, computer vision, LLM/RAG systems, and real-time inference. My work ranges from training custom deep-learning models and developing retrieval pipelines to deploying models through APIs and integrating them into applications.",
+   "I've also worked on deep-learning research involving sign-language production, motion tokenization, and pose generation, with an interest in understanding models beyond simply using pretrained APIs.",
+   "Currently, I'm focused on strengthening my foundations in AI, systems, and software engineering while building practical projects that can move from research ideas to usable systems."
+  ]
+ },
+ "skills": [],
+ "experience": [
+  {
+   "period": "May 2026 – Jul 2026",
+   "title": "Deep Learning Intern",
+   "subtitle": "Indian Institute of Technology (BHU), Varanasi",
+   "location": "On-site",
+   "details": [
+    "Reproduced and extended the SOKE sign-language generation framework for Indian Sign Language, building a <strong>custom SMPL-X fusion pipeline</strong> (SMPLest-X body + HaMeR/WiLoR hand estimators via inverse kinematics) converting <strong>6,200+ raw ISL videos</strong> into clean 3D pose sequences.",
+    "Designed and trained a three-branch <strong>MotionVQVAE motion tokenizer</strong> (independent body/hand codebooks, feature-wise normalization) across <strong>6 controlled experiments</strong>, reducing mean MPJPE to <strong>39.80mm</strong> (<strong>7.04mm body</strong>) on held-out sequences.",
+    "Reproduced the autoregressive SLP transformer; training a text-to-motion-token generation pipeline with teacher forcing and three independent prediction heads, establishing a <strong>17–18% token-accuracy baseline</strong>, backed by a custom experiment-management framework for versioning and reproducibility."
+   ]
+  },
+  {
+   "period": "Jun 2024 – Aug 2024",
+   "title": "Machine Learning Intern",
+   "subtitle": "YBI Foundation",
+   "location": "Remote",
+   "details": [
+    "Designed and implemented ML models for classification tasks, <strong>improving accuracy by 15%</strong> through optimized training pipelines.",
+    "Fine-tuned deep learning models using TensorFlow and scikit-learn, <strong>reducing training time by 30%</strong> via hyperparameter tuning.",
+    "Integrated trained model endpoints into a <strong>FastAPI production service</strong> with input validation, structured error handling, and logging for live performance monitoring.",
+    "Collaborated with backend engineers to containerize the service with <strong>Docker</strong> and set up basic CI checks, streamlining the deployment workflow."
+   ]
+  }
+ ],
+ "education": [
+  {
+   "period": "2023 – Current",
+   "title": "BTech in Mathematics and Computing",
+   "subtitle": "Central University of Karnataka",
+   "details": [
+    "Relevant Coursework: Computer Architecture, Machine Learning, Artificial Intelligence, Data Structures, Cybersecurity, Software Development.",
+    "CGPA: 8.34 (Overall)"
+   ]
+  },
+  {
+   "period": "2022 – 2023",
+   "title": "Intermediate",
+   "subtitle": "Uttrakhand Public School (CBSE)",
+   "details": [
+    "Qualification: 12th Grade (Science)",
+    "Percentage: 94%"
+   ]
+  },
+  {
+   "period": "2020 – 2021",
+   "title": "High School",
+   "subtitle": "R.K. Modern Sr. Sec. School (CBSE)",
+   "details": [
+    "Qualification: 10th Grade",
+    "Percentage: 74%"
+   ]
+  }
+ ],
+ "contact": {
+  "location": "India",
+  "email": "uni.creator001@gmail.com",
+  "resumeUrls": "https://drive.google.com/file/d/1UvR2S_lR-OwDkCE4OHgkqeaMBZ3AtowO/view?usp=sharing",
+  "socialLinks": {
+   "github": "https://github.com/Uni-Creator",
+   "linkedin": "http://www.linkedin.com/in/singhrabhay",
+   "twitter": "",
+   "instagram": "https://www.instagram.com/__whoisabhay",
+   "discord": "https://discordapp.com/users/1254197837831344220"
+  }
+ }
+}

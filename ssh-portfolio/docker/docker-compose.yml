@@ -1,0 +1,26 @@
+# docker compose -f docker/docker-compose.yml up -d --build   (run from the repo root)
+services:
+  web:
+    build: { context: .., dockerfile: docker/Dockerfile }
+    env_file: ../terminal-server/.env
+    ports: ["127.0.0.1:8000:8000"]     # only Nginx on the host talks to it
+    restart: unless-stopped
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+
+  ssh:
+    build: { context: .., dockerfile: docker/Dockerfile }
+    command: ["python", "-m", "app.transports.ssh"]
+    env_file: ../terminal-server/.env
+    ports: ["2222:2222"]
+    volumes: ["ssh_keys:/opt/portfolio-terminal/keys"]   # persists the host key across restarts
+    restart: unless-stopped
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+
+volumes:
+  ssh_keys:

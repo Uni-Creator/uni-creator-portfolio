@@ -1,0 +1,40 @@
+[Unit]
+Description=Portfolio terminal (AsyncSSH on :2222, no OS shell)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=portfolio
+Group=portfolio
+WorkingDirectory=/opt/portfolio-terminal/terminal-server
+EnvironmentFile=/opt/portfolio-terminal/.env
+ExecStart=/opt/portfolio-terminal/venv/bin/python -m app.transports.ssh
+Restart=on-failure
+RestartSec=3
+
+# Hardening. Port 2222 is unprivileged, so no capabilities are needed.
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+# The SSH host key is created on first start inside this directory:
+ReadWritePaths=/opt/portfolio-terminal
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+LockPersonality=true
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0077
+LimitNOFILE=4096
+TasksMax=256
+MemoryMax=512M
+
+[Install]
+WantedBy=multi-user.target

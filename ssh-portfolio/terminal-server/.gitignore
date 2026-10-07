@@ -1,0 +1,6 @@
+.env
+host_key
+host_key.pub
+__pycache__/
+.pytest_cache/
+venv/

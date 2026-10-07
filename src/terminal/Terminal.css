@@ -1,0 +1,163 @@
+/* Palette: deep indigo-slate window, cool foreground, amber as the single warm accent. */
+.term-page {
+  --bg: #16161e;
+  --bar: #1f2030;
+  --edge: #2e3048;
+  --fg: #c0caf5;
+  --muted: #6b7399;
+  --blue: #7aa2f7;
+  --cyan: #7dcfff;
+  --amber: #e0af68;
+  --green: #9ece6a;
+  --red: #f7768e;
+  --font: "JetBrains Mono", "Fira Code", "SF Mono", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
+
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0px, 3vw, 28px);
+  background: radial-gradient(120% 90% at 50% 0%, #1c1d2b 0%, #101018 70%);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.term-window {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 980px);
+  height: 100%;
+  max-height: 100%;
+  background: var(--bg);
+  border: 1px solid var(--edge);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+.term-window:focus-within { border-color: #3d4064; }
+
+/* ---- title bar ---- */
+.term-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 9px 14px;
+  background: var(--bar);
+  border-bottom: 1px solid var(--edge);
+  font-size: 12.5px;
+  color: var(--muted);
+  user-select: none;
+}
+.term-dots { display: flex; gap: 8px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; display: block; }
+.dot-r { background: #ff5f57; }
+.dot-y { background: #febc2e; }
+.dot-g { background: #28c840; }
+.term-title { color: var(--fg); }
+.term-status { justify-self: end; display: inline-flex; align-items: center; gap: 6px; }
+.term-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.st-open { color: var(--green); }
+.st-connecting { color: var(--amber); }
+.st-closed { color: var(--red); }
+
+/* ---- scrollback ---- */
+.term-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 14px 16px 18px;
+  cursor: text;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--edge) transparent;
+}
+.term-measure {
+  position: absolute;
+  visibility: hidden;
+  white-space: pre;
+  pointer-events: none;
+}
+.t-line {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  min-height: 1.5em;
+}
+
+/* ---- styles sent by the server ---- */
+.s-heading { color: var(--cyan); font-weight: 700; }
+.s-accent  { color: var(--amber); font-weight: 600; }
+.s-muted   { color: var(--muted); }
+.s-success { color: var(--green); font-weight: 600; }
+.s-error   { color: var(--red); }
+.s-warn    { color: var(--amber); }
+.s-key     { color: var(--blue); }
+.s-link    { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+.s-link:hover { color: var(--cyan); }
+.s-link:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; border-radius: 2px; }
+
+/* ---- prompt + input ---- */
+.p-user { color: var(--green); font-weight: 600; }
+.p-sep  { color: var(--muted); }
+.p-path { color: var(--blue); font-weight: 600; }
+.t-prompt { white-space: pre; }
+
+.t-input-row { display: flex; align-items: baseline; }
+.t-input {
+  flex: 1;
+  min-width: 4ch;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--fg);
+  caret-color: var(--amber);
+  caret-shape: block;
+  font: inherit;
+  line-height: inherit;
+}
+.t-input:disabled { opacity: 0.5; }
+
+/* ---- key bar (always usable on touch; compact on desktop) ---- */
+.term-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 12px;
+  background: var(--bar);
+  border-top: 1px solid var(--edge);
+}
+.key {
+  appearance: none;
+  padding: 5px 11px;
+  border: 1px solid var(--edge);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  font-size: 12.5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.key:hover { background: #26283d; }
+.key:focus-visible { outline: 2px solid var(--cyan); outline-offset: 1px; }
+.key-wide { padding-inline: 18px; border-color: var(--amber); color: var(--amber); }
+.key-home { margin-left: auto; color: var(--muted); }
+
+@media (pointer: fine) and (min-width: 700px) {
+  .term-keys { display: none; } /* hide the touch key bar on desktop; hardware keys cover everything */
+}
+
+@media (max-width: 700px), (pointer: coarse) {
+  .term-page { padding: 0; font-size: 16px; /* 16px stops iOS from zooming on focus */ }
+  .term-window { border: 0; border-radius: 0; width: 100%; box-shadow: none; }
+  .term-body { padding: 12px 12px 16px; }
+}
+@supports (height: 100dvh) {
+  .term-page { height: 100dvh; }
+}
