@@ -36,5 +36,17 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.2"
-  }
+  },
+  "description": "",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Uni-Creator/uni-creator-portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Uni-Creator/uni-creator-portfolio/issues"
+  },
+  "homepage": "https://github.com/Uni-Creator/uni-creator-portfolio#readme"
 }
