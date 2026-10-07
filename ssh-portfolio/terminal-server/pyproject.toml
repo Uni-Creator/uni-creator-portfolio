@@ -7,7 +7,13 @@ authors = [
     { name = "Uni-Creator", email = "abhayr24564@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "asyncssh>=2.14",
+    "fastapi>=0.110",
+    "httpx>=0.27",
+    "python-dotenv>=1.0",
+    "uvicorn[standard]>=0.29",
+]
 
 [project.scripts]
 terminal-server = "terminal_server:main"
