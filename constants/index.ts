@@ -19,6 +19,7 @@ const navLists: NavListsType = [
   { id: "experience", href: "#experience", title: "Experience" },
   { id: "projects", href: "#projects", title: "Projects" },
   { id: "skills", href: "#skills", title: "Skills" },
+  { id: "terminal", href: "/terminal", title: "Terminal" },
   {
     id: "resume",
     href: "#",

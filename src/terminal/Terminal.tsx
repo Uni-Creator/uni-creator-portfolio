@@ -68,7 +68,10 @@ export default function Terminal({ url }: { url?: string }) {
           setEnded(true);
           client.current?.close();
           setStatus("closed");
-          push([{ kind: "sys", text: "Session ended. Press Enter to start a new one.", tone: "info" }]);
+          push([{ kind: "sys", text: "Session ended. Returning to homepage...", tone: "info" }]);
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 500);
           break;
         case "complete": {
           const before = pendingComplete.current ?? "";
@@ -89,6 +92,10 @@ export default function Terminal({ url }: { url?: string }) {
 
   const connect = useCallback(() => {
     client.current?.connect();
+  }, []);
+
+  const handleClose = useCallback(() => {
+    window.location.href = "/";
   }, []);
 
   // Connection lifecycle
@@ -157,6 +164,16 @@ export default function Terminal({ url }: { url?: string }) {
 
   const submit = useCallback(() => {
     const { value: text, prompt: p, mode: m, status: st, ended: done } = stateRef.current;
+    const trimmed = text.trim().toLowerCase();
+    if (m === "command" && (trimmed === "exit" || trimmed === "quit")) {
+      push([{ kind: "in", prompt: p, text }]);
+      push([{ kind: "sys", text: "Goodbye! Returning to homepage...", tone: "info" }]);
+      client.current?.send({ type: "input", data: text });
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 500);
+      return;
+    }
     if (st !== "open") {
       if (st === "closed" || done) reconnect();
       return;
@@ -195,6 +212,11 @@ export default function Terminal({ url }: { url?: string }) {
   }, []);
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      handleClose();
+      return;
+    }
     const ctrl = e.ctrlKey && !e.metaKey && !e.altKey;
     if (e.key === "Enter") {
       e.preventDefault();
@@ -235,13 +257,43 @@ export default function Terminal({ url }: { url?: string }) {
     <div className="term-page">
       <div className="term-window" role="application" aria-label="Interactive terminal portfolio">
         <header className="term-bar">
-          <span className="term-dots" aria-hidden="true">
-            <i className="dot dot-r" />
-            <i className="dot dot-y" />
-            <i className="dot dot-g" />
+          <span className="term-dots">
+            <button
+              type="button"
+              className="dot dot-r"
+              onClick={handleClose}
+              title="Close terminal (Esc)"
+              aria-label="Close terminal and return to homepage"
+            />
+            <button
+              type="button"
+              className="dot dot-y"
+              onClick={() => setEntries([])}
+              title="Clear screen"
+              aria-label="Clear screen"
+            />
+            <button
+              type="button"
+              className="dot dot-g"
+              onClick={reconnect}
+              title="Reconnect"
+              aria-label="Reconnect"
+            />
           </span>
           <span className="term-title">portfolio@abhay</span>
-          <span className={`term-status st-${status}`}>{statusLabel}</span>
+          <div className="term-bar-right">
+            <span className={`term-status st-${status}`}>{statusLabel}</span>
+            <button
+              type="button"
+              className="term-close-btn"
+              onClick={handleClose}
+              title="Close terminal (Esc)"
+              aria-label="Close terminal and return to homepage"
+            >
+              <span className="term-close-x">✕</span>
+              <span className="term-close-text">Close</span>
+            </button>
+          </div>
         </header>
 
         <div className="term-body" ref={scroller} onClick={onBodyClick} role="log" aria-live="polite">
@@ -274,7 +326,15 @@ export default function Terminal({ url }: { url?: string }) {
               <button type="button" className="key" onPointerDown={(e) => e.preventDefault()} onClick={() => setEntries([])}>Clear</button>
             </>
           )}
-          <a className="key key-home" href="/">Back to site</a>
+          <button
+            type="button"
+            className="key key-close"
+            onClick={handleClose}
+            onPointerDown={(e) => e.preventDefault()}
+            title="Close terminal and return to homepage"
+          >
+            ✕ Close
+          </button>
         </footer>
       </div>
     </div>

@@ -52,6 +52,12 @@ export const MenuList = ({
   }, [scrollTo]);
 
   const handleLinkClick = (e: MouseEvent, href: string) => {
+    if (href.startsWith("/")) {
+      if (isMobile) {
+        setIsOpen(false);
+      }
+      return;
+    }
     e.preventDefault();
     if (isMobile) {
       if (href === "#projects") {
